@@ -1,65 +1,88 @@
-/* Reset default styles */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* General page style */
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-  }
-  
-  /* Navigation bar */
-  nav {
-    background-color: #1a1a1a;
-    padding: 12px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-  }
-  
-  nav a {
-    color: #f0f0f0;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px;
-    transition: background-color 0.3s;
-  }
-  
-  nav a:hover {
-    background-color: #333;
-    border-radius: 5px;
-  }
-  
-  /* Main content */
-  main {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  }
-  
-  h1 {
-    font-size: 2.2em;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header / Navbar */
+header {
+  background-color: #1a1a1a;
+  padding: 20px 0;
+}
+
+.logo {
+  color: white;
+  font-size: 1.8em;
+  float: left;
+}
+
+nav ul {
+  list-style: none;
+  float: right;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Clear floats */
+header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Hero section */
+.hero {
+  background-color: #e9ecef;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+/* Content section */
+.content {
+  padding: 40px 0;
+}
+
+.content h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
