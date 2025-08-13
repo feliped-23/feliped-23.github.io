@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About Felipe Diaz — story, goals, and passions." />
+  <title>About Me — Felipe Diaz</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Felipe Diaz</span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <nav id="site-nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_me.html" class="active">About</a></li>
+          <li><a href="resume.html">Portfolio</a></li>
+          <li><a href="blog.html">Research</a></li>
+          <li><a href="contact.html" class="btn btn--small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="snap-container">
+    <!-- Panel 1: My Story -->
+    <section class="snap-panel">
+      <div class="snap-inner">
+        <h1>My story</h1>
+        <p>
+          I’m a mechanical engineer who enjoys building practical, testable solutions—especially in clean tech.
+          From hands-on fabrication to CAD/FEA and data-driven iteration, I focus on turning ideas into working hardware.
+        </p>
+      </div>
+    </section>
+
+    <!-- Panel 2: My Goals -->
+    <section class="snap-panel">
+      <div class="snap-inner">
+        <h2>My goals</h2>
+        <p>
+          Grow as a design/test engineer, contribute to sustainable energy systems, and keep shipping projects that
+          balance performance, manufacturability, and cost. Near-term: broaden prototyping depth and publish more write-ups.
+        </p>
+      </div>
+    </section>
+
+    <!-- Panel 3: My Passions -->
+    <section class="snap-panel">
+      <div class="snap-inner">
+        <h2>My passions</h2>
+        <p>
+          Clean energy, clever mechanisms, and well-instrumented experiments. Outside of work: hiking, winter sports,
+          and learning by building. If it involves a fixture, a test plan, or a graph, I’m in.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about_me.html" class="active">About</a>
+        <a href="resume.html">Portfolio</a>
+        <a href="blog.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      document.body.classList.toggle('no-scroll', !expanded);
+    });
+  </script>
+</body>
+</html>

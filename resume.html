@@ -1,28 +1,338 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Felipe – Resume</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional portfolio: experience and projects by Felipe Diaz." />
+  <title>Portfolio — Felipe Diaz</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Felipe Diaz</span>
+      </a>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="resume.html">Resume</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
 
-  <!-- Page Content -->
+      <nav id="site-nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_me.html">About</a></li>
+          <li><a href="resume.html" class="active">Portfolio</a></li>
+          <li><a href="blog.html">Research</a></li>
+          <li><a href="contact.html" class="btn btn--small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <h1>Resume</h1>
-    <p>Page-specific content goes here.</p>
+    <!-- Intro -->
+    <section class="container resume-intro">
+      <h1 class="reveal">Professional Portfolio</h1>
+      <p class="lead reveal">
+        A snapshot of my professional experience and selected projects. Click any project to view details.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="container experience">
+      <h2 class="reveal">Experience</h2>
+      <div class="exp-grid">
+        <!-- Copy & edit cards as needed -->
+        <article class="exp-card reveal">
+          <header class="exp-head">
+            <h3>Role Title — Company Name</h3>
+            <span class="exp-dates">Jan 2024 – Aug 2024 · Location</span>
+          </header>
+          <ul class="exp-list">
+            <li>• Brief impact statement / result (e.g., “Reduced test cycle time by 22%”).</li>
+            <li>• Tooling/skills used (CAD, FEA, Python, DFM, etc.).</li>
+            <li>• One more concrete achievement with numbers if possible.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card reveal">
+          <header class="exp-head">
+            <h3>Role Title — Company Name</h3>
+            <span class="exp-dates">May 2023 – Dec 2023 · Location</span>
+          </header>
+          <ul class="exp-list">
+            <li>• Designed, built, and tested [system/fixture/mechanism].</li>
+            <li>• Collaborated with cross-functional teams; documented procedures.</li>
+            <li>• Summarize outcome (cost, performance, reliability, safety, etc.).</li>
+          </ul>
+        </article>
+
+        <article class="exp-card reveal">
+          <header class="exp-head">
+            <h3>Role Title — Company Name</h3>
+            <span class="exp-dates">Year – Year · Location</span>
+          </header>
+          <ul class="exp-list">
+            <li>• Short, results-oriented bullet.</li>
+            <li>• Short, results-oriented bullet.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects: scrollable summaries with images -->
+    <section class="container panels" aria-label="Project summaries">
+      <!-- Project 1 -->
+      <article class="section-panel reveal">
+        <div class="panel-body">
+          <div class="panel-meta"><span class="pill">Project</span></div>
+          <h2>Adaptive Fixture for Vibration Testing</h2>
+          <p>
+            Modular fixture enabling quick DUT swaps and improved signal-to-noise. Iterated through FEA, machined parts,
+            and validation on shaker table.
+          </p>
+          <div class="panel-actions">
+            <button class="btn btn--small" data-modal-target="#proj1-modal" aria-haspopup="dialog" aria-controls="proj1-modal">View details</button>
+          </div>
+        </div>
+        <div class="panel-image" aria-hidden="true" style="background-image:none;">
+          Future image
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="section-panel reveal">
+        <div class="panel-body">
+          <div class="panel-meta"><span class="pill">Project</span></div>
+          <h2>Near-Eye Display Opto-Mechanical Assembly</h2>
+          <p>
+            Designed a compact, alignment-friendly housing for lens & display stack. Toleranced critical interfaces and
+            created assembly jigs.
+          </p>
+          <div class="panel-actions">
+            <button class="btn btn--small" data-modal-target="#proj2-modal" aria-haspopup="dialog" aria-controls="proj2-modal">View details</button>
+          </div>
+        </div>
+        <div class="panel-image" aria-hidden="true">Future image</div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="section-panel reveal">
+        <div class="panel-body">
+          <div class="panel-meta"><span class="pill">Project</span></div>
+          <h2>Autonomous RC Catamaran Hull</h2>
+          <p>
+            Designed and laid-up a fiberglass catamaran hull; validated buoyancy and stability; integrated propulsion and control.
+          </p>
+          <div class="panel-actions">
+            <button class="btn btn--small" data-modal-target="#proj3-modal" aria-haspopup="dialog" aria-controls="proj3-modal">View details</button>
+          </div>
+        </div>
+        <div class="panel-image" aria-hidden="true">Future image</div>
+      </article>
+    </section>
+
+    <!-- Embedded PDF Resume -->
+    <section class="container resume-pdf">
+      <h2 class="reveal">Resume (PDF)</h2>
+      <div class="pdf-embed reveal" role="region" aria-label="Embedded resume PDF">
+        <!-- Put your file at /assets/Felipe_Diaz_Resume.pdf -->
+        <iframe
+          title="Resume PDF"
+          src="assets/FelipeDiaz_General_Fusion_Resume.pdf"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="pdf-fallback">
+        Can’t see the PDF? <a href="assets/Felipe_Diaz_Resume.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
+      </p>
+    </section>
   </main>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about_me.html">About</a>
+        <a href="resume.html" class="active">Portfolio</a>
+        <a href="blog.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Detail Modals -->
+  <!-- Modal 1 -->
+  <div class="modal" id="proj1-modal" aria-hidden="true" aria-labelledby="proj1-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="proj1-title">Adaptive Fixture for Vibration Testing</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <!-- Replace with a real image -->
+          <img src="assets/projects/proj1.jpg" alt="Fixture assembly on vibration table">
+        </div>
+        <div class="modal__text">
+          <p>
+            Designed a modular fixture system with interchangeable plates and kinematic mounts to accelerate test setup.
+            Performed FEA (modal & static), machined components, and validated on a shaker table with accelerometer arrays.
+          </p>
+          <ul class="modal__bullets">
+            <li>• Cut setup time by ~35%; improved repeatability.</li>
+            <li>• Aluminum 6061-T6, stainless inserts; laser-etched indexing.</li>
+            <li>• Documented torque specs and maintenance schedule.</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal" id="proj2-modal" aria-hidden="true" aria-labelledby="proj2-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="proj2-title">Near-Eye Display Opto-Mechanical Assembly</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/projects/proj2.jpg" alt="Exploded view of near-eye assembly">
+        </div>
+        <div class="modal__text">
+          <p>
+            Compact enclosure for optics stack with datum-driven alignment features. Toleranced critical surfaces and
+            created jigs for assembly & glue-cure steps.
+          </p>
+          <ul class="modal__bullets">
+            <li>• Established GD&T for key interfaces; ensured manufacturability.</li>
+            <li>• Wrote assembly work-instructions and inspection checklist.</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal" id="proj3-modal" aria-hidden="true" aria-labelledby="proj3-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="proj3-title">Autonomous RC Catamaran Hull</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/projects/proj3.jpg" alt="Catamaran hull prototype on water">
+        </div>
+        <div class="modal__text">
+          <p>
+            Designed and fabricated a fiberglass catamaran hull; verified buoyancy & stability; integrated propulsion,
+            battery, and control systems.
+          </p>
+          <ul class="modal__bullets">
+            <li>• Layup schedule optimized for stiffness-to-weight.</li>
+            <li>• Tested in pool & open water; instrumented for data capture.</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      document.body.classList.toggle('no-scroll', !expanded);
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.reveal, .section-panel, .exp-card').forEach(el => observer.observe(el));
+
+    // --- Modal logic (open/close, ESC, overlay click) ---
+    const openButtons = document.querySelectorAll('[data-modal-target]');
+    const closeSelectors = '[data-close-modal]';
+    let lastFocused;
+
+    function openModal(modal) {
+      if (!modal) return;
+      lastFocused = document.activeElement;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      const closeBtn = modal.querySelector('.modal__close') || modal.querySelector(closeSelectors);
+      closeBtn?.focus();
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+      lastFocused?.focus();
+    }
+
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sel = btn.getAttribute('data-modal-target');
+        const modal = document.querySelector(sel);
+        openModal(modal);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target.matches(closeSelectors)) {
+        closeModal(target.closest('.modal'));
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.open').forEach(m => closeModal(m));
+      }
+    });
+
+    // Close when clicking backdrop
+    document.querySelectorAll('.modal__backdrop').forEach(bg => {
+      bg.addEventListener('click', () => closeModal(bg.closest('.modal')));
+    });
+  </script>
 </body>
 </html>
-
