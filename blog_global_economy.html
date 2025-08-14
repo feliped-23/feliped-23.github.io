@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Global Economy notes and articles by Felipe Diaz." />
+  <title>Global Economy — Research</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Felipe Diaz</span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <nav id="site-nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_me.html">About</a></li>
+          <li><a href="resume.html">Portfolio</a></li>
+          <li><a href="blog.html" class="active">Research</a></li>
+          <li><a href="contact.html" class="btn btn--small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding:1rem 0 2rem">
+    <h1 class="reveal">Global Economy</h1>
+    <p class="lead reveal">Markets, costs, and engineering economics applied to real decisions.</p>
+
+    <section class="panels">
+      <article class="section-panel reveal">
+        <div class="panel-body">
+          <div class="panel-meta"><span class="pill">Post</span></div>
+          <h2>Inflation & OPEX: what engineers should assume</h2>
+          <p>Simple, defensible assumptions for OPEX and revenue escalators in project models.</p>
+          <a class="card-link" href="#">Read post</a>
+        </div>
+        <div class="panel-image" aria-hidden="true">Image</div>
+      </article>
+
+      <article class="section-panel reveal">
+        <div class="panel-body">
+          <div class="panel-meta"><span class="pill">Post</span></div>
+          <h2>CAPEX vs. learning curves</h2>
+          <p>When to model learning effects—and when to ignore them—in early-stage tech.</p>
+          <a class="card-link" href="#">Read post</a>
+        </div>
+        <div class="panel-image" aria-hidden="true">Image</div>
+      </article>
+    </section>
+
+    <p style="margin-top:.8rem">
+      ← <a class="card-link" href="blog.html">Back to Research Topics</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about_me.html">About</a>
+        <a href="resume.html">Portfolio</a>
+        <a href="blog.html" class="active">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle'); const nav = document.getElementById('site-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open'); document.body.classList.toggle('no-scroll', !expanded);
+    });
+    const observer = new IntersectionObserver((en)=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}})},{threshold:.14});
+    document.querySelectorAll('.reveal, .section-panel').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
