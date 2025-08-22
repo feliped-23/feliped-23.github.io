@@ -56,18 +56,23 @@ body {
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   color: var(--text);
-  /* Background uses theme variables only (fix for mobile dark mode) */
   background: radial-gradient(
       1200px 600px at 10% -10%,
-      color-mix(in oklab, var(--accent) 10%, transparent),
+      rgba(181, 113, 73, 0.1),
       transparent 60%
     ),
     radial-gradient(
       1000px 500px at 90% 10%,
-      color-mix(in oklab, var(--accent-2) 14%, transparent),
+      rgba(143, 162, 123, 0.14),
       transparent 55%
     ),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%);
+    radial-gradient(
+        1200px 600px at 10% -10%,
+        rgba(181, 113, 73, 0.1) 0%,
+        rgba(181, 113, 73, 0.05) 40%,
+        #f7f9fc 60%
+      )
+      linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
