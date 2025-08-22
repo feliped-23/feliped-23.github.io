@@ -208,7 +208,7 @@ img {
   }
 }
 
-/* Dropdown base */
+/* Positioning for dropdown */
 .site-nav ul li.dropdown {
   position: relative;
 }
@@ -229,23 +229,61 @@ img {
   z-index: 999;
 }
 
-/* Show on hover (desktop) */
-.site-nav ul li.dropdown:hover .dropdown-menu {
+/* Items in submenu */
+.site-nav .dropdown-menu li {
   display: block;
 }
-
-/* Dropdown links */
-.site-nav ul li .dropdown-menu li {
-  display: block;
-}
-.site-nav ul li .dropdown-menu a {
+.site-nav .dropdown-menu a {
   display: block;
   padding: 10px 14px;
   text-decoration: none;
-  color: var(--text);
+  color: #333;
 }
-.site-nav ul li .dropdown-menu a:hover {
-  background: color-mix(in oklab, var(--accent) 16%, transparent);
+.site-nav .dropdown-menu a:hover {
+  background: #f4f4f4;
+}
+
+/* Desktop hover behavior */
+@media (hover: hover) and (pointer: fine) {
+  .site-nav ul li.dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  .site-nav .submenu-toggle {
+    display: none;
+  } /* hide toggle on desktop */
+}
+
+/* Mobile: show menu when parent has .open */
+@media (max-width: 900px) {
+  /* Ensure nav uses column layout as you already do in your mobile menu */
+  .site-nav .dropdown-menu {
+    position: static; /* flow under the parent item */
+    box-shadow: none;
+    margin-left: 16px; /* slight indent so it looks nested */
+  }
+  .site-nav ul li.dropdown.open > .dropdown-menu {
+    display: block;
+  }
+  .site-nav .submenu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    background: transparent;
+    border: 0;
+    padding: 6px;
+    cursor: pointer;
+  }
+  .site-nav ul li.dropdown {
+    display: flex;
+    align-items: center;
+  }
+  .site-nav ul li.dropdown > a {
+    flex: 1 1 auto;
+  }
+  .site-nav ul li.dropdown.open .submenu-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
 }
 
 /* ==================================================
