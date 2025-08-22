@@ -43,7 +43,6 @@ onReady(() => {
   });
 });
 
-
 // ========== 4) Reveal-on-scroll animations ==========
 onReady(() => {
   if (!("IntersectionObserver" in window)) {
@@ -84,18 +83,17 @@ onReady(() => {
     });
   };
 
-a.addEventListener("click", (e) => {
-  if (isDesktop()) return; // desktop uses hover via CSS
-  const wasOpen = li.classList.contains("open");
-  if (!wasOpen) {
-    e.preventDefault();              // first tap: open submenu
-    li.classList.add("open");
-    a.setAttribute("aria-expanded", "true");
-  }
-  // if wasOpen, allow normal navigation to blog.html
-});
-
-
+  // Toggle on click (only mobile)
+  dropdownLis.forEach((li) => {
+    const a = anchorFor(li);
+    if (!a) return;
+    a.addEventListener("click", (e) => {
+      if (isDesktop()) return; // desktop uses hover via CSS
+      e.preventDefault();
+      const isOpen = li.classList.toggle("open");
+      a.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
 
   // Close when clicking outside (mobile)
   document.addEventListener("click", (e) => {
