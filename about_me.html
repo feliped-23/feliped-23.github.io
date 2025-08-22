@@ -47,8 +47,10 @@
         <p>
             I grew up moving around the world, on average living 3 years in each country. 
             My dads job took my family around the globe and it was a defining experience throughout my childhood. Although it brought a lot of challenges, especially for a young boy, it was the best thing that ever happened to me. 
-            I was exposed to many drastically different cultures and people. I developed high quality social skills as a survival mechanism. I became accustomed to living outside my comfort zone. 
-         
+            I was exposed to many drastically different cultures and people. I developed high quality social skills as a survival mechanism. I became accustomed to living outside my comfort zone.
+        </p>
+        <p>
+            Growth Mindset - paragraph 
         </p>
       </div>
       <img src="assets/MapChart_Map.png" alt="World map" class="full-width-img" />
@@ -60,11 +62,9 @@
         <h2>My goals</h2>
         <p>
           A longtime goal of mine has been to break into the cleantech startup space, developing and deploying my engineering skills while building towards a managment position in this sector
-
+        </p>
+        <p> 
           Being able to positivley impact the world through the investment of capital is a posibility that excites me. Benefitting personally while also helping society is an ideal that is hard to ignore.
-          
-          Grow as a design/test engineer, contribute to sustainable energy systems, and keep shipping projects that
-          balance performance, manufacturability, and cost. Near-term: broaden prototyping depth and publish more write-ups.
         </p>
       </div>
     </section>
@@ -97,17 +97,7 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script src="script.js" defer></script>
 
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('site-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll', !expanded);
-    });
-  </script>
 </body>
 </html>

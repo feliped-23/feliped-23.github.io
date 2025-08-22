@@ -79,16 +79,7 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const toggle = document.querySelector('.nav-toggle'); const nav = document.getElementById('site-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open'); document.body.classList.toggle('no-scroll', !expanded);
-    });
-    const observer = new IntersectionObserver((en)=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}})},{threshold:.14});
-    document.querySelectorAll('.reveal, .section-panel').forEach(el=>observer.observe(el));
-  </script>
+  <script src="script.js" defer></script>
+
 </body>
 </html>

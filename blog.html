@@ -11,42 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Page-scoped styles: dropdown menu JUST for this page -->
-  <style>
-    .site-nav ul{ gap: .6rem; }
-    .has-dropdown{ position: relative; }
-    .has-dropdown > button{
-      display: inline-flex; align-items: center; gap:.35rem;
-      color: var(--text); background: transparent; border: 0;
-      padding: .6rem .8rem; border-radius: 10px; font-weight: 600; cursor: pointer;
-    }
-    .has-dropdown > button:hover{ background: color-mix(in oklab, var(--accent) 14%, transparent); }
-    .has-dropdown > button .chev{ transition: transform .15s ease; }
-    .has-dropdown.open > button .chev{ transform: rotate(180deg); }
 
-    .dropdown{
-      position: absolute; top: calc(100% + 6px); right: 0;
-      background: var(--bg-elev); border: 1px solid var(--border);
-      border-radius: 12px; box-shadow: var(--shadow);
-      padding: .4rem; width: 220px; display: none; z-index: 100;
-    }
-    .has-dropdown:hover .dropdown{ display: block; }
-    .dropdown a{
-      display: block; text-decoration: none; color: var(--text);
-      padding: .55rem .7rem; border-radius: 8px; font-weight: 500;
-    }
-    .dropdown a:hover{ background: color-mix(in oklab, var(--accent) 12%, transparent); }
-
-    /* Mobile: show dropdown inline when toggled */
-    @media (max-width:820px){
-      .dropdown{
-        position: static; width: 100%; margin-top: 0; box-shadow: none; border: 0; padding: 0;
-      }
-      .has-dropdown:hover .dropdown{ display: none; }
-      .has-dropdown.open .dropdown{ display: block; }
-      .has-dropdown > button{ width: 100%; justify-content: space-between; }
-    }
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -66,21 +31,16 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about_me.html">About</a></li>
           <li><a href="resume.html">Portfolio</a></li>
-
-          <!-- Dropdown only on this page -->
-          <li class="has-dropdown">
-            <button class="nav-parent" aria-expanded="false" aria-haspopup="true" aria-controls="research-menu">
-              Research Topics
-              <svg class="chev" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <ul class="dropdown" id="research-menu" role="menu">
-              <li><a role="menuitem" href="blog_clean_tech.html">Clean Tech</a></li>
-              <li><a role="menuitem" href="blog_geopolitics.html">Geopolitics</a></li>
-              <li><a role="menuitem" href="blog_global_economy.html">Global Economy</a></li>
+          <!-- Dropdown for Research -->
+          <li class="dropdown">
+            <a href="blog.html" class="active">Research</a>
+            <ul class="dropdown-menu">
+              <li><a href="blog_clean_tech.html">Clean Tech</a></li>
+              <li><a href="blog_geopolitics.html">Geopolitics</a></li>
+              <li><a href="blog_global_economy.html">Global Economy</a></li>
             </ul>
           </li>
+
 
           <li><a href="contact.html" class="btn btn--small">Contact</a></li>
         </ul>
@@ -153,32 +113,8 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script src="script.js" defer></script>
 
-    // mobile nav
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('site-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll', !expanded);
-    });
 
-    // dropdown (mobile click toggles)
-    const parent = document.querySelector('.has-dropdown > .nav-parent');
-    const parentLi = document.querySelector('.has-dropdown');
-    parent?.addEventListener('click', () => {
-      const isOpen = parentLi.classList.toggle('open');
-      parent.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }});
-    }, { threshold: 0.14 });
-    document.querySelectorAll('.reveal, .section-panel').forEach(el => observer.observe(el));
-  </script>
 </body>
 </html>

@@ -10,34 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Page-scoped form styles -->
-  <style>
-    .contact-wrap{ display:grid; grid-template-columns: .9fr 1.1fr; gap: clamp(1rem, 2vw, 1.5rem); padding: 1rem 0 2rem; }
-    @media (max-width: 900px){ .contact-wrap{ grid-template-columns: 1fr; } }
-    .card{
-      background: linear-gradient(180deg, color-mix(in oklab, var(--bg) 90%, var(--card)), var(--card));
-      border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
-      padding: clamp(1rem, 2vw, 1.4rem);
-    }
-    .social-list{ display:grid; gap:.55rem; margin-top:.6rem; }
-    .social-list a{
-      display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--text); font-weight:600;
-      border:1px solid var(--border); border-radius:12px; padding:.6rem .8rem;
-      background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
-    }
-    .social-list a:hover{ border-color: color-mix(in oklab, var(--accent) 35%, var(--border)); }
-    .social-list svg{ flex: 0 0 18px; }
-
-    .form-grid{ display:grid; gap:.75rem; }
-    .field label{ display:block; font-weight:600; margin-bottom:.25rem; }
-    .field input, .field textarea{
-      width:100%; padding:.7rem .8rem; border-radius:12px; border:1px solid var(--border);
-      background: var(--bg-elev); color: var(--text); outline: none;
-    }
-    .field input:focus, .field textarea:focus{ border-color: color-mix(in oklab, var(--accent) 45%, var(--border)); }
-    .field textarea{ min-height: 160px; resize: vertical; }
-  </style>
+  
 </head>
 <body>
   <header class="site-header">
@@ -135,39 +108,7 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script src="script.js" defer></script>
 
-    // mobile nav
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('site-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll', !expanded);
-    });
-
-    // mailto form handler (no backend)
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const fromEmail = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      const to = 'felipeandres2304@gmail.com'; // change if needed
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${fromEmail}\n\n${message}`
-      );
-      const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
-      window.location.href = mailto;
-    });
-
-    // reveal on scroll
-    const observer = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}})},{threshold:.14});
-    document.querySelectorAll('.reveal, .card').forEach(el=>observer.observe(el));
-  </script>
 </body>
 </html>
