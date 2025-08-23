@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="About Felipe Diaz — story, goals, and passions." />
-  <title>About Me — Felipe Diaz</title>
+  <meta name="description" content="About Felipe Diaz — background, values, experience." />
+  <title>About — Felipe Diaz</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,91 +12,179 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Site header (unchanged) -->
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Home">
         <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">Felipe Diaz</span>
+        <span class="brand-text">Felipe's Website</span>
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Toggle navigation</span>
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
 
       <nav id="site-nav" class="site-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about_me.html" class="active">About</a></li>
+          <li><a class="active" href="about_me.html">About</a></li>
           <li><a href="resume.html">Portfolio</a></li>
+
+          <!-- Research with arrow toggle (unchanged structure) -->
           <li class="dropdown">
             <a href="blog.html" aria-haspopup="true" aria-expanded="false">Research</a>
-            <ul class="dropdown-menu">
-              <li><a href="blog_clean_tech.html">Clean Tech</a></li>
-              <li><a href="blog_geopolitics.html">Geopolitics</a></li>
-              <li><a href="blog_global_economy.html">Global Economy</a></li>
+            <button class="submenu-toggle" aria-expanded="false"
+                    aria-controls="research-menu" aria-label="Open Research submenu"
+                    style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle;">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <ul id="research-menu" class="dropdown-menu" role="menu">
+              <li><a role="menuitem" href="blog_clean_tech.html">Clean Tech</a></li>
+              <li><a role="menuitem" href="blog_geopolitics.html">Geopolitics</a></li>
+              <li><a role="menuitem" href="blog_global_economy.html">Global Economy</a></li>
             </ul>
           </li>
+
           <li><a href="contact.html" class="btn btn--small">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="snap-container">
-    <!-- Panel 1: My Story -->
-    <section class="snap-panel">
-      <div class="snap-inner">
-        <h1>My story</h1>
-        <p>
-            On the facade I am an Integrated Engineer and a Clean tech enthusiast, however I identify strongest with my unique upbringing and my urge for constant growth. 
-        </p>
-        <p>
-            I grew up moving around the world, on average living 3 years in each country. 
-            My dads job took my family around the globe and it was a defining experience throughout my childhood. Although it brought a lot of challenges, especially for a young boy, it was the best thing that ever happened to me. 
-            I was exposed to many drastically different cultures and people. I developed high quality social skills as a survival mechanism. I became accustomed to living outside my comfort zone.
-        </p>
-        <p>
-            Growth Mindset - paragraph 
-        </p>
-      </div>
-      <img src="assets/MapChart_Map.png" alt="World map" class="full-width-img" />
+  <!-- ========= About page content (modular sections, no “bubbles”) ========= -->
+  <main>
+
+    <!-- A) Title + kicker -->
+    <section class="about-block about-hero container">
+      <p class="kicker">About</p>
+      <h1>Engineer, builder, and globally minded problem solver</h1>
+      <p class="lede">
+        I’m an Integrated Engineer focused on clean technology and practical systems.
+        This page is modular—headings, paragraphs, and media blocks can be added or removed without touching layout styles.
+      </p>
     </section>
 
-    <!-- Panel 2: My Goals -->
-    <section class="snap-panel">
-      <div class="snap-inner">
-        <h2>My goals</h2>
+    <!-- B) Two-column intro (text / image) -->
+    <section class="about-block about-split container">
+      <div class="split-col">
+        <h2>Roots & perspective</h2>
         <p>
-          A longtime goal of mine has been to break into the cleantech startup space, developing and deploying my engineering skills while building towards a managment position in this sector
+          I grew up moving internationally, adapting to new cultures every few years.
+          That experience shaped how I approach engineering—open, curious, and comfortable building under ambiguity.
         </p>
-        <p> 
-          Being able to positivley impact the world through the investment of capital is a posibility that excites me. Benefitting personally while also helping society is an ideal that is hard to ignore.
+        <p>
+          Today I gravitate toward cleantech, mechanisms, and well-instrumented experiments.
+          I like projects where physics meets product constraints, and iteration is part of the plan.
         </p>
+      </div>
+      <figure class="split-col">
+        <img src="assets/about/portrait.jpg" alt="Felipe outdoors" />
+        <figcaption>Somewhere colder than it looks.</figcaption>
+      </figure>
+    </section>
+
+    <!-- C) Alternating media/text rows (repeat/remove freely) -->
+    <section class="about-block about-alt">
+      <div class="container alt-row">
+        <figure class="alt-media">
+          <img src="assets/about/lab.jpg" alt="Bench testing setup" />
+        </figure>
+        <div class="alt-text">
+          <h3>Hands-on by default</h3>
+          <p>
+            I prototype early—fixtures, jigs, rough CAD, quick FEA to bound the solution space.
+            I find the fastest way to reduce unknowns is to put something on a bench and measure it.
+          </p>
+        </div>
+      </div>
+
+      <div class="container alt-row reverse">
+        <div class="alt-text">
+          <h3>Systems thinking</h3>
+          <p>
+            I try to zoom out: interfaces, failure modes, testability, supply risk, and time-to-learn.
+            A good system plan makes individual components simpler and safer to iterate.
+          </p>
+        </div>
+        <figure class="alt-media">
+          <img src="assets/about/assembly.jpg" alt="Assembly closeup" />
+        </figure>
       </div>
     </section>
 
-    <!-- Panel 3: My Passions -->
-    <section class="snap-panel">
-      <div class="snap-inner">
-        <h2>My passions</h2>
-        <p>
-          Clean energy, clever mechanisms, and well-instrumented experiments. 
-          
-          Outside of work: hiking, all types of sports 
-          
-          winter sports, 
-          and learning by building. If it involves a fixture, a test plan, or a graph, I’m in.
-        </p>
+    <!-- D) Key values / principles (bulleted) -->
+    <section class="about-block container">
+      <h2>Working principles</h2>
+      <ul class="about-list">
+        <li><strong>Bias to measure:</strong> decide with data; instrument early.</li>
+        <li><strong>Clarity beats clever:</strong> simple mechanisms > ornate ones.</li>
+        <li><strong>Async friendly:</strong> communicate decisions + context succinctly.</li>
+        <li><strong>Respect constraints:</strong> test time and budget are real inputs.</li>
+      </ul>
+    </section>
+
+    <!-- E) Timeline (simple, text-centric) -->
+    <section class="about-block about-timeline container">
+      <h2>Path so far</h2>
+      <ol class="timeline">
+        <li>
+          <div class="time">Now</div>
+          <div class="item">
+            <h4>UBC — Integrated Engineering</h4>
+            <p>Focused on electromagnetics, CAD/FEA, and clean tech applications.</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">Prior</div>
+          <div class="item">
+            <h4>Miru Smart Technologies</h4>
+            <p>Led mechanical projects from concept to commissioning; managed a research grant.</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">Earlier</div>
+          <div class="item">
+            <h4>Global upbringing</h4>
+            <p>Multiple countries; learned to adapt fast and collaborate across perspectives.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- F) Simple gallery grid (images only; removes easily) -->
+    <section class="about-block container">
+      <h2>Snapshots</h2>
+      <div class="about-grid">
+        <img src="assets/about/grid-1.jpg" alt="Prototype on bench">
+        <img src="assets/about/grid-2.jpg" alt="CAD concept">
+        <img src="assets/about/grid-3.jpg" alt="Field test">
+        <img src="assets/about/grid-4.jpg" alt="Workshop setup">
       </div>
     </section>
+
+    <!-- G) Contact CTA (optional) -->
+    <section class="about-block container about-cta">
+      <h2>Say hello</h2>
+      <p class="lede">
+        I’m always up for swapping notes on clean tech, mechanisms, or interesting datasets.
+      </p>
+      <p><a class="btn" href="contact.html">Get in touch</a></p>
+    </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
       <div class="footer-links">
-        <a href="about_me.html" class="active">About</a>
+        <a class="active" href="about_me.html">About</a>
         <a href="resume.html">Portfolio</a>
         <a href="blog.html">Research</a>
         <a href="contact.html">Contact</a>
@@ -105,6 +193,5 @@
   </footer>
 
   <script src="script.js" defer></script>
-
 </body>
 </html>

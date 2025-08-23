@@ -67,53 +67,62 @@ onReady(() => {
     .forEach((el) => io.observe(el));
 });
 
-// ========== 5) Dropdown (mobile click-toggle) ==========
-// Your CSS already shows the dropdown on hover for desktop.
-// This script adds a tap/click toggle for mobile widths.
+// ========== 5) Dropdown (mobile: arrow-only toggle; link navigates) ==========
 onReady(() => {
   const dropdownLis = Array.from(document.querySelectorAll(".dropdown"));
   if (!dropdownLis.length) return;
 
-  const anchorFor = (li) => li.querySelector(":scope > a");
+  const isMobile = () => !isDesktop(); // you already have isDesktop()
+
   const closeAll = () => {
     dropdownLis.forEach((li) => {
       li.classList.remove("open");
-      const a = anchorFor(li);
-      if (a) a.setAttribute("aria-expanded", "false");
+      const link   = li.querySelector(":scope > a");
+      const toggle = li.querySelector(":scope > .submenu-toggle");
+      if (link)   link.setAttribute("aria-expanded", "false");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
     });
   };
 
-  // Toggle on click (only mobile)
   dropdownLis.forEach((li) => {
-    const a = anchorFor(li);
-    if (!a) return;
-    a.addEventListener("click", (e) => {
-      if (isDesktop()) return; // desktop uses hover via CSS
+    const link   = li.querySelector(":scope > a");                 // "Research"
+    const toggle = li.querySelector(":scope > .submenu-toggle");   // chevron
+    const menu   = li.querySelector(":scope > .dropdown-menu");    // submenu
+
+    if (!toggle || !menu) return;
+
+    // 1) Arrow toggles submenu (MOBILE ONLY)
+    toggle.addEventListener("click", (e) => {
+      if (!isMobile()) return; // desktop hover handles it
       e.preventDefault();
+      e.stopPropagation();
       const isOpen = li.classList.toggle("open");
-      a.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      if (link) link.setAttribute("aria-expanded", String(isOpen));
     });
+
+    // 2) Link should NAVIGATE normally (no preventDefault!)
+    if (link) {
+      link.addEventListener("click", (e) => {
+        // On mobile, let it navigate to blog.html; do nothing here.
+        // If you previously had code preventing default, it's gone now.
+      });
+    }
   });
 
-  // Close when clicking outside (mobile)
+  // 3) Click outside closes any open submenu (mobile)
   document.addEventListener("click", (e) => {
-    if (isDesktop()) return;
-    const clickedInside = dropdownLis.some((li) => li.contains(e.target));
-    if (!clickedInside) closeAll();
+    if (!isMobile()) return;
+    const inside = dropdownLis.some((li) => li.contains(e.target));
+    if (!inside) closeAll();
   });
 
-  // Keep state sane when resizing between mobile/desktop
+  // 4) On resize back to desktop, reset mobile-open state
   window.addEventListener("resize", () => {
-    if (isDesktop()) closeAll();
-  });
-
-  // Extra safety: when pointer leaves dropdown on desktop, ensure closed
-  dropdownLis.forEach((li) => {
-    li.addEventListener("mouseleave", () => {
-      if (isDesktop()) closeAll();
-    });
+    if (!isMobile()) closeAll();
   });
 });
+
 
 // ========== 6) Resume project modals ==========
 // Only runs on pages that include elements with [data-modal-target] / .modal
@@ -198,5 +207,47 @@ onReady(() => {
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${fromEmail}\n\n${message}`);
     const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
     window.location.href = mailto;
+  });
+});
+
+// ========== 8) Timeline expand/collapse (Portfolio) ==========
+onReady(() => {
+  const timeline = document.querySelector(".timeline-rail");
+  if (!timeline) return;
+
+  // Single-open behavior: set to true to close others when opening one.
+  const SINGLE_OPEN = false;
+
+  timeline.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tl-toggle");
+    if (!btn) return;
+
+    const detailsId = btn.getAttribute("aria-controls");
+    const details = detailsId && document.getElementById(detailsId);
+    if (!details) return;
+
+    const willOpen = btn.getAttribute("aria-expanded") !== "true";
+
+    if (SINGLE_OPEN && willOpen) {
+      timeline.querySelectorAll(".tl-toggle[aria-expanded='true']").forEach(openBtn => {
+        openBtn.setAttribute("aria-expanded", "false");
+      });
+      timeline.querySelectorAll(".tl-details:not([hidden])").forEach(openPanel => {
+        openPanel.hidden = true;
+      });
+    }
+
+    btn.setAttribute("aria-expanded", String(willOpen));
+    details.hidden = !willOpen;
+  });
+
+  // Smooth scroll for “Jump to Resume” buttons (anchors to #resume-pdf)
+  document.querySelectorAll('a[href="#resume-pdf"]').forEach(a => {
+    a.addEventListener("click", (e) => {
+      const target = document.getElementById("resume-pdf");
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   });
 });
