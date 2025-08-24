@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Professional timeline — Felipe Diaz">
+  <meta name="description" content="Professional portfolio: experience and projects by Felipe Diaz." />
   <title>Portfolio — Felipe Diaz</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,12 +12,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header (unchanged structure) -->
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Home">
         <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">Felipe's Website</span>
+        <span class="brand-text">Felipe Diaz</span>
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -53,177 +53,248 @@
   </header>
 
   <main>
-    <!-- Intro -->
+
+    <!-- Top CTA: Jump to resume -->
     <section class="container resume-intro">
       <h1 class="reveal">Experience Timeline</h1>
-      <p class="lead reveal">
-        Scroll through a timeline of professional roles, academic work, and projects. Expand any item for details.
-      </p>
-      <p><a class="btn" href="#resume-pdf">Jump to Resume (PDF)</a></p>
+      <p class="lead reveal">Scroll the timeline. Tap “View details” for a deeper summary and images. </p>
+      <p><a class="btn" href="#resume-pdf">Jump to Resume</a></p>
     </section>
 
-    <!-- ====== TIMELINE ====== -->
-    <section class="timeline-wrap container" aria-label="Experience timeline">
-      <ol class="timeline-rail">
-        <!-- ========== TEMPLATE: Professional experience card ========== -->
-        <li class="tl-card tl-card--pro reveal">
-          <header class="tl-head">
-            <div class="tl-meta">
-              <span class="tl-pill">Professional</span>
-              <span class="tl-date">Jan 2025 – Aug 2025 · Vancouver, BC</span>
-            </div>
-            <h3 class="tl-title">Mechanical Engineer (Co-op) — Miru Smart Technologies</h3>
-            <p class="tl-subtle">Mechanisms · FEA · DFM · Validation</p>
-          </header>
+    <!-- ===== Timeline ===== -->
+    <section class="timeline-wrap">
+      <div class="container">
+        <ol class="timeline">
 
-          <div class="tl-summary">
-            Led mechanical builds from concept to commissioning; created fixtures and test plans; closed the loop with measured data.
-          </div>
-
-          <div class="tl-actions">
-            <button class="btn btn--small tl-toggle" aria-expanded="false" aria-controls="pro-1">View details</button>
-          </div>
-
-          <div class="tl-details" id="pro-1" hidden>
-            <div class="tl-details__inner">
-              <ul class="tl-bullets">
-                <li>Designed an adjustable test fixture; cut setup time by ~35%.</li>
-                <li>Ran quick modal/static FEA to bound design; iterated to pass vibration.</li>
-                <li>Owned work instructions & torque specs; improved repeatability.</li>
-              </ul>
+          <!-- ===== Template A: Image Left, Text Right (Professional) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">Jan 2024 – Aug 2024</time>
+            <article class="tl-card tl--image-left">
               <figure class="tl-media">
-                <img src="assets/portfolio/pro-1.jpg" alt="Fixture and measurement setup">
-                <figcaption>Shaker-table validation with accelerometer array.</figcaption>
+                <!-- Replace with your image -->
+                <img src="assets/projects/profession-1.jpg" alt="On-bench test setup">
               </figure>
-            </div>
-          </div>
-        </li>
-
-        <!-- ========== TEMPLATE: Academic experience card ========== -->
-        <li class="tl-card tl-card--acad reveal">
-          <header class="tl-head">
-            <div class="tl-meta">
-              <span class="tl-pill">Academic</span>
-              <span class="tl-date">2024 – Present · UBC</span>
-            </div>
-            <h3 class="tl-title">Integrated Engineering — Electromagnetics Focus</h3>
-            <p class="tl-subtle">EM · FEA · Controls · Clean Tech</p>
-          </header>
-
-          <div class="tl-summary">
-            Coursework and labs tailored to fusion/cleantech applications, with hands-on prototyping and instrumentation.
-          </div>
-
-          <div class="tl-actions">
-            <button class="btn btn--small tl-toggle" aria-expanded="false" aria-controls="acad-1">View details</button>
-          </div>
-
-          <div class="tl-details" id="acad-1" hidden>
-            <div class="tl-details__inner">
-              <p><strong>Highlights:</strong></p>
-              <ul class="tl-bullets">
-                <li>FEA projects (stress/thermal) with validation against bench tests.</li>
-                <li>Control loops on hardware; data capture and analysis in Python.</li>
-                <li>Design for testability—fixtures, interfaces, and data pathways.</li>
-              </ul>
-              <div class="tl-gallery">
-                <img src="assets/portfolio/acad-1a.jpg" alt="Lab setup">
-                <img src="assets/portfolio/acad-1b.jpg" alt="FEA result">
+              <div class="tl-body">
+                <h3>Mechanical Engineer (Co-op) — Miru Smart Technologies</h3>
+                <p class="tl-kicker">Professional</p>
+                <p>
+                  Led concept → commissioning on multiple fixtures & assemblies. Balanced design for test, supplier constraints,
+                  and tight timelines.
+                </p>
+                <ul class="tl-badges">
+                  <li>CAD/FEA</li><li>DFM</li><li>Test Design</li><li>Safety</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp1-modal" aria-haspopup="dialog" aria-controls="exp1-modal">View details</button>
+                </div>
               </div>
-            </div>
-          </div>
-        </li>
+            </article>
+          </li>
 
-        <!-- ========== TEMPLATE: Project card ========== -->
-        <li class="tl-card tl-card--proj reveal">
-          <header class="tl-head">
-            <div class="tl-meta">
-              <span class="tl-pill">Project</span>
-              <span class="tl-date">2023 – 2024</span>
-            </div>
-            <h3 class="tl-title">Autonomous RC Catamaran Hull</h3>
-            <p class="tl-subtle">Composite layup · Stability · Systems integration</p>
-          </header>
+          <!-- ===== Template B: Text Only (Academic) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">2025</time>
+            <article class="tl-card tl--text">
+              <div class="tl-body">
+                <h3>UBC Integrated Engineering — Electromagnetics Focus</h3>
+                <p class="tl-kicker">Academic</p>
+                <p>
+                  Coursework + labs in EM, mechanisms, and analysis (FEA). Projects emphasized instrumentation,
+                  uncertainty, and communicating decisions.
+                </p>
+                <blockquote class="tl-quote">
+                  “Clarity beats clever. Simpler builds are easier to test, change, and trust.”
+                </blockquote>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp2-modal" aria-haspopup="dialog" aria-controls="exp2-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
 
-          <div class="tl-summary">
-            Designed and fabricated a fiberglass catamaran hull; verified buoyancy/stability and integrated propulsion/control.
-          </div>
-
-          <div class="tl-actions">
-            <button class="btn btn--small tl-toggle" aria-expanded="false" aria-controls="proj-1">View details</button>
-          </div>
-
-          <div class="tl-details" id="proj-1" hidden>
-            <div class="tl-details__inner">
-              <ul class="tl-bullets">
-                <li>Layup schedule tuned for stiffness-to-weight; watertight bulkheads.</li>
-                <li>Pool and open-water tests; onboard logging for performance.</li>
-                <li>Modular electronics bay for rapid iteration.</li>
-              </ul>
+          <!-- ===== Template C: Image Right, Text Left (Personal Project) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">2023 – 2024</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Autonomous RC Catamaran</h3>
+                <p class="tl-kicker">Personal Project</p>
+                <p>
+                  Designed and laid-up fiberglass catamaran hull; verified buoyancy & stability; integrated propulsion,
+                  battery, and control. Learned to plan around weather and real-world constraints.
+                </p>
+                <ul class="tl-badges">
+                  <li>Composite Layup</li><li>Stability</li><li>Controls</li><li>Field Test</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp3-modal" aria-haspopup="dialog" aria-controls="exp3-modal">View details</button>
+                </div>
+              </div>
               <figure class="tl-media">
-                <img src="assets/portfolio/proj-1.jpg" alt="Catamaran prototype on water">
-                <figcaption>Open-water test day.</figcaption>
+                <img src="assets/projects/catamaran.jpg" alt="Catamaran prototype on water">
               </figure>
-            </div>
-          </div>
-        </li>
+            </article>
+          </li>
 
-        <!-- ========== EXTRA TEMPLATE: Compact “snippet” style (duplicate as needed) ========== -->
-        <li class="tl-card tl-card--pro tl-card--compact reveal">
-          <header class="tl-head">
-            <div class="tl-meta">
-              <span class="tl-pill">Professional</span>
-              <span class="tl-date">2022 – 2023</span>
-            </div>
-            <h3 class="tl-title">Pulsed Power Intern — General Fusion</h3>
-            <p class="tl-subtle">Test rigs · Safety · Data</p>
-          </header>
+          <!-- ===== Template D: Compact Card (use when you have less content) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">Summer 2022</time>
+            <article class="tl-card tl--compact">
+              <div class="tl-body">
+                <h3>Construction Site Coordinator</h3>
+                <p class="tl-kicker">Professional</p>
+                <p>Coordinated daily operations, safety briefings, and vendor logistics on a tight schedule.</p>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp4-modal" aria-haspopup="dialog" aria-controls="exp4-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
 
-          <div class="tl-summary">
-            Assisted with pulsed power experiments; improved test readiness and data integrity.
-          </div>
-
-          <div class="tl-actions">
-            <button class="btn btn--small tl-toggle" aria-expanded="false" aria-controls="pro-2">View details</button>
-          </div>
-
-          <div class="tl-details" id="pro-2" hidden>
-            <div class="tl-details__inner">
-              <p>Draft longer summary here (procedures, interlocks, fixtures, etc.).</p>
-            </div>
-          </div>
-        </li>
-      </ol>
+        </ol>
+      </div>
     </section>
 
-    <!-- ====== EMBEDDED RESUME (unchanged, just add id) ====== -->
-    <section class="container resume-pdf" id="resume-pdf">
+    <!-- ===== Resume (PDF) stays at bottom ===== -->
+    <section id="resume-pdf" class="container resume-pdf">
       <h2 class="reveal">Resume (PDF)</h2>
       <div class="pdf-embed reveal" role="region" aria-label="Embedded resume PDF">
-        <iframe
-          title="Resume PDF"
-          src="assets/FelipeDiaz_General_Fusion_Resume.pdf"
-          loading="lazy"
-        ></iframe>
+        <iframe title="Resume PDF" src="assets/FelipeDiaz_General_Fusion_Resume.pdf" loading="lazy"></iframe>
       </div>
       <p class="pdf-fallback">
-        Can’t see the PDF?
-        <a href="assets/FelipeDiaz_General_Fusion_Resume.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
+        Can’t see the PDF? <a href="assets/FelipeDiaz_General_Fusion_Resume.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
       </p>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
       <div class="footer-links">
         <a href="about_me.html">About</a>
-        <a href="resume.html" class="active">Portfolio</a>
+        <a class="active" href="resume.html">Portfolio</a>
         <a href="blog.html">Research</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
   </footer>
+
+  <!-- ===== Modals (details for each experience) ===== -->
+
+  <!-- Exp 1 -->
+  <div class="modal" id="exp1-modal" aria-hidden="true" aria-labelledby="exp1-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp1-title">Mechanical Engineer — Miru Smart Technologies</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/projects/profession-1-large.jpg" alt="Fixture assembly details">
+        </div>
+        <div class="modal__text">
+          <p>
+            Concept through commissioning for test fixtures and mechanisms. Balanced DFM with rapid learning loops (bench tests, quick FEA).
+          </p>
+          <ul class="modal__bullets">
+            <li>• Cut setup time by ~35%; improved repeatability with kinematic features.</li>
+            <li>• CAD/FEA (modal + static); tolerancing & supplier collaboration.</li>
+            <li>• Authored test plans, torque specs, and maintenance guides.</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Exp 2 -->
+  <div class="modal" id="exp2-modal" aria-hidden="true" aria-labelledby="exp2-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp2-title">UBC Integrated Engineering — Electromagnetics Focus</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/projects/academics.jpg" alt="Lab equipment and EM setup">
+        </div>
+        <div class="modal__text">
+          <p>
+            Labs emphasized instrumentation & signal quality; communicated decisions clearly with uncertainty accounting.
+          </p>
+          <ul class="modal__bullets">
+            <li>• Course projects covering mechanisms + EM + analysis.</li>
+            <li>• Report writing: concise, decision-oriented summaries.</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Exp 3 -->
+  <div class="modal" id="exp3-modal" aria-hidden="true" aria-labelledby="exp3-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp3-title">Autonomous RC Catamaran</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/projects/catamaran-large.jpg" alt="Catamaran hull on water">
+        </div>
+        <div class="modal__text">
+          <p>
+            Composite layup, integration, and field testing. Interpersonal outcome: clearer task-planning & risk mgmt
+            under constraints (weather, time, access).
+          </p>
+          <ul class="modal__bullets">
+            <li>• Stability & buoyancy validated in pool and open water.</li>
+            <li>• Instrumented runs for data capture & tuning.</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Exp 4 -->
+  <div class="modal" id="exp4-modal" aria-hidden="true" aria-labelledby="exp4-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp4-title">Construction Site Coordinator</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/projects/site.jpg" alt="Construction site logistics">
+        </div>
+        <div class="modal__text">
+          <p>
+            Daily stand-ups, vendor coordination, and safety culture. Outcome: stronger communication across crews and clearer scheduling practices.
+          </p>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>

@@ -164,6 +164,18 @@ onReady(() => {
     });
   });
 
+
+    // Smooth scroll for “Jump to Resume” buttons (anchors to #resume-pdf)
+  document.querySelectorAll('a[href="#resume-pdf"]').forEach(a => {
+    a.addEventListener("click", (e) => {
+      const target = document.getElementById("resume-pdf");
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+
   // Close clicks
   document.addEventListener("click", (e) => {
     const target = e.target;
@@ -210,44 +222,3 @@ onReady(() => {
   });
 });
 
-// ========== 8) Timeline expand/collapse (Portfolio) ==========
-onReady(() => {
-  const timeline = document.querySelector(".timeline-rail");
-  if (!timeline) return;
-
-  // Single-open behavior: set to true to close others when opening one.
-  const SINGLE_OPEN = false;
-
-  timeline.addEventListener("click", (e) => {
-    const btn = e.target.closest(".tl-toggle");
-    if (!btn) return;
-
-    const detailsId = btn.getAttribute("aria-controls");
-    const details = detailsId && document.getElementById(detailsId);
-    if (!details) return;
-
-    const willOpen = btn.getAttribute("aria-expanded") !== "true";
-
-    if (SINGLE_OPEN && willOpen) {
-      timeline.querySelectorAll(".tl-toggle[aria-expanded='true']").forEach(openBtn => {
-        openBtn.setAttribute("aria-expanded", "false");
-      });
-      timeline.querySelectorAll(".tl-details:not([hidden])").forEach(openPanel => {
-        openPanel.hidden = true;
-      });
-    }
-
-    btn.setAttribute("aria-expanded", String(willOpen));
-    details.hidden = !willOpen;
-  });
-
-  // Smooth scroll for “Jump to Resume” buttons (anchors to #resume-pdf)
-  document.querySelectorAll('a[href="#resume-pdf"]').forEach(a => {
-    a.addEventListener("click", (e) => {
-      const target = document.getElementById("resume-pdf");
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-});
