@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Personal website of Felipe Diaz — portfolio, research topics, and contact." />
-  <title>Home — Felipe Diaz</title>
+  <title>Felipe Diaz — Integrated Engineer</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/icon.png" />
@@ -16,18 +16,16 @@
 </head>
 
 <body>
-    <header class="site-header">
+  <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Home">
-        <img src="assets/icon.png" class="brand-icon" alt="" />
-        <span class="brand-text">Felipe Diaz</span>
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Felipe's Website</span>
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Toggle navigation</span>
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
 
       <nav id="site-nav" class="site-nav">
@@ -35,13 +33,30 @@
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about_me.html">About</a></li>
           <li><a href="resume.html">Portfolio</a></li>
-          <li><a href="blog.html">Research</a></li>
+          <li class="dropdown">
+            <a href="blog.html" aria-haspopup="true" aria-expanded="false">Research</a>
+            <button class="submenu-toggle" aria-expanded="false"
+                    aria-controls="research-menu" aria-label="Open Research submenu"
+                    style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle;">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+
+            <!-- The dropdown menu -->
+            <ul id="research-menu" class="dropdown-menu" role="menu" aria-labelledby="nav-research">
+              <li role="none"><a role="menuitem" href="blog_clean_tech.html">Clean Tech</a></li>
+              <li role="none"><a role="menuitem" href="blog_geopolitics.html">Geopolitics</a></li>
+              <li role="none"><a role="menuitem" href="blog_global_economy.html">Global Economy</a></li>
+            </ul>
+          </li>
           <li><a href="contact.html" class="btn btn--small">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
-    
 
   <main>
     <!-- Hero -->

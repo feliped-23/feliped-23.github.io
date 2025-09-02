@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional portfolio: experience and projects by Felipe Diaz." />
+  <title>Portfolio — Felipe Diaz</title>
+
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header (unchanged structure) -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Felipe Diaz</span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <nav id="site-nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_me.html">About</a></li>
+          <li><a href="resume.html" class="active">Portfolio</a></li>
+          <li class="dropdown">
+            <a href="blog.html" aria-haspopup="true" aria-expanded="false">Research</a>
+            <button class="submenu-toggle" aria-expanded="false"
+                    aria-controls="research-menu" aria-label="Open Research submenu"
+                    style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle;">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul id="research-menu" class="dropdown-menu" role="menu" aria-labelledby="nav-research">
+              <li role="none"><a role="menuitem" href="blog_clean_tech.html">Clean Tech</a></li>
+              <li role="none"><a role="menuitem" href="blog_geopolitics.html">Geopolitics</a></li>
+              <li role="none"><a role="menuitem" href="blog_global_economy.html">Global Economy</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html" class="btn btn--small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Top CTA: Jump to resume -->
+    <section class="container resume-intro">
+      <h1 class="reveal">Experience Timeline</h1>
+      <p class="lead reveal"> All my experiences, projects and certifications are listed on the timeline below. Scroll through and click on whatever interests you!</p>       
+      <p><a class="btn" href="#resume-pdf">Jump to Resume</a></p>
+    </section>
+
+    <!-- ===== Timeline ===== -->
+    <section class="timeline-wrap">
+      <div class="container">
+        <ol class="timeline">
+
+          <!-- ===== Personal Website (template C)===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">July 2025</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Personal Website</h3>
+                <p class="tl-kicker">Personal Project</p>
+                <p>
+                  Leveraged AI LLMs to design and build a website to showcase my personal and professional experiences, and to document my research in various fields of interest.
+                </p>
+                <ul class="tl-badges">
+                  <li>AI LLMs</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
+                </ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/icon.png" alt="Personal Website Icon">
+              </figure>
+            </article>
+          </li>
+
+          
+          <!-- ===== Seadoo Tour Guide (template A) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">May 2025 – Aug 2025</time>
+            <article class="tl-card tl--image-left">
+              <figure class="tl-media">
+                <!-- Replace with your image -->
+                <img src="assets/VWA_logo.png" alt="VWA logo">
+              </figure>
+              <div class="tl-body">
+                <h3>Seadoo Tour Guide - Vancouver Water Adventures</h3>
+                <p class="tl-kicker">Work Experience</p>
+                <p>
+                  Conducted Jetski Tours in Vancouver, taking guests into Howe Sound, providing an unforgettable experience for guests.
+                </p>
+                <ul class="tl-badges">
+                  <li>Safety-First Mindset</li><li>Customer Service</li><li>Leadership</li><li>Mechanical Troubleshooting</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-seadoo-modal" aria-haspopup="dialog" aria-controls="exp-seadoo-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- ===== Wilderness First Responder Certificate (template C)===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">May 2025</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Wilderness First Responder - 80 Hour First Aid Course</h3>
+                <p class="tl-kicker">Certificate</p>
+                <p>
+                  This certification is an advanced level of first aid training designed for remote, back-country environments. It emphasizes patient assessment, critical decision-making, and providing emergency care when access to professional medical help may be delayed. 
+                  The course covers trauma management, environmental emergencies, and evacuation strategies, preparing responders to act confidently and effectively in high-risk outdoor settings.
+                </p>
+                <ul class="tl-badges">
+                  <li>First Aid</li><li>Advanced Patient Assessment</li><li>Leadership in Emergencies</li>
+                </ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/wrf_certificate.jpg" alt="Wilderness First Responder Certificate">
+              </figure>
+            </article>
+          </li>
+
+
+          <!-- ===== CHECKMATE - Capstone (Template C) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">September 2024 – April 2025</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>CheckMATE - Integrated Engineering Capstone</h3>
+                <p class="tl-kicker">Capstone Project</p>
+                <p>
+                  For my final university Capstone Project, we designed and built a fully functioning chess robot that can play chess against a human opponent, itself or display historical chess games.
+                </p>
+                <ul class="tl-badges">
+                  <li>Mechanical Gantry</li><li>Robotics</li><li>Electromagnetics</li><li>Woodworking and finishing</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-checkmate-modal" aria-haspopup="dialog" aria-controls="exp-checkmate-modal">View details</button>
+                </div>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/checkmate_team.jpg" alt="Checkmate team photo on DAID">
+              </figure>
+            </article>
+          </li>
+
+          <!-- ===== Australia Exchange (template A) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">July 2024 – December 2024</time>
+            <article class="tl-card tl--image-left">
+              <figure class="tl-media">
+                <!-- Replace with your image -->
+                <img src="assets/usyd_logo.png" alt="USYD Logo">
+              </figure>
+              <div class="tl-body">
+                <h3>Coordinated International Exchange Program - University of Sydney</h3>
+                <p class="tl-kicker">Academic Exchange</p>
+                <p>
+                  Completed a semester abroad at the University of Sydney, focusing on advanced topics in engineering. 
+                </p>
+                <ul class="tl-badges">
+                  <li>FEA</li><li>Computer Vision</li><li>Machine Learning</li><li>Cultural Awareness</li><li>Social Skills</li><li>Communication</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-australia-modal" aria-haspopup="dialog" aria-controls="exp-australia-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- ===== Fusion Certificate (template C) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time"> June 2024</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Introduction to Fusion Energy and Plasma Physics Course - Princeton Plasma Physics Laboratory</h3>
+                <p class="tl-kicker">Certificate</p>
+                <p>
+                  This is an intensive, 2-week course on plasma physics and fusion energy sciences, taught by world renowned scientists from various institutions.
+                </p>
+                <ul class="tl-badges">
+                  <li>Fusion Energy</li><li>Plasma Physics</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-fusioncert-modal" aria-haspopup="dialog" aria-controls="exp-fusioncert-modal">View details</button>
+                </div>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/fusion_course_cert.png" alt="Fusion Certificate">
+              </figure>
+            </article>
+          </li>
+        
+
+          <!-- ===== TSPP Certificate (template C) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time"> May 2024</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Technology Stewardship Practice Program</h3>
+                <p class="tl-kicker">Certificate</p>
+                <p>
+                  This certificate recognizes the completion of a 12-hour online micro-credential focused on becoming a purposeful, responsible, inclusive, and regenerative technology steward.
+                   Through reflective practice cycles, I enhanced my ability to embed ethical values in my tech work and foster behaviors that guide thoughtful, impactful innovation.
+                </p>
+                <ul class="tl-badges">
+                  <li>Technology Stewardship</li><li>Responsible Innovation</li><li>Systems Thinking</li>
+                </ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/Tech_stewardship.png" alt="Tech Stewardship Certificate">
+              </figure>
+            </article>
+          </li>
+
+          <!-- ===== Miru Co-op (template A) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">September 2023 – April 2024</time>
+            <article class="tl-card tl--image-left">
+              <figure class="tl-media">
+                <!-- Replace with your image -->
+                <img src="assets/MIRU_LOGO.png" alt="Miru Logo">
+              </figure>
+              <div class="tl-body">
+                <h3>Development Engineering Co-op — Miru Smart Technologies</h3>
+                <p class="tl-kicker">Professional Work Experience</p>
+                <p>
+                  Developed scientific testing equipment and upgraded crucial process machines at a startup developing electrochromic windows.
+                </p>
+                <ul class="tl-badges">
+                  <li>SolidWorks & PDM</li><li>Communication</li><li>Design Process</li><li>Safety</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-miru-modal" aria-haspopup="dialog" aria-controls="exp-miru-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
+          
+          <!-- ===== 3D printing - (Template C)  ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">March 2023 – December 2023</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>3D Printing Shop Manager - UBC Faculty of Integrated Engineering</h3>
+                <p class="tl-kicker">Professional Work Experience</p>
+                <p>
+                  Operated the 3D printing farm for my faculty at UBC. Principally, I printed high-quality parts for student projects in a timely manner.
+                  
+                </p>
+                <ul class="tl-badges">
+                  <li>3D Printing</li><li>FDM</li><li>Mechanical Troubleshooting</li><li>Customer Service</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-3dprinting-modal" aria-haspopup="dialog" aria-controls="exp-3dprinting-modal">View details</button>
+                </div>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/igen_logo1.png" alt="Integrated Engineering Logo">
+              </figure>
+            </article>
+          </li>
+          
+          <!-- ===== Ledcor (template A) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">May 2023 – Aug 2023</time>
+            <article class="tl-card tl--image-left">
+              <figure class="tl-media">
+                <img src="assets/ledcor_logo.png" alt="Ledcor Logo">
+              </figure>
+              <div class="tl-body">
+                <h3>Project Controls Engineering Co-op — Ledcor | KLTP</h3>
+                <p class="tl-kicker">Professional Work Experience</p>
+                <p>
+                  Facilitated change management, reporting and documentation at the $1.2 billion ‘Burnaby Terminal’ site of the Trans Mountain Expansion Pipeline. 
+                </p>
+                <ul class="tl-badges">
+                  <li>Safety-First Mindset</li><li>Change Management</li><li>Reporting & Documentation</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-ledcor-modal" aria-haspopup="dialog" aria-controls="exp-ledcor-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
+          
+          <!-- ===== CSE 2023 - (templace C ) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">Januaray 2023</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Confernece on Sustainibility in Engineering 2023 (CSE 2023) - UBC </h3>
+                <p class="tl-kicker">Conference</p>
+                <p>
+                  Attended a four-day national conference that brought together over 200 students from 43 academic institutions. 
+                  Through case competitions, panels, and workshops, I gained hands-on experience in integrating sustainability into engineering design, with a focus on two-eyed seeing, co-creation, and decolonization. 
+                  The conference expanded my perspective on sustainable engineering practices and strengthened my ability to apply inclusive and systems-based approaches to real-world challenges.
+                </p>
+                <ul class="tl-badges">
+                  <li>Sustainable Engineering</li><li>Systems Thinking</li><li>Interdiciplinary Collaboration</li>
+                </ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/CSE-2023-Promo.png" alt="CSE 2023 Promo">
+              </figure>
+            </article>
+          </li>
+          
+
+
+
+          <!-- ===== HUD (Template A) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">September 2022 – April 2023</time>
+            <article class="tl-card tl--image-left">
+              <figure class="tl-media">
+                <img src="assets/helmet_hud_poster.jpg" alt="Helmet HUD Poster DAID">
+              </figure>
+              <div class="tl-body">
+                <h3>Helmet Heads-Up Display - Integrated Engineering Capstone </h3>
+                <p class="tl-kicker">Capstone Project</p>
+                <p>
+                  Alongside my group members, we designed and built a custom helmet-mounted heads-up display (HUD) for electric kart racing. My contributions included designing the optical combiner by integrating optical physics research with a fully fabricated opto-mechanical system.
+                   Fabricated and tested the lensing system allowing a legible and safe near-eye display that would prevent eye strain during use.
+                </p>
+                <ul class="tl-badges">
+                  <li>SolidWorks</li><li>Optical Physics</li><li>Iterative Design</li><li>Safety</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-hud-modal" aria-haspopup="dialog" aria-controls="exp-hud-modal">View details</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- ===== Water Testing RC Boat - Capstone (Template C) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">December 2021 – April 2022</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Autonomous Water-Testing RC Boat - Integrated Engineering Capstone</h3>
+                <p class="tl-kicker">Capstone Project</p>
+                <p>
+                  For my second-year Capstone Project, my group and I designed, tested and fabricated a fully autonomous RC boat to conduct water quality testing on lakes and rivers.
+                 My contributions included designing and manufacturing the fiberglass catamaran hull, as well as integrating all electronic and prupolsion components while ensuring watertightness, bouoyancy, and stability.
+                
+                </p>
+                <ul class="tl-badges">
+                  <li>Composite Layup</li><li>SolidWorks</li><li>Composite Post-Processing</li>
+                </ul>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-rcboat-modal" aria-haspopup="dialog" aria-controls="exp-rcboat-modal">View details</button>
+                </div>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/rc_boat_daid.jpg" alt="RC Boat on DAID">
+              </figure>
+            </article>
+          </li>
+          
+          <!-- ===== Urban Rec (Template A) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">May 2021 – September 2023</time>
+            <article class="tl-card tl--image-left">
+              <figure class="tl-media">
+                <img src="assets/urban_rec.png" alt="Urban Rec Logo">
+              </figure>
+              <div class="tl-body">
+                <h3>Soccer League Coordinator - Urban Rec </h3>
+                <p class="tl-kicker">Work Experience</p>
+                <p>
+                  Organized nightly recreational soccer league. Ensured on time, safe, and friendly matches ran smoothly.
+                </p>
+                <ul class="tl-badges">
+                  <li>Time Management</li><li>Conflict Management</li><li>Safety</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+
+
+          <!-- ===== UBC Engineering(Template C) ===== -->
+          <li class="tl-item">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">2020 – 2025</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Bachelor of Applied Sciences, Integrated Engineering - University of British Columbia</h3>
+                <p class="tl-kicker">Undergraduate Degree</p>
+                <p>
+                  Specializing in Mechanical Engineering and Electrical Engineering with a focus on Electromagnetics. 
+                </p>
+                <p> Expected completion: December 2025</p>
+                <div class="tl-actions">
+                  <button class="btn btn--small" data-modal-target="#exp-ubc-modal" aria-haspopup="dialog" aria-controls="exp-ubc-modal">View details</button>
+                </div>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/ubc_eng_logo_red.jpg" alt="UBC Engineering Logo">
+              </figure>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+    
+  
+
+    <!-- ===== Resume (PDF) stays at bottom ===== -->
+    <section id="resume-pdf" class="container resume-pdf">
+      <h2 class="reveal">Resume (PDF)</h2>
+      <div class="pdf-embed reveal" role="region" aria-label="Embedded resume PDF">
+        <iframe title="Resume PDF" src="assets/FelipeDiaz_General_Fusion_Resume.pdf" loading="lazy"></iframe>
+      </div>
+      <p class="pdf-fallback">
+        Can’t see the PDF? <a href="assets/FelipeDiaz_General_Fusion_Resume.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about_me.html">About</a>
+        <a class="active" href="resume.html">Portfolio</a>
+        <a href="blog.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Modals (details for each experience) ===== -->
+
+  <!-- Exp - Seadoo Tour Guide -->
+  <div class="modal" id="exp-seadoo-modal" aria-hidden="true" aria-labelledby="exp-seadoo-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-seadoo-title">Seadoo Tour Guide — Vancouver Water Adventures</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/jetski1.jpg" alt="Seadoo Tour Guide">
+        </div>
+      
+        <div class="modal__text">
+          <p>
+            Conducted Jetski Tours in Vancouver, taking guests into Howe Sound, providing an unforgettable experience for guests.
+          </p>
+          <ul class="modal__bullets">
+            <li>• Prioritized guest safety and guest experience during every tour.</li>
+            <li>• Conducted weekly maintenance and mechanical troubleshooting on Jetskis to ensure smooth operations during peak hours.</li>
+          </ul>
+        </div>
+        <div class="modal__media">
+          <img src="assets/jetski_review1.jpg" alt="Jetski review">
+        </div>
+        <div class="modal__media">
+          <img src="assets/jetski_review3.jpg" alt="Jetski review">
+        </div>
+        <div class="modal__media">
+          <img src="assets/jetski_review4.jpg" alt="Jetski review">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Exp - Checkmate -->
+  <div class="modal" id="exp-checkmate-modal" aria-hidden="true" aria-labelledby="exp-checkmate-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-checkmate-title">Capstone Project - Checkmate</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/checkmate_daid_poster.jpg" alt="Catamaran hull on water">
+        </div>
+        <div class="modal__text">
+          <p>
+            A detailed description about the project will be added soon.
+          </p>
+          <ul class="modal__bullets">
+            <li>• Voted best IGEN Capstone Project</li>
+          </ul>
+        </div>
+        <div class="modal__media">
+          <img src="assets/checkmate_award.jpg" alt="Checkmate Award">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+
+    <!-- Exp - CIE University of Sydney -->
+  <div class="modal" id="exp-australia-modal" aria-hidden="true" aria-labelledby="exp-australiatitle" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-australia-title">Exchange at the University of Sydney</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/FEA.jpg" alt="Finite element Analysis">
+        </div>
+        <div class="modal__text">
+          <p>
+            Lived in Sydney for 6 months as part of an exchange program. Completed advanced engineering courses on Finite Element Analysis and Computer Vision.
+          
+          </p>
+          <ul class="modal__bullets">
+            <li>• Computer Vision</li>
+            <li>• Finite Element Analysis</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Exp - Fusion Certificate -->
+  <div class="modal" id="exp-fusioncert-modal" aria-hidden="true" aria-labelledby="exp-fusioncert-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-fusioncert-title">Introduction to Fusion Energy and Plasma Physics Course - Princeton Plasma Physics Laboratory</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/fusion_course_cert.png" alt="Fusion Course Certificate">
+        </div>
+        <div class="modal__text">
+          <p>
+            During this course I learnt about the following topics:
+          </p>
+          <ul class="modal__bullets">
+            <li>• <b>Practical, Political, and Social Dimensions -</b> Explored the real-world challenges of fusion deployment, including regulatory risk, public perception (fusion vs. fission), and the practical strategy of replacing fossil fuel burners with fusion cores in existing infrastructure to ease adoption.</li>
+            <li>• <b>Fundamentals of Fusion & Plasma Physics -</b> Refreshed the core physical principles of fusion, plasma behavior, and key performance metrics, while deepening understanding of plasma confinement, turbulence, and instabilities that remain the central barriers to achieving stable fusion power.</li>
+            <li>• <b>Fusion Devices & Engineering Challenges -</b> Gained insight into the differences between major reactor concepts (tokamaks, spherical tokamaks, stellarators, mirror machines) and the vast engineering challenges of heating, plasma-material interactions, tritium handling, breeding blankets, and large-scale infrastructure.</li>
+            <li>• <b>Complexities of Plasma Dynamics -</b> Learned how plasmas act as fluids, oscillate as waves, and interact with turbulence, drift, and reconnection, which create the biggest obstacles in confinement and stability. This included how heating methods like neutral beam injection and microwave systems are designed to control plasma conditions.</li>
+            <li>• <b>-</b> </li>
+
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+
+    <!-- Exp - Miru Co-op -->
+  <div class="modal" id="exp-miru-modal" aria-hidden="true" aria-labelledby="exp1-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp1-title">Mechanical Engineer — Miru Smart Technologies</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/miru_work.jpg" alt="Me working at Miru">
+        </div>
+        <div class="modal__text">
+          <p>
+            ADD
+          </p>
+          <ul class="modal__bullets">
+            <li>• </li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+
+  <!-- Exp - 3D printing -->
+  <div class="modal" id="exp-3dprinting-modal" aria-hidden="true" aria-labelledby="exp-3dprinting-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-3dprinting-title">3D Printing Shop Manager</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/3d_printing.jpg" alt="3D Printing">
+        </div>
+        <div class="modal__text">
+          <ul class="modal__bullets">
+            <li>• Gained valuable expertise in additive manufacturing, specifically FDM and resing 3D printing</li>
+            <li>• Tested and optimized printer settings and gainedexpertise in the printing feasibility of complex geometries</li>
+            <li>• Maintained and troubleshoot a 8+ 3D printers ensuring full capacity operations</li>
+          </ul>
+        </div>
+        <div class="modal__media">
+          <img src="assets/3d_printing4.jpg" alt="3D Printing">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+ <!-- Exp - Ledcor -->
+  <div class="modal" id="exp-ledcor-modal" aria-hidden="true" aria-labelledby="exp-ledcor-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-ledcor-title">Project Controls Engineering Co-op</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/ledcor_site.jpg" alt="On-site Construction Picture">
+        </div>
+        <div class="modal__text">
+          <ul class="modal__bullets">
+            <li>• Completed daily reporting of all activities completed site-wide, accounting for unexpected delays, safety reports, and personnel change</li>
+            <li>• Addressed unforeseen construction challenges by filing and securing approval on change orders valued up to $500,000</li>
+            <li>• Adopted a safety-first mindset prevalent in the construction industry and a number 1 priority at Ledcor</li>
+          </ul>
+        </div>
+        <div class="modal__media">
+          <img src="assets/ledcor_pic.jpg" alt="On-site Picture with fellow co-ops">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+
+  <!-- Exp - HUD -->
+  <div class="modal" id="exp-hud-modal" aria-hidden="true" aria-labelledby="exp-hud-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-hud-title">Helmet Heads-Up Display</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/IGEN330_Poster_303_HelmetHUD.jpg" alt="HUD Poster">
+        </div>
+        <div class="modal__text">
+          
+          <ul class="modal__bullets">
+            <li>• Engineered the near-eye display (NED) module through extensive research in optical physics</li>
+            <li>• Designed and fabricated the optical combiner, lensing system, and custom NED casing</li>
+            <li>• Developed a custom testing rig to evaluate image clarity, readability, and eye comfort</li>
+            <li>• Applied interdisciplinary skills in optics, mechanical design, and human factors engineering</li>
+          </ul>
+        </div>
+        
+        <div class="modal__media">
+          <img src="assets/hud_exploded.png" alt="Fixture assembly details">
+        </div>
+        <div class="modal__media">
+          <img src="assets/hud_testingrig1.jpg" alt="HUD Testing Rig">
+        </div>
+        <div class="modal__media">
+          <img src="assets/hud_lensingtest.jpg" alt="HUD Lensing Test">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- RC boat - Exp -->
+  <div class="modal" id="exp-rcboat-modal" aria-hidden="true" aria-labelledby="exp-rcboat-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-rcboat-title">Mechanical Engineer — Miru Smart Technologies</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/rc_boat_layering.jpg" alt="RC Boat Fiberglass Layup">
+        </div>
+        <div class="modal__text">
+          
+          <ul class="modal__bullets">
+            <li>• Utilized SolidWorks to design an optimized catamaran hull, based on naval architecture research.</li>
+            <li>• Spearheaded fiberglass hull manufacturing (82x64x22cm) using a 3D-printed negative mold.</li>
+            <li>• Assembled electro-mechanical components, ensuring navigability through watertightness and stability tests.</li>
+            <li>• Got voted the best 2nd year project within Integrated Engineering, obtaining a $600 team grant.</li>
+          </ul>
+        </div>
+        <div class="modal__media">
+          <img src="assets/rc_boat_mold.jpg" alt="RC Boat 3D Printed Mold">
+        </div>
+        <div class="modal__media">
+          <img src="assets/rc_boat_filledhul.jpg" alt="RC Boat Hull after filling and Sanding">
+        </div>
+        <div class="modal__media">
+          <img src="assets/rc_boat_boardtest.jpg" alt="RC Boat Hull with board">
+        </div>
+        <div class="modal__media">
+          <img src="assets/rc_boat_assembled.jpg" alt="RC Boat Fully Assembled">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- UBC Exp -->
+  <div class="modal" id="exp-ubc-modal" aria-hidden="true" aria-labelledby="exp-ubc-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-ubc-title">Bachelor of Applied Sciences, Integrated Engineering</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__media">
+          <img src="assets/ubc_eng_logo_red.jpg" alt="UBC Engineering Logo">
+        </div>
+        <div class="modal__text">
+          <p>
+            Courses: mayor minor etc. 
+          </p>
+          <ul class="modal__bullets">
+            <li>• Courses</li>
+            <li>• </li>
+            <li>• </li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+
+
+

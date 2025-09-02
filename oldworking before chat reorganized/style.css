@@ -1,15 +1,9 @@
-/* 
-=======================================
-  Global Styles — Felipe Diaz Website
-  Second Pass Cleanup
-  - Variables & Base
-  - Layout
-  - Header & Navigation
-  - Sections & Components
-  - Utilities
-  - Responsive
-=======================================
-*/
+/* ==================================================
+   Global Stylesheet — Felipe Diaz (Cleaned & Mobile/Dark Fixes)
+   - Dark mode now fully theme-variable driven (no hard-coded light colors)
+   - Mobile dropdown + overlays inherit theme correctly
+   - Duplicates removed; comments added
+   ================================================== */
 
 /* ==================================================
    1) Theme Variables (Light + Dark modes)
@@ -129,15 +123,6 @@ img {
   font-weight: 700;
   letter-spacing: 0.2px;
 }
-
-.brand-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  display: inline-block;
-  object-fit: cover;
-  box-shadow: 0 0 0 1px var(--border);
-}
 .brand-dot {
   width: 12px;
   height: 12px;
@@ -185,49 +170,126 @@ img {
 }
 
 /* Small screens: overlay menu */
+@media (max-width: 820px) {
+  /* Keep main items vertically stacked overall... */
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
 
-/* stack-style submenu, hidden by default */
+  /* ...but inside the Research <li>, keep text + arrow on one row */
+  .site-nav > ul > li.dropdown {
+    display: flex; /* row */
+    align-items: center; /* vertical align */
+    justify-content: space-between;
+  }
 
-/* when the arrow is toggled open, show the next-sibling menu only */
+  /* Link gets the full row width; good tap target */
+  .site-nav > ul > li.dropdown > a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    flex: 1 1 auto;
+  }
 
+  /* Arrow stays inline, not block, and sits to the right */
+  .site-nav > ul > li.dropdown > .submenu-toggle {
+    display: inline-flex; /* <-- was block (caused wrapping) */
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem; /* tap target */
+    margin-right: 0.5rem; /* small right gutter */
+  }
+
+  /* Other top-level links (Home/About/Portfolio/Contact) */
+  .site-nav > ul > li:not(.dropdown) > a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+  }
+
+  /* Submenu items: slightly tighter than main items */
+  .site-nav ul li .dropdown-menu a {
+    padding: 0.9rem 1.5rem;
+  }
+}
+@media (max-width: 820px) {
+  /* Keep main items vertically stacked overall... */
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  /* ...but inside the Research <li>, keep text + arrow on one row */
+  .site-nav > ul > li.dropdown {
+    display: flex; /* row */
+    align-items: center; /* vertical align */
+    justify-content: space-between;
+  }
+
+  /* Link gets the full row width; good tap target */
+  .site-nav > ul > li.dropdown > a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    flex: 1 1 auto;
+  }
+
+  /* Arrow stays inline, not block, and sits to the right */
+  .site-nav > ul > li.dropdown > .submenu-toggle {
+    display: inline-flex; /* <-- was block (caused wrapping) */
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem; /* tap target */
+    margin-right: 0.5rem; /* small right gutter */
+  }
+
+  /* Other top-level links (Home/About/Portfolio/Contact) */
+  .site-nav > ul > li:not(.dropdown) > a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+  }
+
+  /* Submenu items: slightly tighter than main items */
+  .site-nav ul li .dropdown-menu a {
+    padding: 0.9rem 1.5rem;
+  }
+}
+/* Mobile: dropdown opens only when the arrow (.submenu-toggle) is expanded */
+@media (max-width: 820px) {
+  /* stack-style submenu, hidden by default */
+  .site-nav ul li .dropdown-menu {
+    position: static; /* so it flows under the Research row */
+    display: none; /* keep hidden until expanded */
+    border: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--bg-elev);
+    padding: 0.25rem 0;
+  }
+
+  /* when the arrow is toggled open, show the next-sibling menu only */
+  .submenu-toggle[aria-expanded="true"] + .dropdown-menu {
+    display: block;
+  }
+}
 @media (max-width: 820px) {
   .nav-toggle {
     display: inline-flex;
   }
   .site-nav {
     position: fixed;
-    /* If you have a fixed header height variable, this will align it nicely */
-    top: var(--header-height, 64px);
-    left: 0;
-    right: 0;
-    z-index: 80;
-
+    inset: 64px 0 auto 0;
+    z-index: 60;
     background: var(--bg-elev);
-    box-shadow: var(--shadow);
-
-    /* Fully hide when closed */
+    border-bottom: 1px solid var(--border);
     transform: translateY(-120%);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    /* Smooth slide + fade */
-    transition: transform 220ms ease, opacity 220ms ease,
-      visibility 0s linear 220ms; /* delay visibility change so it hides after anim */
+    transition: transform 0.3s ease;
   }
-  /* Open state: slide in, enable clicks */
-  .site-nav.is-open {
+  .site-nav.open {
     transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: transform 240ms ease, opacity 240ms ease; /* no delay when opening */
-  }
-
-  /* Optional: prevent background scroll when menu open */
-  body.nav-open {
-    overflow: hidden;
-    touch-action: none;
   }
 
   /* stack items vertically with spacing */
@@ -240,16 +302,82 @@ img {
 
   /* main nav links (Home, About, Portfolio, Contact, Research) */
   .site-nav > ul > li > a,
-  .site-nav > ul > li > 
+  .site-nav > ul > li > .submenu-toggle {
+    padding: 1.25rem 1.5rem; /* bigger tap targets (≈50px tall) */
+    border-radius: 0;
+    display: block;
+  }
 
-  /* slightly smaller for subsections */;
+  /* dropdown submenu links only */
+  .site-nav ul li .dropdown-menu a {
+    padding: 0.9rem 1.5rem; /* slightly smaller for subsections */
+  }
+}
+
+/* Dropdown base */
+.site-nav ul li.dropdown {
+  position: relative;
 }
 
 /* Submenu (uses theme vars; fixes hard-coded light colors) */
+.site-nav ul li .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 6px 0;
+  min-width: 200px;
+  z-index: 999;
+}
 
-/* how on hover (desktop) */
+/* Show on hover (desktop) */
+.site-nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
-/* bigger tap targets */
+/* Dropdown links */
+.site-nav ul li .dropdown-menu li {
+  display: block;
+}
+.site-nav ul li .dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text);
+}
+.site-nav ul li .dropdown-menu a:hover {
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+}
+
+.submenu-toggle {
+  background: transparent;
+  border: none;
+  padding: 0.4rem;
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.submenu-toggle:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+.submenu-toggle svg {
+  display: block;
+  margin-left: -15px;
+}
+
+@media (max-width: 820px) {
+  .site-nav a,
+  .submenu-toggle {
+    padding: 1.2rem 1.25rem; /* bigger tap targets */
+  }
+}
 
 /* ==================================================
    4) Buttons

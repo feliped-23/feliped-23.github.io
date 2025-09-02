@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional portfolio: experience and projects by Felipe Diaz." />
+  <title>Portfolio — Felipe Diaz</title>
+
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header (unchanged) -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Felipe Diaz</span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <nav id="site-nav" class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_me.html">About</a></li>
+          <li><a href="resume.html" class="active">Portfolio</a></li>
+          <li class="dropdown">
+            <a href="blog.html" aria-haspopup="true" aria-expanded="false">Research</a>
+            <button class="submenu-toggle" aria-expanded="false" aria-controls="research-menu" aria-label="Open Research submenu" style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle;">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul id="research-menu" class="dropdown-menu" role="menu" aria-labelledby="nav-research">
+              <li role="none"><a role="menuitem" href="blog_clean_tech.html">Clean Tech</a></li>
+              <li role="none"><a role="menuitem" href="blog_geopolitics.html">Geopolitics</a></li>
+              <li role="none"><a role="menuitem" href="blog_global_economy.html">Global Economy</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html" class="btn btn--small">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Top intro -->
+    <section class="container portfolio-intro reveal">
+      <h1>Portfolio</h1>
+      <p class="lead">
+        Browse my experiences, projects, and certificates either by <b>Type</b> (work, education, projects, courses) or in <b>chronological order</b> on a timeline.
+      </p>
+      <div class="portfolio-cta">
+        <a class="btn" href="#resume-pdf">Jump to Resume</a>
+      </div>
+
+      <div class="layout-toggle" role="group" aria-label="Arrange experiences by">
+        <span class="arrange-label">Arrange experiences by</span>
+        <button id="btn-chrono" class="toggle-btn is-active" data-view="chrono" type="button" aria-pressed="true">Chronological order</button>
+        <button id="btn-type" class="toggle-btn" data-view="type" type="button" aria-pressed="false">Experience type</button>
+      </div>
+    </section>
+
+    <!-- View: Chronological timeline -->
+    <section id="view-chrono" class="timeline-wrap" aria-labelledby="chrono-title">
+      <div class="container">
+        <h2 id="chrono-title" class="sr-only">Chronological timeline</h2>
+        <ol id="timeline-list" class="timeline">
+          <!--
+            IMPORTANT:
+            - I kept your existing items. Add a data-type to each <li class="tl-item"> so the "Type" view can categorize it.
+            - Allowed values: work, education, project, course
+            - Examples are shown below; paste ALL your current tl-items here.
+          -->
+
+          <!-- Example items (kept from your current page) -->
+          <li class="tl-item" data-type="project">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">July 2025</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Personal Website</h3>
+                <p class="tl-kicker">Personal Project</p>
+                <p>Leveraged AI LLMs to design and build a website to showcase my personal and professional experiences, and to document my research.</p>
+                <ul class="tl-badges"><li>AI LLMs</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/icon.png" alt="Personal Website Icon">
+              </figure>
+            </article>
+          </li>
+
+          <li class="tl-item" data-type="work">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">May 2025 – Aug 2025</time>
+            <article class="tl-card tl--image-left is-clickable" data-modal-target="#exp-seadoo-modal">
+              <figure class="tl-media">
+                <img src="assets/VWA_logo.png" alt="VWA logo">
+              </figure>
+              <div class="tl-body">
+                <h3>Seadoo Tour Guide — Vancouver Water Adventures</h3>
+                <p class="tl-kicker">Work Experience</p>
+                <p>Conducted jetski tours in Vancouver, taking guests into Howe Sound, focusing on safety and experience.</p>
+                <ul class="tl-badges"><li>Safety</li><li>Customer Service</li><li>Leadership</li><li>Mechanical Troubleshooting</li></ul>
+              </div>
+            </article>
+          </li>
+
+          <li class="tl-item" data-type="course">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">May 2025</time>
+            <article class="tl-card tl--image-right">
+              <div class="tl-body">
+                <h3>Wilderness First Responder — 80 Hour First Aid</h3>
+                <p class="tl-kicker">Certificate</p>
+                <p>Advanced first-aid for remote environments: patient assessment, decision-making, trauma/environmental care, evacuation.</p>
+                <ul class="tl-badges"><li>First Aid</li><li>Assessment</li><li>Leadership</li></ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/wrf_certificate.jpg" alt="Wilderness First Responder Certificate">
+              </figure>
+            </article>
+          </li>
+
+          <li class="tl-item" data-type="project">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">Sep 2024 – Apr 2025</time>
+            <article class="tl-card tl--image-right is-clickable" data-modal-target="#exp-checkmate-modal">
+              <div class="tl-body">
+                <h3>CheckMATE — Integrated Engineering Capstone</h3>
+                <p class="tl-kicker">Capstone Project</p>
+                <p>Designed and built a chess robot to play against humans or replay historic games.</p>
+                <ul class="tl-badges"><li>Robotics</li><li>Electromagnetics</li><li>Manufacturing</li></ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/checkmate_team.jpg" alt="Checkmate team at DAID">
+              </figure>
+            </article>
+          </li>
+
+          <!-- Paste the rest of your existing tl-items here, adding data-type where relevant -->
+        </ol>
+      </div>
+    </section>
+
+    <!-- View: Type (populated by JS from the single source above) -->
+    <section id="view-type" class="container view-type" hidden aria-labelledby="type-title">
+      <h2 id="type-title" class="sr-only">Experience grouped by type</h2>
+
+      <div class="type-group" data-group="work">
+        <h3>Work Experience</h3>
+        <div class="type-grid" id="group-work"></div>
+      </div>
+
+      <div class="type-group" data-group="education">
+        <h3>Education</h3>
+        <div class="type-grid" id="group-education"></div>
+      </div>
+
+      <div class="type-group" data-group="project">
+        <h3>Projects</h3>
+        <div class="type-grid" id="group-project"></div>
+      </div>
+
+      <div class="type-group" data-group="course">
+        <h3>Courses, Certificates & Conferences</h3>
+        <div class="type-grid" id="group-course"></div>
+      </div>
+    </section>
+
+    <!-- ===== Resume (PDF) at bottom ===== -->
+    <section id="resume-pdf" class="container resume-pdf">
+      <h2 class="reveal">Resume (PDF)</h2>
+      <div class="pdf-embed reveal" role="region" aria-label="Embedded resume PDF">
+        <iframe title="Resume PDF" src="assets/FelipeDiaz_General_Fusion_Resume.pdf" loading="lazy"></iframe>
+      </div>
+      <p class="pdf-fallback">Can’t see the PDF?
+        <a href="assets/FelipeDiaz_General_Fusion_Resume.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about_me.html">About</a>
+        <a class="active" href="resume.html">Portfolio</a>
+        <a href="blog.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Redesigned Modals (structure kept, styling improved) ===== -->
+  <!-- Example: Seadoo -->
+  <div class="modal" id="exp-seadoo-modal" aria-hidden="true" role="dialog" aria-labelledby="exp-seadoo-title">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-seadoo-title">Seadoo Tour Guide — Vancouver Water Adventures</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+
+      <!-- Full-width hero image -->
+      <div class="modal__hero">
+        <img src="assets/jetski1.jpg" alt="Seadoo Tour Guide">
+      </div>
+
+      <!-- Scrollable content area (text + images) -->
+      <div class="modal__scroll">
+        <div class="modal__section">
+          <p>Conducted jetski tours in Vancouver and into Howe Sound, prioritizing guest safety and experience.</p>
+          <ul class="modal__bullets">
+            <li>• Weekly maintenance and mechanical troubleshooting to ensure smooth operations.</li>
+          </ul>
+        </div>
+        <div class="modal__media-row">
+          <img src="assets/jetski_review1.jpg" alt="Jetski review">
+          <img src="assets/jetski_review3.jpg" alt="Jetski review">
+          <img src="assets/jetski_review4.jpg" alt="Jetski review">
+        </div>
+      </div>
+
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Example: CheckMATE -->
+  <div class="modal" id="exp-checkmate-modal" aria-hidden="true" role="dialog" aria-labelledby="exp-checkmate-title">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <header class="modal__header">
+        <h3 id="exp-checkmate-title">Capstone Project — CheckMATE</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+      <div class="modal__hero">
+        <img src="assets/checkmate_daid_poster.jpg" alt="CheckMATE Poster">
+      </div>
+      <div class="modal__scroll">
+        <div class="modal__section">
+          <p>Voted Best IGEN Capstone Project. Designed and built a chess robot that can play, self-play, and replay historic games.</p>
+          <ul class="modal__bullets"><li>• Team build; manufacturing & finishing; EM actuation.</li></ul>
+        </div>
+        <div class="modal__media-row">
+          <img src="assets/checkmate_award.jpg" alt="CheckMATE Award">
+        </div>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

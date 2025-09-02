@@ -16,18 +16,16 @@
 </head>
 <body>
   <!-- Header (unchanged structure) -->
-    <header class="site-header">
+  <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Home">
-        <img src="assets/icon.png" class="brand-icon" alt="" />
+        <span class="brand-dot" aria-hidden="true"></span>
         <span class="brand-text">Felipe Diaz</span>
       </a>
 
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Toggle navigation</span>
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
 
       <nav id="site-nav" class="site-nav">
@@ -35,13 +33,27 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about_me.html">About</a></li>
           <li><a href="resume.html" class="active">Portfolio</a></li>
-          <li><a href="blog.html">Research</a></li>
+          <li class="dropdown">
+            <a href="blog.html" aria-haspopup="true" aria-expanded="false">Research</a>
+            <button class="submenu-toggle" aria-expanded="false"
+                    aria-controls="research-menu" aria-label="Open Research submenu"
+                    style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle;">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul id="research-menu" class="dropdown-menu" role="menu" aria-labelledby="nav-research">
+              <li role="none"><a role="menuitem" href="blog_clean_tech.html">Clean Tech</a></li>
+              <li role="none"><a role="menuitem" href="blog_geopolitics.html">Geopolitics</a></li>
+              <li role="none"><a role="menuitem" href="blog_global_economy.html">Global Economy</a></li>
+            </ul>
+          </li>
           <li><a href="contact.html" class="btn btn--small">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
-    
 
   <main>
 
@@ -390,6 +402,7 @@
   </div>
 </div>
 
+
     <!-- Exp - Checkmate -->
   <div class="modal" id="exp-checkmate-modal" aria-hidden="true" aria-labelledby="exp-checkmate-title" role="dialog">
     <div class="modal__backdrop" data-close-modal></div>
@@ -420,6 +433,8 @@
     </div>
   </div>
 
+
+
   <!-- Exp - CIE University of Sydney -->
   <div class="modal" id="exp-australia-modal" aria-hidden="true" aria-labelledby="exp-australia-title" role="dialog">
     <div class="modal__backdrop" data-close-modal></div>
@@ -447,6 +462,7 @@
       </footer>
     </div>
   </div>
+
 
   <!-- Exp - Fusion Certificate -->
   <div class="modal" id="exp-fusioncert-modal" aria-hidden="true" aria-labelledby="exp-fusioncert-title" role="dialog">
@@ -483,6 +499,7 @@
     </div>
   </div>
 
+
   <!-- Exp - Miru Co-op -->
   <div class="modal" id="exp-miru-modal" aria-hidden="true" aria-labelledby="exp1-title" role="dialog">
     <div class="modal__backdrop" data-close-modal></div>
@@ -509,6 +526,8 @@
       </footer>
     </div>
   </div>
+
+
 
   <!-- Exp - 3D Printing -->
   <div class="modal" id="exp-3dprinting-modal" aria-hidden="true" aria-labelledby="exp-3dprinting-title" role="dialog">
@@ -541,6 +560,7 @@
     </div>
   </div>
 
+
   <!-- Exp - Ledcor -->
   <div class="modal" id="exp-ledcor-modal" aria-hidden="true" aria-labelledby="exp-ledcor-title" role="dialog">
     <div class="modal__backdrop" data-close-modal></div>
@@ -571,6 +591,9 @@
       </footer>
     </div>
   </div>
+
+
+
 
   <!-- Exp - HUD -->
   <div class="modal" id="exp-hud-modal" aria-hidden="true" aria-labelledby="exp-hud-title" role="dialog">
@@ -610,6 +633,7 @@
       </footer>
     </div>
   </div>
+
 
   <!-- RC boat - Exp -->
   <div class="modal" id="exp-rcboat-modal" aria-hidden="true" aria-labelledby="exp-rcboat-title" role="dialog">
@@ -653,6 +677,7 @@
     </div>
   </div>
 
+
   <!-- UBC Exp -->
   <div class="modal" id="exp-ubc-modal" aria-hidden="true" aria-labelledby="exp-ubc-title" role="dialog">
     <div class="modal__backdrop" data-close-modal></div>
@@ -681,6 +706,7 @@
       </footer>
     </div>
   </div>
+
 
  <script src="script.js" defer></script>
 </body>

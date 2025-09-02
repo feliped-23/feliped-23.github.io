@@ -1,6 +1,3 @@
-(function(){
-'use strict';
-// IIFE SECOND PASS: scopes helpers and prevents globals
 /**
  * Felipe Diaz — Global client-side scripts
  * Move all inline <script> blocks into this single file.
@@ -69,6 +66,63 @@ onReady(() => {
     .querySelectorAll(".reveal, .section-panel, .exp-card, .card")
     .forEach((el) => io.observe(el));
 });
+
+// ========== 5) Dropdown (mobile: arrow-only toggle; link navigates) ==========
+onReady(() => {
+  const dropdownLis = Array.from(document.querySelectorAll(".dropdown"));
+  if (!dropdownLis.length) return;
+
+  const isMobile = () => !isDesktop(); // you already have isDesktop()
+
+  const closeAll = () => {
+    dropdownLis.forEach((li) => {
+      li.classList.remove("open");
+      const link   = li.querySelector(":scope > a");
+      const toggle = li.querySelector(":scope > .submenu-toggle");
+      if (link)   link.setAttribute("aria-expanded", "false");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+  };
+
+  dropdownLis.forEach((li) => {
+    const link   = li.querySelector(":scope > a");                 // "Research"
+    const toggle = li.querySelector(":scope > .submenu-toggle");   // chevron
+    const menu   = li.querySelector(":scope > .dropdown-menu");    // submenu
+
+    if (!toggle || !menu) return;
+
+    // 1) Arrow toggles submenu (MOBILE ONLY)
+    toggle.addEventListener("click", (e) => {
+      if (!isMobile()) return; // desktop hover handles it
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = li.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      if (link) link.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // 2) Link should NAVIGATE normally (no preventDefault!)
+    if (link) {
+      link.addEventListener("click", (e) => {
+        // On mobile, let it navigate to blog.html; do nothing here.
+        // If you previously had code preventing default, it's gone now.
+      });
+    }
+  });
+
+  // 3) Click outside closes any open submenu (mobile)
+  document.addEventListener("click", (e) => {
+    if (!isMobile()) return;
+    const inside = dropdownLis.some((li) => li.contains(e.target));
+    if (!inside) closeAll();
+  });
+
+  // 4) On resize back to desktop, reset mobile-open state
+  window.addEventListener("resize", () => {
+    if (!isMobile()) closeAll();
+  });
+});
+
 
 // ========== 6) Modals + card click-to-open + anchors ==========
 onReady(() => {
@@ -220,6 +274,8 @@ onReady(() => {
   setView('chrono'); // default
 });
 
+
+
 // ========== 7) Contact form → mailto: (no backend) ==========
 // Only runs on the Contact page where #contactForm exists
 onReady(() => {
@@ -320,34 +376,4 @@ onReady(() => {
   applyFilter();
 });
 
-})();
 
-// NAV TOGGLE SECOND PASS (robust, idempotent)
-document.addEventListener('DOMContentLoaded', function(){
-  var btn = document.querySelector('.nav-toggle');
-  var nav = document.getElementById('site-nav');
-  if (!btn || !nav) return;
-
-  var open = false;
-  var setState = function(next){
-    open = !!next;
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    nav.classList.toggle('is-open', open);
-    document.body.classList.toggle('nav-open', open);
-  };
-
-  btn.addEventListener('click', function(){
-    setState(!open);
-  }, { passive: true });
-
-  // Close on ESC
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && open) setState(false);
-  });
-
-  // Close when clicking a link
-  nav.addEventListener('click', function(e){
-    var a = e.target.closest('a');
-    if (a) setState(false);
-  });
-});
