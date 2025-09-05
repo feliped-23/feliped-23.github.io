@@ -1,0 +1,94 @@
+/* 
+=======================================
+  Base Styles & Reset
+  Felipe Diaz Website
+=======================================
+*/
+
+/* ==================================================
+   Reset & Base Elements
+   ================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--bg) 95%, var(--accent) 5%),
+    color-mix(in oklab, var(--bg) 95%, var(--accent-2) 5%)
+  );
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Typography helpers */
+.accent {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent2 {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  font-size: clamp(1rem, 0.7vw + 0.9rem, 1.1rem);
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.lede {
+  font-size: clamp(1rem, 0.6vw + 0.95rem, 1.125rem);
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--muted);
+}

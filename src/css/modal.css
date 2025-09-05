@@ -1,0 +1,197 @@
+/* 
+=======================================
+  Modal Component
+  Felipe Diaz Website
+=======================================
+*/
+
+/* ===========================
+   MODAL — full-page scroll, hero (no crop), wrapped media
+   =========================== */
+
+/* Overlay */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: clamp(12px, 2.5vh, 28px);
+}
+
+.modal.open {
+  display: block;
+}
+
+/* Backdrop */
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+/* Dialog */
+.modal__dialog {
+  position: relative;
+  width: min(100%, 980px);
+  margin: auto;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: modalIn 0.18s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(8px);
+    opacity: 0.85;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Hero image */
+.modal__hero {
+  margin: clamp(10px, 1.5vw, 16px);
+  margin-bottom: 0;
+  border-radius: 16px;
+  background: var(--card);
+  overflow: visible;
+}
+
+.modal__hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: clamp(220px, 45vh, 560px);
+  object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+/* Header */
+.modal__header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  background: var(--bg-elev);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__header h3 {
+  margin: 0;
+  font-size: clamp(1.1rem, 0.9vw + 1rem, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* Body */
+.modal__body {
+  padding: 1rem clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem);
+}
+
+.modal__body::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.modal__text {
+  max-width: 72ch;
+  margin: 0 0 0.8rem 0;
+}
+
+.modal__text p {
+  color: var(--text);
+  margin: 0 0 0.7rem 0;
+  line-height: 1.6;
+}
+
+.modal__bullets {
+  margin: 0.2rem 0 0.6rem 1rem;
+  color: var(--muted);
+}
+
+/* Media blocks */
+.modal__media {
+  float: right;
+  width: min(44%, 420px);
+  margin: 0.15rem 0.5rem 0.9rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.modal__media:nth-of-type(odd) {
+  float: left;
+  margin: 0.15rem 1rem 0.9rem 0.5rem;
+}
+
+.modal__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Footer */
+.modal__footer {
+  padding: 0.9rem 1rem 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Small screens */
+@media (max-width: 860px) {
+  .modal__hero {
+    margin: 8px;
+    border-radius: 12px;
+  }
+
+  .modal__hero img {
+    border-radius: 12px;
+    max-height: 50vh;
+  }
+
+  .modal__header {
+    position: sticky;
+    top: 0;
+  }
+
+  .modal__body {
+    padding: 0.9rem;
+  }
+
+  .modal__media,
+  .modal__media:nth-of-type(odd) {
+    float: none;
+    width: 100%;
+    margin: 0 0 0.8rem 0;
+  }
+
+  .modal__text {
+    max-width: none;
+  }
+}

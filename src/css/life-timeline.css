@@ -1,0 +1,753 @@
+/* 
+=======================================
+  Life Timeline Component
+  Felipe Diaz Website - Geographic Timeline
+=======================================
+*/
+
+/* ==================================================
+   Life Timeline Container
+   ================================================== */
+.life-timeline-section {
+  padding: clamp(1.5rem, 3vw, 2rem) 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--bg) 98%, var(--accent) 2%),
+    color-mix(in oklab, var(--bg) 98%, var(--accent-2) 2%)
+  );
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.life-timeline-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.timeline-header h2 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.timeline-subtitle {
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ==================================================
+   Timeline Navigation
+   ================================================== */
+.timeline-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-nav-btn {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.timeline-nav-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--bg);
+  transform: scale(1.1);
+  border-color: var(--accent);
+}
+
+.timeline-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.scroll-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: subtle-pulse 3s infinite;
+}
+
+.scroll-hint::after {
+  content: "↔";
+  font-size: 1.1rem;
+}
+
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ==================================================
+   Main Timeline
+   ================================================== */
+.life-timeline-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.life-timeline {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 0;
+  padding: 2rem 2rem;
+  position: relative;
+  min-height: 450px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-elev);
+}
+
+.life-timeline::-webkit-scrollbar {
+  height: 8px;
+}
+
+.life-timeline::-webkit-scrollbar-track {
+  background: var(--bg-elev);
+  border-radius: 4px;
+}
+
+.life-timeline::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+}
+
+.life-timeline::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ==================================================
+   Location Items - Proportional to years
+   ================================================== */
+.timeline-location {
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Calculate width based on year span - much more spread out (300px per year, ~5 years visible) */
+.timeline-location[data-years="2002-2005"] {
+  width: 900px;
+} /* 3 years */
+.timeline-location[data-years="2005-2008"] {
+  width: 900px;
+} /* 3 years */
+.timeline-location[data-years="2008-2011"] {
+  width: 900px;
+} /* 3 years */
+.timeline-location[data-years="2011-2012"] {
+  width: 300px;
+} /* 1 year */
+.timeline-location[data-years="2012-2015"] {
+  width: 900px;
+} /* 3 years */
+.timeline-location[data-years="2015-2018"] {
+  width: 900px;
+} /* 3 years */
+.timeline-location[data-years="2018-2020"] {
+  width: 600px;
+} /* 2 years */
+.timeline-location[data-years="2020-2024.5"] {
+  width: 1350px;
+} /* 4.5 years */
+.timeline-location[data-years="2024.5-2025"] {
+  width: 150px;
+} /* 0.5 years */
+.timeline-location[data-years="2025-present"] {
+  width: 150px;
+} /* 0.5 years */
+
+/* Horizontal country bubbles spanning their time period - slimmer and centered on timeline */
+.location-marker {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 115, 85, 0.75),
+    rgba(160, 130, 95, 0.85)
+  );
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 30px;
+  padding: 0.6rem 1.2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 100%;
+  height: 48px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode adjustments for better readability */
+@media (prefers-color-scheme: dark) {
+  .location-marker {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 115, 85, 0.85),
+      rgba(160, 130, 95, 0.95)
+    );
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .location-marker:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 115, 85, 0.95),
+      rgba(160, 130, 95, 1)
+    );
+  }
+}
+
+/* Year ticks below country bubbles - REMOVED */
+
+/* Year labels below the ticks */
+.timeline-location::after {
+  content: attr(data-start-year);
+  position: absolute;
+  top: calc(50% + 35px);
+  left: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* End year labels */
+.timeline-location::before {
+  content: attr(data-end-year);
+  position: absolute;
+  top: calc(50% + 35px);
+  right: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  transform: translateX(50%);
+  white-space: nowrap;
+}
+
+.location-marker:hover {
+  transform: translateY(-50%) translateZ(0) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(139, 115, 85, 0.85),
+    rgba(160, 130, 95, 0.95)
+  );
+}
+
+.location-flag {
+  display: flex;
+  align-items: center;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+}
+
+.location-flag .fi {
+  font-size: 1.6rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.location-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.location-age {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.1;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+/* ==================================================
+   Life Events Branching
+   ================================================== */
+.life-events {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.life-events-top {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.life-events-bottom {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-top: 1rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.event-item {
+  pointer-events: auto;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  perspective: 1000px;
+  flex-shrink: 0;
+}
+
+/* Flip card container */
+.event-flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.event-item:hover .event-flip-card {
+  transform: rotateY(180deg);
+}
+
+/* Front and back faces */
+.event-flip-front,
+.event-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.event-flip-front {
+  background: var(--card);
+}
+
+.event-flip-back {
+  background: var(--card);
+  transform: rotateY(180deg);
+  padding: 0.75rem;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Connection lines from timeline to events */
+.event-item::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  background: var(--accent-2);
+  z-index: -1;
+}
+
+.life-events-top .event-item::before {
+  bottom: -1rem;
+  height: 1rem;
+  transform: translateX(-50%);
+}
+
+.life-events-bottom .event-item::before {
+  top: -1rem;
+  height: 1rem;
+  transform: translateX(-50%);
+}
+
+/* Event dot on timeline */
+.event-item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-2);
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.life-events-top .event-item::after {
+  bottom: -1.6rem;
+  transform: translateX(-50%);
+}
+
+.life-events-bottom .event-item::after {
+  top: -1.6rem;
+  transform: translateX(-50%);
+}
+
+/* Front face - just the image */
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* Back face - text content */
+.event-year {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.7rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.1;
+}
+
+.event-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.event-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Positioning helpers for precise placement */
+.event-positioned {
+  position: absolute !important;
+  left: var(--event-position, 0px);
+}
+
+/* Dynamic positioning is now handled by JavaScript */
+/* The CSS custom property --event-position is set by the JavaScript positioning system */
+
+/* ==================================================
+   Responsive Design
+   ================================================== */
+@media (max-width: 768px) {
+  .life-timeline-section {
+    padding: 1.5rem 0;
+  }
+
+  .life-timeline {
+    padding: 3rem 1rem;
+    min-height: 400px;
+  }
+
+  /* Better mobile widths - maintain proportional spacing but more spread out */
+  .timeline-location[data-years="2002-2005"] {
+    width: 450px; /* 3 years - increased from 180px */
+  }
+  .timeline-location[data-years="2005-2008"] {
+    width: 450px; /* 3 years - increased from 180px */
+  }
+  .timeline-location[data-years="2008-2011"] {
+    width: 450px; /* 3 years - increased from 180px */
+  }
+  .timeline-location[data-years="2011-2012"] {
+    width: 150px; /* 1 year - increased from 70px */
+  }
+  .timeline-location[data-years="2012-2015"] {
+    width: 450px; /* 3 years - increased from 180px */
+  }
+  .timeline-location[data-years="2015-2018"] {
+    width: 450px; /* 3 years - increased from 180px */
+  }
+  .timeline-location[data-years="2018-2020"] {
+    width: 300px; /* 2 years - increased from 120px */
+  }
+  .timeline-location[data-years="2020-2024.5"] {
+    width: 675px; /* 4.5 years */
+  }
+  .timeline-location[data-years="2024.5-2025"] {
+    width: 100px; /* 0.5 years */
+  }
+  .timeline-location[data-years="2025-present"] {
+    width: 120px; /* 0.5 years */
+  }
+
+  /* Mobile positioning is now handled dynamically by JavaScript */
+
+  .location-marker {
+    height: 36px;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .location-flag .fi {
+    font-size: 1.4rem;
+  }
+
+  .location-info h3 {
+    font-size: 0.8rem;
+  }
+
+  .location-years {
+    font-size: 0.65rem;
+  }
+
+  .location-age {
+    font-size: 0.65rem;
+  }
+
+  .event-item {
+    width: 100px; /* Fixed width instead of min/max */
+    height: 100px; /* Fixed height to maintain aspect ratio */
+  }
+
+  .event-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio without cropping important parts */
+  }
+
+  .timeline-nav {
+    margin-bottom: 0.75rem;
+  }
+
+  .scroll-hint {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .life-timeline {
+    padding: 2.5rem 0.5rem;
+  }
+
+  /* Further reduce mobile widths for small screens but maintain proportions */
+  .timeline-location[data-years="2002-2005"] {
+    width: 360px; /* 3 years - reduced from 450px but still proportional */
+  }
+  .timeline-location[data-years="2005-2008"] {
+    width: 360px; /* 3 years */
+  }
+  .timeline-location[data-years="2008-2011"] {
+    width: 360px; /* 3 years */
+  }
+  .timeline-location[data-years="2011-2012"] {
+    width: 120px; /* 1 year */
+  }
+  .timeline-location[data-years="2012-2015"] {
+    width: 360px; /* 3 years */
+  }
+  .timeline-location[data-years="2015-2018"] {
+    width: 360px; /* 3 years */
+  }
+  .timeline-location[data-years="2018-2020"] {
+    width: 240px; /* 2 years */
+  }
+  .timeline-location[data-years="2020-2024.5"] {
+    width: 540px; /* 4.5 years */
+  }
+  .timeline-location[data-years="2024.5-2025"] {
+    width: 100px; /* 0.5 years */
+  }
+  .timeline-location[data-years="2025-present"] {
+    width: 120px; /* 0.5 years */
+  }
+
+  /* Small mobile positioning is now handled dynamically by JavaScript */
+
+  .location-marker {
+    padding: 0.25rem 0.5rem;
+    height: 32px;
+  }
+
+  .location-flag .fi {
+    font-size: 1.2rem;
+  }
+
+  .location-info h3 {
+    font-size: 0.7rem;
+  }
+
+  .location-years {
+    font-size: 0.6rem;
+  }
+
+  .location-age {
+    font-size: 0.6rem;
+  }
+
+  .event-item {
+    width: 90px; /* Fixed width for small screens */
+    height: 90px; /* Fixed height to maintain aspect ratio */
+  }
+}
+
+/* ==================================================
+   Animations
+   ================================================== */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-location {
+  animation: slideInFromLeft 0.6s ease forwards;
+}
+
+.life-events-top .event-item {
+  animation: slideInFromTop 0.8s ease forwards;
+}
+
+.life-events-bottom .event-item {
+  animation: slideInFromBottom 0.8s ease forwards;
+}
+
+/* Stagger animation delays */
+.timeline-location:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.timeline-location:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.timeline-location:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.timeline-location:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.timeline-location:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.timeline-location:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.timeline-location:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.timeline-location:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.event-item:nth-child(1) {
+  animation-delay: 0.9s;
+}
+.event-item:nth-child(2) {
+  animation-delay: 1.1s;
+}
+.event-item:nth-child(3) {
+  animation-delay: 1.3s;
+}

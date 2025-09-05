@@ -1,0 +1,67 @@
+/* 
+=======================================
+  Buttons
+  Felipe Diaz Website
+=======================================
+*/
+
+/* ==================================================
+   Buttons
+   ================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent) 18%, var(--bg)),
+    var(--bg-elev)
+  );
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.btn--small {
+  padding: 0.55rem 0.85rem;
+  font-weight: 600;
+}
+
+/* Tag buttons for blog filters */
+.tag-btn {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.tag-btn:hover {
+  transform: translateY(-1px);
+}
+
+.tag-btn.is-active,
+.tag-btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}

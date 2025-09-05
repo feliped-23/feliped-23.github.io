@@ -6,13 +6,14 @@
   <meta name="description" content="About Felipe Diaz — background, values, experience." />
   <title>About — Felipe Diaz</title>
 
-    <!-- Favicon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="src/css/main.css" />
 </head>
 <body>
   <!-- Site header (unchanged) -->
@@ -69,11 +70,377 @@
           I like projects where physics meets product constraints, and iteration is part of the plan.
         </p>
       </div>
+      
+
       <figure class="split-col">
         <img src="assets/maplived+visited.png" alt="map of lived places" />
         <figcaption>Map of where I've Traveled</figcaption>
       </figure>
     </section>
+        
+    <!-- E) Interactive Life Timeline -->
+    <!-- 
+      Timeline Events Positioning:
+      - Use class="event-year-YYYY.X" for precise positioning
+      - Examples: event-year-2018.8, event-year-2022.3, event-year-2023.5
+      - JavaScript automatically calculates positions based on year values
+      - Supports any floating-point year from 2002 onwards
+    -->
+    <section class="life-timeline-section">
+      <div class="life-timeline-container">
+        <div class="container">
+          <div class="timeline-header">
+            <h2>Life Journey</h2>
+            <p class="timeline-subtitle">A global upbringing that shaped my perspective</p>
+          </div>
+          
+          <div class="timeline-nav">
+            <button class="timeline-nav-btn timeline-nav-prev" aria-label="Previous">←</button>
+            <div class="scroll-hint">Explore timeline</div>
+            <button class="timeline-nav-btn timeline-nav-next" aria-label="Next">→</button>
+          </div>
+          
+          <div class="life-timeline-wrapper">
+            <div class="life-timeline" role="region" aria-label="Life journey timeline" tabindex="0">
+              
+              <!-- Colombia 2002-2005 (Age 0-3) -->
+              <div class="timeline-location" data-years="2002-2005" data-start-year="2002" data-end-year="2005">
+                <div class="life-events">
+                  <div class="life-events-top">
+                    <div class="event-item event-positioned event-year-2002">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe1.jpg" alt="Birth" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2002</div>
+                          <h4 class="event-title">Born in Colombia</h4>
+                          <p class="event-description">Beginning of a global journey</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-co"></span></div>
+                  <div class="location-info">
+                    <h3>Colombia</h3>
+                    <div class="location-age">Age 0-3</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Scotland 2005-2008 (Age 3-6) -->
+              <div class="timeline-location" data-years="2005-2008" data-start-year="2005" data-end-year="2008">
+                <div class="life-events">
+                  <div class="life-events-bottom">
+                    <div class="event-item event-positioned event-year-2006\.2">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/hugo_footy.jpg" alt="First school" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2006</div>
+                          <h4 class="event-title">First School</h4>
+                          <p class="event-description">Started primary education in Scotland</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-gb-sct"></span></div>
+                  <div class="location-info">
+                    <h3>Scotland</h3>
+                    <div class="location-age">Age 3-6</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Argentina 2008-2011 (Age 6-9) -->
+              <div class="timeline-location" data-years="2008-2011" data-start-year="2008" data-end-year="2011">
+                <div class="life-events">
+                  <div class="life-events-top">
+                    <div class="event-item event-positioned event-year-2009\.5">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/hugo_footy.jpg" alt="Football passion" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2009</div>
+                          <h4 class="event-title">Football Passion</h4>
+                          <p class="event-description">Developed love for football in Argentina</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-ar"></span></div>
+                  <div class="location-info">
+                    <h3>Argentina</h3>
+                    <div class="location-age">Age 6-9</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Spain 2011-2012 (Age 9-10) -->
+              <div class="timeline-location" data-years="2011-2012" data-start-year="2011" data-end-year="2012">
+                <div class="life-events">
+                  <div class="life-events-bottom">
+                    <div class="event-item event-positioned event-year-2011\.6">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe2.jpg" alt="Cultural adaptation" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2012</div>
+                          <h4 class="event-title">Language Mastery</h4>
+                          <p class="event-description">Became fluent in Spanish</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-es"></span></div>
+                  <div class="location-info">
+                    <h3>Spain</h3>
+                    <div class="location-age">Age 9-10</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Angola 2012-2015 (Age 10-13) -->
+              <div class="timeline-location" data-years="2012-2015" data-start-year="2012" data-end-year="2015">
+                <div class="life-events">
+                  <div class="life-events-top">
+                    <div class="event-item event-positioned event-year-2013\.3">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/afa.jpg" alt="Football academy" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2013</div>
+                          <h4 class="event-title">Football Academy</h4>
+                          <p class="event-description">Trained at local football academy</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="life-events-bottom">
+                    <div class="event-item event-positioned event-year-2014\.7">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/backpacking.jpg" alt="Adventure spirit" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2014</div>
+                          <h4 class="event-title">Adventure Spirit</h4>
+                          <p class="event-description">Developed love for exploration</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-ao"></span></div>
+                  <div class="location-info">
+                    <h3>Angola</h3>
+                    <div class="location-age">Age 10-13</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Vietnam 2015-2018 (Age 13-16) -->
+              <div class="timeline-location" data-years="2015-2018" data-start-year="2015" data-end-year="2018">
+                <div class="life-events">
+                  <div class="life-events-top">
+                    <div class="event-item event-positioned event-year-2016\.8">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/3d_printing.jpg" alt="STEM interest" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2016</div>
+                          <h4 class="event-title">STEM Passion</h4>
+                          <p class="event-description">Discovered engineering through maker spaces</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-vn"></span></div>
+                  <div class="location-info">
+                    <h3>Vietnam</h3>
+                    <div class="location-age">Age 13-16</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Colombia 2018-2020 (Age 16-18) -->
+              <div class="timeline-location" data-years="2018-2020" data-start-year="2018" data-end-year="2020">
+                <div class="life-events">
+                  <div class="life-events-bottom">
+                    <div class="event-item event-positioned event-year-2018\.8">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe1.jpg" alt="University preparation" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">March 2019</div>
+                          <h4 class="event-title">University Prep</h4>
+                          <p class="event-description">Preparing for university applications</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event-item event-positioned event-year-2019\.2">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe1.jpg" alt="High school graduation" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2019</div>
+                          <h4 class="event-title">High School Graduation</h4>
+                          <p class="event-description">Completed secondary education</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-co"></span></div>
+                  <div class="location-info">
+                    <h3>Colombia</h3>
+                    <div class="location-age">Age 16-18</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Canada 2020-2024.5 (Age 18-22.5) -->
+              <div class="timeline-location" data-years="2020-2024.5" data-start-year="2020" data-end-year="July 2024">
+                <div class="life-events">
+                  <div class="life-events-top">
+                    <div class="event-item event-positioned event-year-2020\.2">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/ubc_eng_logo_red.jpg" alt="University start" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2020</div>
+                          <h4 class="event-title">UBC Engineering</h4>
+                          <p class="event-description">Started Integrated Engineering program</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="life-events-bottom">
+                    <div class="event-item event-positioned event-year-2022\.3">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe1.jpg" alt="Research project" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">April 2022</div>
+                          <h4 class="event-title">Research Project</h4>
+                          <p class="event-description">Started independent research</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event-item event-positioned event-year-2023\.5">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/miru_work.jpg" alt="Work experience" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2023</div>
+                          <h4 class="event-title">Miru Smart Technologies</h4>
+                          <p class="event-description">Led mechanical projects and research</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-ca"></span></div>
+                  <div class="location-info">
+                    <h3>Canada</h3>
+                    <div class="location-age">Age 18-22</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Australia 2024.5-2025 (Age 22.5-23) -->
+              <div class="timeline-location" data-years="2024.5-2025" data-start-year="July 2024" data-end-year="2025">
+                <div class="life-events">
+                  <div class="life-events-top">
+                    <div class="event-item event-positioned event-year-2024\.7">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe1.jpg" alt="Australia adventure" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">2024</div>
+                          <h4 class="event-title">Australia Adventure</h4>
+                          <p class="event-description">Lived and worked in Australia</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-au"></span></div>
+                  <div class="location-info">
+                    <h3>Australia</h3>
+                    <div class="location-age">Age 22</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Canada 2025-present (Age 23+) -->
+              <div class="timeline-location" data-years="2025-present" data-start-year="2025" data-end-year="Present">
+                <div class="life-events">
+                  <div class="life-events-bottom">
+                    <div class="event-item event-positioned event-year-2025\.2">
+                      <div class="event-flip-card">
+                        <div class="event-flip-front">
+                          <img src="assets/headshot_felipe1.jpg" alt="Return to Canada" class="event-image">
+                        </div>
+                        <div class="event-flip-back">
+                          <div class="event-year">March 2025</div>
+                          <h4 class="event-title">Return to Canada</h4>
+                          <p class="event-description">Back to Canada for continued studies</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="location-marker">
+                  <div class="location-flag"><span class="fi fi-ca"></span></div>
+                  <div class="location-info">
+                    <h3>Canada</h3>
+                    <div class="location-age">Age 23</div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
 
     <!-- C) Alternating media/text rows (repeat/remove freely) -->
     <section class="about-block about-alt">
@@ -117,33 +484,7 @@
       </ul>
     </section>
 
-    <!-- E) Timeline (simple, text-centric) -->
-    <section class="about-block about-timeline container">
-      <h2>Path so far</h2>
-      <ol class="timeline">
-        <li>
-          <div class="time">Now</div>
-          <div class="item">
-            <h4>UBC — Integrated Engineering</h4>
-            <p>Focused on electromagnetics, CAD/FEA, and clean tech applications.</p>
-          </div>
-        </li>
-        <li>
-          <div class="time">Prior</div>
-          <div class="item">
-            <h4>Miru Smart Technologies</h4>
-            <p>Led mechanical projects from concept to commissioning; managed a research grant.</p>
-          </div>
-        </li>
-        <li>
-          <div class="time">Earlier</div>
-          <div class="item">
-            <h4>Global upbringing</h4>
-            <p>Multiple countries; learned to adapt fast and collaborate across perspectives.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
+    
 
     <!-- F) Simple gallery grid (images only; removes easily) -->
     <section class="about-block container">
@@ -154,15 +495,6 @@
         <img src="assets/bluemountains.jpg" alt="Hiking">
         <img src="assets/checkmate_poster.jpg" alt="Engineering Capstone">
       </div>
-    </section>
-
-    <!-- G) Contact CTA (optional) -->
-    <section class="about-block container about-cta">
-      <h2>Say hello</h2>
-      <p class="lede">
-        I’m always up for swapping notes on clean tech, mechanisms, or interesting datasets.
-      </p>
-      <p><a class="btn" href="contact.html">Get in touch</a></p>
     </section>
 
   </main>
@@ -179,6 +511,7 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="src/js/main.js" type="module" defer></script>
+  <script src="src/js/life-timeline.js" defer></script>
 </body>
 </html>

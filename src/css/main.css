@@ -1,0 +1,29 @@
+/* 
+=======================================
+  Main CSS File — Felipe Diaz Website
+  Modular Import Structure
+=======================================
+*/
+
+/* Core Styles */
+@import "variables.css";
+@import "base.css";
+
+/* Layout Components */
+@import "header.css";
+@import "footer.css";
+
+/* UI Components */
+@import "buttons.css";
+@import "components.css";
+@import "modal.css";
+
+/* Page Layouts */
+@import "hero.css";
+@import "pages.css";
+
+/* Effects */
+@import "animations.css";
+
+/* Specialized Components */
+@import "life-timeline.css";

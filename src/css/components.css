@@ -1,0 +1,167 @@
+/* 
+=======================================
+  Reusable Components
+  Felipe Diaz Website
+=======================================
+*/
+
+/* ==================================================
+   Cards & Panels
+   ================================================== */
+.card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--bg) 90%, var(--card)),
+    var(--card)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2vw, 1.4rem);
+}
+
+.section-panel {
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--bg) 86%, var(--card)),
+    var(--card)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  display: grid;
+  grid-template-columns: 0.7fr 0.8fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-panel:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+}
+
+.section-panel:nth-child(even) {
+  grid-template-columns: 1.8fr 1.1fr;
+}
+
+.section-panel h2 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 1.35rem;
+}
+
+.section-panel p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Panel Meta & Pills */
+.panel-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  color: var(--text);
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--accent) 60%, transparent),
+    color-mix(in oklab, var(--accent-2) 55%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, var(--accent) 50%, var(--border));
+}
+
+.card-link {
+  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid color-mix(in oklab, var(--accent) 32%, transparent);
+  padding-bottom: 2px;
+}
+
+.card-link:hover {
+  color: var(--accent);
+}
+
+.panel-image {
+  border-radius: 14px;
+  height: clamp(180px, 26vw, 320px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+
+.panel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive panels */
+@media (max-width: 900px) {
+  .section-panel {
+    grid-template-columns: 1fr;
+  }
+  .panel-image {
+    order: -1;
+    height: clamp(160px, 40vw, 260px);
+  }
+}
+
+/* ==================================================
+   Homepage Panels Container
+   ================================================== */
+.panels {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  padding: 1.2rem 0 3rem;
+}
+
+/* ==================================================
+   Badges & Tags
+   ================================================== */
+.tl-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0.4rem 0 0;
+  list-style: none;
+}
+
+.tl-badges li {
+  font-size: 0.82rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+}
+
+/* ==================================================
+   Full Width Images
+   ================================================== */
+.full-width-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 1.5rem;
+}
