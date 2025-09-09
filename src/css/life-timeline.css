@@ -183,12 +183,12 @@
 .timeline-location[data-years="2015-2018"] {
   width: 900px;
 } /* 3 years */
-.timeline-location[data-years="2018-2020"] {
-  width: 600px;
-} /* 2 years */
-.timeline-location[data-years="2020-2024.5"] {
-  width: 1350px;
-} /* 4.5 years */
+.timeline-location[data-years="2018-2021"] {
+  width: 900px;
+} /* 3 years */
+.timeline-location[data-years="2021-2024.5"] {
+  width: 1050px;
+} /* 3.5 years */
 .timeline-location[data-years="2024.5-2025"] {
   width: 150px;
 } /* 0.5 years */
@@ -541,11 +541,11 @@
   .timeline-location[data-years="2015-2018"] {
     width: 450px; /* 3 years - increased from 180px */
   }
-  .timeline-location[data-years="2018-2020"] {
-    width: 300px; /* 2 years - increased from 120px */
+  .timeline-location[data-years="2018-2021"] {
+    width: 450px; /* 3 years - increased from 120px */
   }
-  .timeline-location[data-years="2020-2024.5"] {
-    width: 675px; /* 4.5 years */
+  .timeline-location[data-years="2021-2024.5"] {
+    width: 525px; /* 3.5 years */
   }
   .timeline-location[data-years="2024.5-2025"] {
     width: 100px; /* 0.5 years */
@@ -626,11 +626,11 @@
   .timeline-location[data-years="2015-2018"] {
     width: 360px; /* 3 years */
   }
-  .timeline-location[data-years="2018-2020"] {
-    width: 240px; /* 2 years */
+  .timeline-location[data-years="2018-2021"] {
+    width: 360px; /* 3 years */
   }
-  .timeline-location[data-years="2020-2024.5"] {
-    width: 540px; /* 4.5 years */
+  .timeline-location[data-years="2021-2024.5"] {
+    width: 420px; /* 3.5 years */
   }
   .timeline-location[data-years="2024.5-2025"] {
     width: 100px; /* 0.5 years */

@@ -278,7 +278,7 @@ function initBooksPanel() {
     // Future: Navigate to books/podcasts page
     console.log('Books panel clicked - navigate to collection page');
     // For now, just show an alert
-    alert('This would navigate to your books and podcasts collection page!');
+    alert('This will soon navigate to my books and podcasts collection page!');
   });
 
   // Handle keyboard interaction

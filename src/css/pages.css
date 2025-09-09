@@ -54,6 +54,11 @@
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* Gradient text for headings without emojis */
+.about-block h2:not(:has(span)) {
   background: linear-gradient(
     90deg,
     var(--text),
@@ -62,7 +67,15 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  letter-spacing: -0.01em;
+}
+
+/* Preserve emoji colors in headings */
+.about-block h2 span {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: unset;
+  margin-right: 0.5rem;
 }
 
 /* Split layout (text / image) */
