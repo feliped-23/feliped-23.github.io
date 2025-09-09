@@ -12,6 +12,7 @@ import { initModals } from './modals.js';
 import { initPortfolioViews } from './portfolio.js';
 import { initBlogFilters } from './blog.js';
 import { initContactForm } from './contact.js';
+import { initAboutPageFeatures } from './about.js';
 
 /**
  * Initialize all website functionality
@@ -27,4 +28,5 @@ onReady(() => {
   initPortfolioViews(); // Only runs if portfolio elements exist
   initBlogFilters();    // Only runs if blog elements exist
   initContactForm();    // Only runs if contact form exists
+  initAboutPageFeatures(); // Only runs if about page elements exist
 });
