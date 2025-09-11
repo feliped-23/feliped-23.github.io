@@ -22,7 +22,7 @@
     <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Home">
-        <img src="assets/icon.png" class="brand-icon" alt="" />
+        <img src="assets/icon.svg" class="brand-icon" alt="" />
         <span class="brand-text">Felipe Diaz</span>
       </a>
 
@@ -50,17 +50,51 @@
 
     <!-- Intro + mode switch + jump -->
     <section class="container resume-intro">
-      <h1 class="reveal">Professional Portfolio</h1>
-      <p class="lead reveal">
-        Browse my experiences, projects, courses, and certificates. View them by
-        <strong>chronological timeline</strong> or regroup everything by <strong>type</strong>.
-      </p>
-      <div class="view-switch reveal" role="group" aria-label="Arrange experiences by">
-        <span class="muted">Arrange experiences by:</span>
-        <button class="btn btn--small is-active" data-view="chrono" aria-pressed="true">Chronological order</button>
-        <button class="btn btn--small" data-view="type" aria-pressed="false">Experience type</button>
+      <div class="resume-header">
+        <div class="resume-header-content">
+          <h1 class="reveal">Professional Portfolio</h1>
+          <p class="resume-subtitle reveal">
+            Explore my engineering journey through work experience, projects, education, and certifications
+          </p>
+        </div>
+        
+        <div class="resume-actions reveal">
+          <div class="view-controls">
+            <h3>View by:</h3>
+            <div class="view-switch" role="group" aria-label="Arrange experiences by">
+              <button class="view-btn is-active" data-view="chrono" aria-pressed="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12,6 12,12 16,14"/>
+                </svg>
+                Timeline
+              </button>
+              <button class="view-btn" data-view="type" aria-pressed="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"/>
+                  <rect x="14" y="3" width="7" height="7"/>
+                  <rect x="14" y="14" width="7" height="7"/>
+                  <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                Categories
+              </button>
+            </div>
+          </div>
+          
+          <div class="resume-download">
+            <a class="btn btn--primary" href="#resume-pdf">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
+              </svg>
+              View Resume
+            </a>
+          </div>
+        </div>
       </div>
-      <p style="margin-top:.6rem"><a class="btn" href="#resume-pdf">Take me to the resume</a></p>
     </section>
 
     <!-- ===== Chronological (Timeline) ===== -->
@@ -86,16 +120,16 @@
             </article>
           </li>
 
-          <!-- Seadoo Tour Guide (Work) -->
+          <!-- Jetski Tour Guide (Work) -->
           <li class="tl-item" data-cat="work">
             <div class="tl-dot" aria-hidden="true"></div>
             <time class="tl-time">May 2025 – Aug 2025</time>
-            <article class="tl-card tl--image-left is-clickable" data-modal-target="#exp-seadoo-modal" data-title="Seadoo Tour Guide">
+            <article class="tl-card tl--image-left is-clickable" data-modal-target="#exp-jetski-modal" data-title="Jetski Tour Guide">
               <figure class="tl-media logo-shield"><img src="assets/VWA_logo.png" alt="VWA logo"></figure>
               <div class="tl-body">
-                <h2>Seadoo Tour Guide - Vancouver Water Adventures</h2>
+                <h2>Jetski Tour Guide - Vancouver Water Adventures</h2>
                 <p class="tl-kicker">Work Experience</p>
-                <p>Conducted Jetski Tours in Vancouver, taking guests into Howe Sound, providing an unforgettable experience for guests.</p>
+                <p>Conducted Jetski Tours in Vancouver, providing an unforgettable experience for guests.</p>
                 <ul class="tl-badges"><li>Safety-First Mindset</li><li>Customer Service</li><li>Leadership</li><li>Mechanical Troubleshooting</li></ul>
               </div>
             </article>
@@ -368,8 +402,8 @@
 
 <!-- ===== Modals (details for each experience) ===== -->
 
-<!-- Exp - Seadoo Tour Guide -->
-<div class="modal" id="exp-seadoo-modal" aria-hidden="true" aria-labelledby="exp-seadoo-title" role="dialog">
+<!-- Exp - Jetski Tour Guide -->
+<div class="modal" id="exp-jetski-modal" aria-hidden="true" aria-labelledby="exp-jetski-title" role="dialog">
   <div class="modal__backdrop" data-close-modal></div>
   <div class="modal__dialog" role="document">
     <div class="modal__hero">
@@ -377,18 +411,22 @@
     </div>
 
     <header class="modal__header">
-      <h3 id="exp-seadoo-title">Seadoo Tour Guide — Vancouver Water Adventures</h3>
+      <h3 id="exp-jetski-title">Jetski Tour Guide - Vancouver Water Adventures</h3>
       <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
     </header>
 
     <div class="modal__body">
       <div class="modal__text">
         <p>
-          Conducted Jetski Tours in Vancouver, taking guests into Howe Sound and delivering an unforgettable on-water experience.
+          Led guided Jetski tours of up to 21 riders through Vancouver’s Howe Sound, balancing safety with an unforgettable on-water experience.
         </p>
         <ul class="modal__bullets">
-          <li>Prioritized guest safety and overall experience on every tour.</li>
-          <li>Performed weekly maintenance and mechanical troubleshooting to ensure uptime during peak hours.</li>
+          <li>Maintained strong on-water awareness and hazard recognition, proactively managing risks in dynamic ocean conditions.</li>
+          <li>Directed and controlled large groups of high-energy guests, tailoring the pace and style of each tour to individual personalities.</li>
+          <li>Built strong rapport with guests, encouraging them throughout the tour and capturing photos and videos to preserve their memories</li>
+          <li>Performed routine and corrective maintenance on Jetskis, troubleshooting issues ranging from clogged impellers to low fluids and mechanical failures.</li>
+          <li>Managed dockside operations, including sending out Jetski, paddleboard, and kayak rentals, while providing comprehensive safety briefings.</li>
+          <li>Equipped guests with proper gear and clear instructions on equipment use, paddling techniques, and ocean safety for a confident, enjoyable outing.</li>
         </ul>
       </div>
 
@@ -555,15 +593,22 @@
         <img src="assets/miru_work.jpg" alt="Engineering work at Miru">
       </div>
       <header class="modal__header">
-        <h3 id="exp1-title">Mechanical Engineer — Miru Smart Technologies</h3>
+        <h3 id="exp1-title">Development Engineering Co-op - Miru Smart Technologies</h3>
         <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
       </header>
 
       <div class="modal__body">
         <div class="modal__text">
-          <p>ADD</p>
+          <p>
+            At Miru, a rapidly expanding start-up developing next-generation electrochromic windows, I worked on the <strong>Development Engineering</strong> team. Our team was responsible for executing engineering requests to facilitate R&D company wide. I delivered 8+ projects from consultation through to installation and maintenance, supporting the R&D team with tools and systems that accelerated product development.
+          </p>
+          <h4>Key Contributions:</h4>
           <ul class="modal__bullets">
-            <li>ADD</li>
+            <li>Executed diverse mechanical engineering projects, including custom glass inspection booths, testing equipment with precision heating systems, and spectrometry testing stations.</li>
+            <li>Designed and optimized mechanical systems in SolidWorks, managing revisions through SolidWorks PDM.</li>
+            <li>Handled end-to-end project responsibilities: BOM creation, hardware sourcing, SOP development, and maintenance planning.</li>
+            <li> Successfully managed an 8-month, $150,000 research grant to advance plasma heater curing technology—transforming an uncertain experiment into a validated process that consistently produced high-quality devices and proved feasibility beyond initial expectations.</li>
+            
           </ul>
         </div>
       </div>

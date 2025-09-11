@@ -796,6 +796,162 @@
    Portfolio/Resume Page
    ================================================== */
 
+/* Resume Header */
+.resume-intro {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  background: transparent;
+  margin-bottom: 2rem;
+}
+
+.resume-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+.resume-header-content h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    90deg,
+    var(--text),
+    color-mix(in oklab, var(--accent) 40%, var(--text))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.resume-subtitle {
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 50ch;
+  margin: 0;
+}
+
+.resume-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.view-controls h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.view-switch {
+  display: flex;
+  gap: 0.5rem;
+  background: color-mix(in oklab, var(--bg) 95%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  border-radius: 12px;
+  padding: 0.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.view-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.view-btn:hover {
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  color: var(--text);
+}
+
+.view-btn.is-active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.view-btn svg {
+  flex-shrink: 0;
+}
+
+.resume-download .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .resume-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .resume-actions {
+    align-items: center;
+  }
+
+  .view-switch {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .view-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .resume-subtitle {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-intro {
+    padding: 1.5rem 0;
+  }
+
+  .resume-header {
+    gap: 1rem;
+  }
+
+  .resume-actions {
+    gap: 1rem;
+  }
+
+  .view-switch {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .view-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Timeline view */
 .timeline-wrap {
   background: color-mix(in oklab, var(--bg-elev) 85%, transparent);
@@ -917,24 +1073,7 @@
   }
 }
 
-/* Type view */
-.view-switch {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0.6rem 0 1rem;
-}
-
-.view-switch .muted {
-  color: var(--muted);
-  font-weight: 600;
-  margin-right: 0.25rem;
-}
-
-.view-switch .is-active {
-  outline: 2px solid color-mix(in oklab, var(--accent) 35%, transparent);
-}
+/* Type view - Legacy styles removed, now handled by new resume header styles */
 
 .type-wrap {
   padding: 0.5rem 0 2rem;
