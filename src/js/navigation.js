@@ -37,4 +37,11 @@ export const initNavigation = () => {
     const a = e.target.closest('a');
     if (a) setState(false);
   });
+
+  // Close when clicking outside the navigation
+  document.addEventListener('click', (e) => {
+    if (open && !nav.contains(e.target) && !toggle.contains(e.target)) {
+      setState(false);
+    }
+  });
 };

@@ -53,7 +53,8 @@
           <p>
             In my free time, I like to chase curiosity wherever it leads. This page is my way of sharing those explorations - writing down opinions on the topics I dive into, while also giving myself a space to reflect.
           </p>
-          <p class="filter-hint"><b>Use the filters below to browse different topics in my posts.</b></p>
+          
+          <p class="disclaimer">* This page is a work in progress and will feature more posts soon.</p>
         </div>
         <div class="intro-image">
           <img src="assets/Research_page.png" alt="Felipe Diaz speaking or working" />
@@ -63,20 +64,62 @@
 
     <!-- Filters -->
     <section class="container">
-      <div class="filter-bar" role="region" aria-label="Post filters">
-        <div class="filter-row">
-            <div class="tag-controls" id="tagControls">
-            <button class="tag-btn" data-tag="Economy" aria-pressed="false">Economy</button>
-            <button class="tag-btn" data-tag="Energy" aria-pressed="false">Energy</button>
-            <button class="tag-btn" data-tag="Clean Tech" aria-pressed="false">Clean Tech</button>
-            <button class="tag-btn" data-tag="Geopolitics" aria-pressed="false">Geopolitics</button>
-            <button class="tag-btn" data-tag="Psychology" aria-pressed="false">Psychology</button>
-            <button class="tag-btn" data-tag="Self Growth" aria-pressed="false">Self Growth</button>
-            <button class="tag-btn" data-tag="Politics" aria-pressed="false">Politics</button>
-          </div>
-          <button class="btn btn--ghost clear-filters" id="clearFilters" hidden>Clear filters</button>
+      <div class="filter-section">
+        <div class="filter-header">
+          <h2 class="filter-title">Filter by Topic</h2>
+          <p class="filter-subtitle">Click on topics to filter posts</p>
         </div>
-        <div class="active-state"><span id="activeFilterText">Showing all posts</span></div>
+        
+        <div class="filter-bar" role="region" aria-label="Post filters">
+          <div class="tag-controls" id="tagControls">
+            <button class="tag-btn" data-tag="Economy" aria-pressed="false">
+              <span class="tag-icon">💰</span>
+              <span class="tag-text">Economy</span>
+            </button>
+            <button class="tag-btn" data-tag="Energy" aria-pressed="false">
+              <span class="tag-icon">⚡</span>
+              <span class="tag-text">Energy</span>
+            </button>
+            <button class="tag-btn" data-tag="Clean Tech" aria-pressed="false">
+              <span class="tag-icon">🌱</span>
+              <span class="tag-text">Clean Tech</span>
+            </button>
+            <button class="tag-btn" data-tag="Geopolitics" aria-pressed="false">
+              <span class="tag-icon">🌍</span>
+              <span class="tag-text">Geopolitics</span>
+            </button>
+            <button class="tag-btn" data-tag="Psychology" aria-pressed="false">
+              <span class="tag-icon">🧠</span>
+              <span class="tag-text">Psychology</span>
+            </button>
+            <button class="tag-btn" data-tag="Self Growth" aria-pressed="false">
+              <span class="tag-icon">📈</span>
+              <span class="tag-text">Self Growth</span>
+            </button>
+            <button class="tag-btn" data-tag="Politics" aria-pressed="false">
+              <span class="tag-icon">🏛️</span>
+              <span class="tag-text">Politics</span>
+            </button>
+          </div>
+          
+          <div class="filter-actions">
+            <button class="btn btn--ghost clear-filters" id="clearFilters" hidden>
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+              Clear filters
+            </button>
+          </div>
+        </div>
+        
+        <div class="filter-status">
+          <div class="status-indicator">
+            <svg class="status-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <span id="activeFilterText">Showing all posts</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -99,6 +142,7 @@
               <li>Energy</li><li>Clean Tech</li><li>Geopolitics</li>
             </ul>
           </div>
+          <span class="post-status-stamp status-not-published">Not Published</span>
         </article>
 
         <!-- 2) Technologies that will dictate the future -->
@@ -115,6 +159,7 @@
               <li>Clean Tech</li><li>Economy</li><li>Politics</li>
             </ul>
           </div>
+          <span class="post-status-stamp status-not-published">Not Published</span>
         </article>
 
         <!-- 3) USA vs. China -->
@@ -131,6 +176,7 @@
               <li>Geopolitics</li><li>Economy</li><li>Energy</li><li>Politics</li>
             </ul>
           </div>
+          <span class="post-status-stamp status-not-published">Not Published</span>
         </article>
 
         <!-- 4) Coal or Natural Gas? -->
@@ -147,6 +193,7 @@
               <li>Energy</li><li>Economy</li><li>Clean Tech</li><li>Politics</li>
             </ul>
           </div>
+          <span class="post-status-stamp status-not-published">Not Published</span>
         </article>
 
         <!-- 5) How lobbying threats Democracy -->
@@ -163,6 +210,7 @@
               <li>Politics</li><li>Economy</li><li>Geopolitics</li><li>Psychology</li>
             </ul>
           </div>
+          <span class="post-status-stamp status-not-published">Not Published</span>
         </article>
 
         <!-- 6) Ultra Capitalism -->
@@ -179,8 +227,17 @@
               <li>Economy</li><li>Self Growth</li><li>Psychology</li><li>Politics</li>
             </ul>
           </div>
+          <span class="post-status-stamp status-not-published">Not Published</span>
         </article>
 
+      </div>
+      
+      <!-- No Results Message -->
+      <div class="no-results-message" id="noResultsMessage" hidden>
+        <div class="no-results-content">
+          <h3>No posts match your current filters</h3>
+          <p>Try adjusting your filter selection or <button class="btn btn--ghost clear-filters-inline" id="clearFiltersInline">clear all filters</button> to see all posts.</p>
+        </div>
       </div>
     </section>
   </main>

@@ -45,6 +45,11 @@
   animation: modalIn 0.18s ease-out;
 }
 
+/* Large dialog for expanded content */
+.modal__dialog--large {
+  width: min(95%, 1200px);
+}
+
 @keyframes modalIn {
   from {
     transform: translateY(8px);
@@ -152,6 +157,21 @@
   display: block;
   width: 100%;
   height: auto;
+  object-fit: contain;
+}
+
+/* Full-size media for expanded content */
+.modal__media--full {
+  float: none;
+  width: 100%;
+  margin: 0;
+  max-width: none;
+}
+
+.modal__media--full img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
   object-fit: contain;
 }
 

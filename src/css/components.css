@@ -252,3 +252,51 @@
     font-size: 0.8rem;
   }
 }
+
+/* ==================================================
+   No Results Message
+   ================================================== */
+.no-results-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin: 2rem 0;
+}
+
+.no-results-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.no-results-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1rem 0;
+}
+
+.no-results-content p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.clear-filters-inline {
+  margin-left: 0.5rem;
+  font-size: inherit;
+  padding: 0;
+  vertical-align: baseline;
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.clear-filters-inline:hover {
+  color: var(--accent-2);
+  text-decoration-color: var(--accent-2);
+}

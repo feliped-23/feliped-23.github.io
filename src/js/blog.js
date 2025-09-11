@@ -13,7 +13,9 @@ export const initBlogFilters = () => {
   const tagUi  = document.getElementById("tagControls");
   const clear  = document.getElementById("clearFilters");
   const status = document.getElementById("activeFilterText");
-  if (!grid || !tagUi || !clear || !status) return;
+  const noResults = document.getElementById("noResultsMessage");
+  const clearInline = document.getElementById("clearFiltersInline");
+  if (!grid || !tagUi || !clear || !status || !noResults || !clearInline) return;
 
   const cards = Array.from(grid.querySelectorAll(".post-card"));
   const selected = new Set();
@@ -33,11 +35,17 @@ export const initBlogFilters = () => {
   };
 
   const applyFilter = () => {
+    let visibleCount = 0;
     cards.forEach(card => {
       const tags = cardTags(card);
       const show = Array.from(selected).every(t => tags.includes(t));
       card.hidden = !show;
+      if (show) visibleCount++;
     });
+    
+    // Show/hide no results message
+    noResults.hidden = visibleCount > 0;
+    
     clear.hidden = selected.size === 0;
     updateStatusText();
   };
@@ -62,14 +70,17 @@ export const initBlogFilters = () => {
   });
 
   // Clear filters
-  clear.addEventListener("click", () => {
+  const clearAllFilters = () => {
     selected.clear();
     tagUi.querySelectorAll(".tag-btn").forEach(b => {
       b.classList.remove("is-active");
       b.setAttribute("aria-pressed", "false");
     });
     applyFilter();
-  });
+  };
+  
+  clear.addEventListener("click", clearAllFilters);
+  clearInline.addEventListener("click", clearAllFilters);
 
   // Make whole card clickable
   const goToPost = (card) => {

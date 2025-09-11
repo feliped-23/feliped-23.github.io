@@ -13,6 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/css/main.css" />
+  
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
   <!-- Header (unchanged structure) -->
@@ -325,11 +328,27 @@
     <!-- ===== Resume (PDF) stays at bottom ===== -->
     <section id="resume-pdf" class="container resume-pdf">
       <h2 class="reveal">Resume (PDF)</h2>
-      <div class="pdf-embed reveal" role="region" aria-label="Embedded resume PDF">
+      
+      <!-- Desktop PDF Viewer (iframe) -->
+      <div class="pdf-embed pdf-desktop reveal" role="region" aria-label="Embedded resume PDF">
         <iframe title="Resume PDF" src="assets/FelipeDiaz_Resume.pdf" loading="lazy"></iframe>
       </div>
+      
+      <!-- Mobile PDF Viewer (PDF.js) -->
+      <div class="pdf-viewer-container pdf-mobile reveal" role="region" aria-label="Resume PDF Viewer" style="display: none;">
+        <div class="pdf-controls">
+          <button id="prev-page" class="pdf-btn" disabled>Previous</button>
+          <span id="page-info">Page <span id="current-page">1</span> of <span id="total-pages">2</span></span>
+          <button id="next-page" class="pdf-btn">Next</button>
+        </div>
+        <div class="pdf-canvas-container">
+          <canvas id="pdf-canvas"></canvas>
+        </div>
+        <div class="pdf-loading" id="pdf-loading">Loading PDF...</div>
+      </div>
+      
       <p class="pdf-fallback">
-        Can’t see the PDF? <a href="assets/FelipeDiaz_Resume.pdfarget="_blank" rel="noopener">Open it in a new tab</a>.
+        Can't see the PDF? <a href="assets/FelipeDiaz_Resume.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
       </p>
     </section>
   </main>
@@ -395,7 +414,7 @@
     <div class="modal__backdrop" data-close-modal></div>
     <div class="modal__dialog" role="document">
       <div class="modal__hero">
-        <img src="assets/checkmate_daid_poster.jpg" alt="Checkmate poster on display">
+        <img src="assets/checkmate_team.jpg" alt="CheckMATE team photo">
       </div>
       <header class="modal__header">
         <h3 id="exp-checkmate-title">Capstone Project — CheckMATE</h3>
@@ -404,14 +423,64 @@
 
       <div class="modal__body">
         <div class="modal__text">
-          <p>A detailed description about the project will be added soon.</p>
+          <h4>Project Summary</h4>
+          <p>
+            CheckMATE was designed to bridge the gap between online and physical chess, creating an automatically articulating chessboard that preserves the look and feel of a traditional set. The system integrates <strong>mechanical, electrical, and software subsystems</strong> into a seamless playing experience.
+          </p>
           <ul class="modal__bullets">
-            <li>Voted best IGEN Capstone Project</li>
+            <li>A <strong>sensing layer</strong> detects piece positions using custom hall-effect sensors and NFC tags.</li>
+            <li>An <strong>H-Bot gantry system</strong> moves game pieces across the board at high speed (up to 450 mm/s) with smooth accelerations.</li>
+            <li>A <strong>20 kg-force electromagnet</strong> engages with embedded neodymium magnets in the chess pieces, allowing reliable capture and movement.</li>
+            <li>A <strong>Raspberry Pi with touchscreen interface</strong> runs the chess engine, displays legal moves, and manages user interaction.</li>
+            <li>Custom <strong>electronics, power distribution, and firmware</strong> ensure efficient operation while maintaining safety and minimal heat buildup.</li>
           </ul>
+          <p>
+            Together, these elements create a board that can autonomously execute moves, handle special chess maneuvers like castling and knight jumps, and support both local and online gameplay.
+          </p>
+
+          <h4>My Contributions</h4>
+          <p>
+            My role focused on ensuring strong and reliable magnetic coupling and smooth piece movement, as well as contributing to the overall mechanical and control systems:
+          </p>
+          <ul class="modal__bullets">
+            <li><strong>Electromagnet Selection & Testing</strong>
+              <ul>
+                <li>Evaluated and tested electromagnets of different sizes and strengths.</li>
+                <li>Experimented with various permanent magnets embedded in the pieces to maximize coupling force while minimizing interference between pieces.</li>
+                <li>Optimized the board thickness to balance magnetic performance with a low-friction playing surface.</li>
+              </ul>
+            </li>
+            <li><strong>Surface and Board Design</strong>
+              <ul>
+                <li>Designed and fabricated the playing surface with minimal width and friction to ensure reliable sliding of pieces.</li>
+                <li>Integrated laser-etched markings and epoxy finishing for durability and precision.</li>
+              </ul>
+            </li>
+            <li><strong>Mechanical Gantry & Frame Construction</strong>
+              <ul>
+                <li>Played a key role in the H-Bot gantry system design and build, implementing early-stage stepper motor control via Universal G-code Sender on the prototype.</li>
+                <li>Led the construction of the frame, case, and housing, ensuring a rigid, precise, and accessible structure for the system.</li>
+                <li>Fabricated chess pieces and mechanical components through additive manufacturing (3D printing).</li>
+              </ul>
+            </li>
+            <li><strong>Software & Control</strong>
+              <ul>
+                <li>Helped implement GRBL as the G-code interpreter to interface motion control with the chess logic.</li>
+                <li>Contributed to coding the gantry movement logic, including handling special moves and reorganizing the board during setup or captures.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="modal__media">
+          <img src="assets/checkmate_me.jpg" alt="CheckMATE me at DAID">
         </div>
         <div class="modal__media">
           <img src="assets/checkmate_award.jpg" alt="CheckMATE award photo">
         </div>
+        <div class="modal__media">
+          <img src="assets/checkmate_daid_poster.jpg" alt="CheckMATE Poster on DAID" class="clickable-poster" data-modal-target="#poster-expanded-modal" style="cursor: pointer;">
+        </div>
+        
       </div>
 
       <footer class="modal__footer">
@@ -673,6 +742,27 @@
             <li></li>
             <li></li>
           </ul>
+        </div>
+      </div>
+
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Poster Expanded Modal -->
+  <div class="modal" id="poster-expanded-modal" aria-hidden="true" aria-labelledby="poster-expanded-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog modal__dialog--large" role="document">
+      <header class="modal__header">
+        <h3 id="poster-expanded-title">CheckMATE Project Poster</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+
+      <div class="modal__body">
+        <div class="modal__media modal__media--full">
+          <img src="assets/checkmate_daid_poster.jpg" alt="CheckMATE Project Poster - Full Size">
         </div>
       </div>
 
