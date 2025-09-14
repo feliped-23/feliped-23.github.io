@@ -71,7 +71,7 @@ export const initPortfolioViews = () => {
   };
 
   btns.forEach(b => b.addEventListener('click', () => setView(b.getAttribute('data-view'))));
-  setView('chrono'); // default
+  setView('type'); // default
   
   // Initialize PDF viewers (desktop iframe, mobile PDF.js)
   initPDFViewers();
