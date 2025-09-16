@@ -269,6 +269,33 @@
     </section>
   </main>
 
+  <!-- Blog Post Placeholder Popup -->
+  <div class="modal blog-placeholder-modal" id="blogPlaceholderModal" aria-hidden="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__dialog blog-placeholder-dialog">
+      <div class="blog-placeholder-content">
+        <div class="blog-placeholder-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3 class="blog-placeholder-title">Coming Soon!</h3>
+        <p class="blog-placeholder-message">
+          This blog post is currently in development and will be published on 
+          <span class="blog-placeholder-date" id="placeholderDate">[Date]</span>.
+        </p>
+        <p class="blog-placeholder-subtitle">
+          I'm working hard to bring you quality content. Check back soon!
+        </p>
+        <div class="blog-placeholder-actions">
+          <button class="btn btn--primary" data-close-modal>Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>

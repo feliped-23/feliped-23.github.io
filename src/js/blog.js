@@ -85,8 +85,69 @@ export const initBlogFilters = () => {
   // Make whole card clickable
   const goToPost = (card) => {
     const href = card.getAttribute("data-href") || "";
-    if (href) window.location.href = href;
+    if (href) {
+      window.location.href = href;
+    } else {
+      // Show placeholder popup for unpublished posts
+      showBlogPlaceholder(card);
+    }
   };
+
+  // Show blog placeholder popup
+  const showBlogPlaceholder = (card) => {
+    const modal = document.getElementById("blogPlaceholderModal");
+    const dateElement = document.getElementById("placeholderDate");
+    const postDate = card.querySelector(".post-date");
+    
+    if (modal && dateElement && postDate) {
+      // Extract and format the date
+      const dateText = postDate.textContent.trim();
+      dateElement.textContent = dateText;
+      
+      // Show the modal using existing modal functionality
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      
+      // Focus the first button for accessibility
+      const firstButton = modal.querySelector("button");
+      if (firstButton) firstButton.focus();
+    }
+  };
+
+  // Close blog placeholder popup
+  const closeBlogPlaceholder = () => {
+    const modal = document.getElementById("blogPlaceholderModal");
+    if (modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+  };
+
+  // Add event listeners for closing the blog placeholder modal
+  const blogModal = document.getElementById("blogPlaceholderModal");
+  if (blogModal) {
+    // Close on backdrop click
+    const backdrop = blogModal.querySelector(".modal__backdrop");
+    if (backdrop) {
+      backdrop.addEventListener("click", closeBlogPlaceholder);
+    }
+
+    // Close on ESC key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && blogModal.classList.contains("open")) {
+        closeBlogPlaceholder();
+      }
+    });
+
+    // Close on close button clicks
+    blogModal.addEventListener("click", (e) => {
+      if (e.target.matches("[data-close-modal]")) {
+        closeBlogPlaceholder();
+      }
+    });
+  }
   
   cards.forEach(card => {
     card.addEventListener("click", (e) => {

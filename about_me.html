@@ -785,6 +785,31 @@
 
   </main>
 
+  <!-- Reading List Placeholder Popup -->
+  <div class="modal reading-placeholder-modal" id="readingPlaceholderModal" aria-hidden="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__dialog reading-placeholder-dialog">
+      <div class="reading-placeholder-content">
+        <div class="reading-placeholder-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <h3 class="reading-placeholder-title">Coming Soon!</h3>
+        <p class="reading-placeholder-message">
+          My books and podcasts collection page is currently in development.
+        </p>
+        <p class="reading-placeholder-subtitle">
+          I'm working hard to bring you quality content. Check back soon!
+        </p>
+        <div class="reading-placeholder-actions">
+          <button class="btn btn--primary" data-close-modal>Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>

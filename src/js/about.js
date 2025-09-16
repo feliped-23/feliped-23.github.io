@@ -20,6 +20,7 @@ export function initAboutPageFeatures() {
   initImageLazyLoading();
   initScrollProgress();
   initBooksPanel();
+  initReadingPlaceholderPopup();
 }
 
 /**
@@ -275,10 +276,8 @@ function initBooksPanel() {
 
   // Handle click
   booksPanel.addEventListener('click', () => {
-    // Future: Navigate to books/podcasts page
-    console.log('Books panel clicked - navigate to collection page');
-    // For now, just show an alert
-    alert('This will soon navigate to my books and podcasts collection page!');
+    // Show reading list placeholder popup
+    showReadingPlaceholder();
   });
 
   // Handle keyboard interaction
@@ -300,4 +299,60 @@ function initBooksPanel() {
       cover.style.transform = 'scale(1.05)';
     });
   });
+}
+
+/**
+ * Show reading list placeholder popup
+ */
+function showReadingPlaceholder() {
+  const modal = document.getElementById("readingPlaceholderModal");
+  
+  if (modal) {
+    // Show the modal using existing modal functionality
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+    
+    // Focus the first button for accessibility
+    const firstButton = modal.querySelector("button");
+    if (firstButton) firstButton.focus();
+  }
+}
+
+/**
+ * Close reading list placeholder popup
+ */
+function closeReadingPlaceholder() {
+  const modal = document.getElementById("readingPlaceholderModal");
+  if (modal) {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+  }
+}
+
+// Initialize reading list popup functionality
+function initReadingPlaceholderPopup() {
+  const readingModal = document.getElementById("readingPlaceholderModal");
+  if (readingModal) {
+    // Close on backdrop click
+    const backdrop = readingModal.querySelector(".modal__backdrop");
+    if (backdrop) {
+      backdrop.addEventListener("click", closeReadingPlaceholder);
+    }
+
+    // Close on ESC key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && readingModal.classList.contains("open")) {
+        closeReadingPlaceholder();
+      }
+    });
+
+    // Close on close button clicks
+    readingModal.addEventListener("click", (e) => {
+      if (e.target.matches("[data-close-modal]")) {
+        closeReadingPlaceholder();
+      }
+    });
+  }
 }
