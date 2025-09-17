@@ -60,9 +60,17 @@ class LifeTimeline {
     this.events = this.container.querySelectorAll('.event-item');
     
     this.events.forEach(event => {
-      event.addEventListener('click', (e) => this.handleEventClick(e.currentTarget));
+      // Handle both click and touch events for better mobile support
+      const eventClickHandler = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.handleEventClick(e.currentTarget);
+      };
       
-      // Add hover effects for better UX
+      event.addEventListener('click', eventClickHandler);
+      event.addEventListener('touchend', eventClickHandler);
+      
+      // Add hover effects for better UX (desktop only)
       event.addEventListener('mouseenter', () => this.highlightEvent(event));
       event.addEventListener('mouseleave', () => this.unhighlightEvent(event));
     });
@@ -71,7 +79,14 @@ class LifeTimeline {
     this.locations.forEach(location => {
       const flag = location.querySelector('.location-flag');
       if (flag) {
-        flag.addEventListener('click', () => this.focusOnLocation(location));
+        const locationClickHandler = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.focusOnLocation(location);
+        };
+        
+        flag.addEventListener('click', locationClickHandler);
+        flag.addEventListener('touchend', locationClickHandler);
       }
     });
   }
@@ -259,14 +274,37 @@ class LifeTimeline {
     
     modal.innerHTML = modalContent;
     
-    // Add event listeners
+    // Add event listeners with proper mobile touch handling
     const closeBtn = modal.querySelector('.modal-close');
-    closeBtn.addEventListener('click', () => this.closeModal(modal));
+    const modalContentEl = modal.querySelector('.modal-content');
     
-    modal.addEventListener('click', (e) => {
+    // Close button - handle both click and touch events
+    const closeModalHandler = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.closeModal(modal);
+    };
+    
+    closeBtn.addEventListener('click', closeModalHandler);
+    closeBtn.addEventListener('touchend', closeModalHandler);
+    
+    // Backdrop click to close - prevent event bubbling from modal content
+    const backdropClickHandler = (e) => {
       if (e.target === modal) {
         this.closeModal(modal);
       }
+    };
+    
+    modal.addEventListener('click', backdropClickHandler);
+    modal.addEventListener('touchend', backdropClickHandler);
+    
+    // Prevent modal content clicks from closing the modal
+    modalContentEl.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    modalContentEl.addEventListener('touchend', (e) => {
+      e.stopPropagation();
     });
     
     // Keyboard support
@@ -513,21 +551,32 @@ const modalStyles = `
   .modal-close {
     background: none;
     border: none;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     cursor: pointer;
     color: var(--muted);
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    position: relative;
   }
   
-  .modal-close:hover {
+  .modal-close:hover,
+  .modal-close:active {
     background: var(--bg-elev);
     color: var(--text);
+    transform: scale(1.05);
+  }
+  
+  .modal-close:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
   
   .modal-body {
@@ -569,6 +618,76 @@ const modalStyles = `
     50% { 
       transform: scale(1.1); 
       box-shadow: 0 12px 35px rgba(180, 113, 73, 0.4);
+    }
+  }
+  
+  /* Mobile-specific modal improvements */
+  @media (max-width: 768px) {
+    .life-event-modal {
+      padding: 1rem;
+    }
+    
+    .modal-content {
+      max-width: 100%;
+      max-height: 90vh;
+      margin: 0;
+      border-radius: var(--radius);
+    }
+    
+    .modal-header {
+      padding: 1rem 1rem 0;
+      margin-bottom: 1rem;
+    }
+    
+    .modal-header h3 {
+      font-size: 1.2rem;
+    }
+    
+    .modal-close {
+      width: 40px;
+      height: 40px;
+      font-size: 1.6rem;
+    }
+    
+    .modal-body {
+      padding: 0 1rem 1rem;
+    }
+    
+    .modal-image {
+      max-height: 250px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .life-event-modal {
+      padding: 0.5rem;
+    }
+    
+    .modal-content {
+      max-height: 95vh;
+    }
+    
+    .modal-header {
+      padding: 0.75rem 0.75rem 0;
+      margin-bottom: 0.75rem;
+    }
+    
+    .modal-header h3 {
+      font-size: 1.1rem;
+    }
+    
+    .modal-close {
+      width: 42px;
+      height: 42px;
+      font-size: 1.7rem;
+    }
+    
+    .modal-body {
+      padding: 0 0.75rem 0.75rem;
+    }
+    
+    .modal-image {
+      max-height: 200px;
     }
   }
 `;
