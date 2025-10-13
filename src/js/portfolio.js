@@ -32,6 +32,18 @@ export const initPortfolioViews = () => {
     const clone = card.cloneNode(true);
     // Remove hover-only timeline affordances; keep clickability if modal exists
     clone.classList.remove('tl--image-left','tl--image-right');
+    
+    // Grab the time element and insert it into the card after h2
+    const timeEl = item.querySelector('.tl-time');
+    if (timeEl) {
+      const timeClone = timeEl.cloneNode(true);
+      timeClone.classList.add('tl-time--card'); // Add modifier class for card-specific styling
+      const h2 = clone.querySelector('h2');
+      if (h2 && h2.parentNode) {
+        h2.parentNode.insertBefore(timeClone, h2.nextSibling);
+      }
+    }
+    
     groups[cat].appendChild(clone);
   });
 
@@ -142,7 +154,7 @@ const initPDFViewer = () => {
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
   // Load the PDF
-  const pdfUrl = 'assets/FelipeDiaz_Resume.pdf';
+  const pdfUrl = 'assets/resume/FelipeDiaz_Resume.pdf';
   
   pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
     pdfDoc = pdfDoc_;

@@ -1131,9 +1131,17 @@
   order: -1;
 }
 
+.type-grid .tl-media {
+  height: 120px; /* Fixed height for consistent spacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem; /* Consistent spacing below image container */
+}
+
 .type-grid .tl-media img {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
   object-fit: contain;
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -1141,10 +1149,29 @@
 
 /* Make experience titles smaller in type view */
 .type-grid .tl-body h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 800;
   line-height: 1.3;
-  margin: 0.2rem 0 0.3rem;
+  margin: 0.3rem 0 0.5rem;
+  color: var(--text);
+}
+
+/* Style time element when inside cards */
+.type-grid .tl-time--card {
+  display: block;
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: color-mix(in oklab, var(--accent) 85%, var(--text));
+}
+
+/* Reduce kicker prominence in type view for better hierarchy */
+.type-grid .tl-kicker {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 /* PDF embed */
