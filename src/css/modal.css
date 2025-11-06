@@ -532,3 +532,164 @@
     font-size: 0.85rem;
   }
 }
+
+/* ===========================
+   PROJECT ACTION BUTTONS
+   =========================== */
+
+.project-buttons {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  clear: both;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.project-btn svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project-btn span {
+  position: relative;
+}
+
+/* Poster Button */
+.project-btn--poster {
+  border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent) 12%, var(--bg-elev)),
+    var(--bg-elev)
+  );
+}
+
+.project-btn--poster:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent) 18%, var(--bg-elev)),
+    var(--bg-elev)
+  );
+}
+
+.project-btn--poster:hover svg {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Report Button */
+.project-btn--report {
+  border-color: color-mix(in oklab, var(--accent-2) 30%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent-2) 10%, var(--bg-elev)),
+    var(--bg-elev)
+  );
+}
+
+.project-btn--report:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent-2) 16%, var(--bg-elev)),
+    var(--bg-elev)
+  );
+}
+
+.project-btn--report:hover svg {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Video Button */
+.project-btn--video {
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent) 14%, var(--bg-elev)),
+    var(--bg-elev)
+  );
+}
+
+.project-btn--video:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--accent) 20%, var(--bg-elev)),
+    var(--bg-elev)
+  );
+}
+
+.project-btn--video:hover svg {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.project-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile adjustments for project buttons */
+@media (max-width: 768px) {
+  .project-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .project-btn {
+    width: 100%;
+    min-width: unset;
+    padding: 0.9rem 1.3rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-buttons {
+    padding: 0.9rem;
+    margin: 1.25rem 0;
+  }
+
+  .project-btn {
+    padding: 0.85rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .project-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
