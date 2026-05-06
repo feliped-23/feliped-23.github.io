@@ -129,6 +129,23 @@
             </article>
           </li>
 
+          <!-- Ankle Box (Project) -->
+          <li class="tl-item" data-cat="projects">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-time">Nov 2025 – Present</time>
+            <article class="tl-card tl--image-right is-clickable" data-modal-target="#exp-ankle-box-modal" data-title="Ankle Box">
+              <div class="tl-body">
+                <h2>Ankle Box</h2>
+                <p class="tl-kicker">Personal Design Project</p>
+                <p>Engineering and building a desk-mounted footrest with 2-axis, bidirectional resistance for ankle rehabilitation and strengthening — featuring a custom gearing and clutch assembly driven by a single pneumatic actuator.</p>
+                <ul class="tl-badges"><li>OnShape</li><li>FDM 3D Printing</li><li>DFM</li><li>GD&amp;T</li><li>Pneumatics</li></ul>
+              </div>
+              <figure class="tl-media">
+                <img src="assets/anklebox/AnkleBOX.png" alt="Ankle Box CAD render">
+              </figure>
+            </article>
+          </li>
+
           <!-- Jetski Tour Guide (Work) -->
           <li class="tl-item" data-cat="work">
             <div class="tl-dot" aria-hidden="true"></div>
@@ -1401,6 +1418,70 @@
       <div class="modal__body">
         <div class="modal__media modal__media--full">
           <img src="assets/resume/CSE-2023-Promo.png" alt="CSE 2023 Conference Promotional Image">
+        </div>
+      </div>
+
+      <footer class="modal__footer">
+        <button class="btn btn--ghost" data-close-modal>Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Exp - Ankle Box -->
+  <div class="modal" id="exp-ankle-box-modal" aria-hidden="true" aria-labelledby="exp-ankle-box-title" role="dialog">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <div class="modal__hero">
+        <img src="assets/anklebox/AnkleBOX.png" alt="Ankle Box CAD render">
+      </div>
+      <header class="modal__header">
+        <h3 id="exp-ankle-box-title">Ankle Box — Personal Design Project</h3>
+        <button class="modal__close" aria-label="Close dialog" data-close-modal>&times;</button>
+      </header>
+
+      <div class="modal__body">
+        <div class="modal__text">
+          <h4>Project Summary</h4>
+          <p>Engineering a desk-mounted footrest that provides 2-axis, bidirectional resistance for ankle strength and rehabilitation training across three independently controlled surfaces — translating a real in-office user need into a fully mechanical, tool-free product.</p>
+          <ul class="modal__bullets">
+            <li><strong>Resistance System:</strong> Designing a variable-resistance pneumatic subsystem with a custom gearing and clutching assembly that selectively distributes force to each surface, enabling tunable resistance from a single actuator.</li>
+            <li><strong>Design for Manufacture:</strong> Optimizing the mechanical architecture for additive manufacturing using DFM principles, enabling tool-free assembly by non-technical end users.</li>
+            <li><strong>CAD &amp; New Tools:</strong> Mastering OnShape from scratch to model the full assembly, demonstrating the ability to rapidly adopt and become productive in new design tools.</li>
+            <li><strong>Rapid Prototyping:</strong> Conducting iterative prototyping and stress testing on critical components — gearing assembly, rotary actuator, and shaft coupling — to validate strength and durability under expected loading.</li>
+            <li><strong>GD&amp;T &amp; Tolerancing:</strong> Applying GD&amp;T to engineer press-fit and tight-coupling interfaces throughout — specifying tolerances on shaft couplings, clutch engagement bores, and bearing seats — accounting for FDM layer orientation, material shrinkage, and printer variability to achieve reliable non-fastened fits.</li>
+            <li><strong>Iterative Refinement:</strong> Running multiple printed iterations to refine clutch engagement feel, resistance response, and assembly tolerances, balancing tight manufacturing constraints with end-user ergonomics.</li>
+          </ul>
+        </div>
+
+        <div class="gallery-section">
+          <h3 class="gallery-title">Design &amp; Prototyping</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <div class="gallery-image-container">
+                <img src="assets/anklebox/csketch anklebox.jpeg" alt="Ankle Box concept sketch" class="gallery-image">
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-image-container">
+                <img src="assets/anklebox/CAD gearing system.png" alt="CAD model of gearing system" class="gallery-image">
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-image-container">
+                <img src="assets/anklebox/Gearing system calculations.jpeg" alt="Gearing system engineering calculations" class="gallery-image">
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-image-container">
+                <img src="assets/anklebox/side swivel.jpeg" alt="Side swivel mechanism detail" class="gallery-image">
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-image-container">
+                <img src="assets/anklebox/side gears.jpeg" alt="Side gears detail" class="gallery-image">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
