@@ -1,170 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Personal website of Felipe Diaz — portfolio, research topics, and contact." />
-  <title>Home — Felipe Diaz</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/icon.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="src/css/main.css" />
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TT42RFTT4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2TT42RFTT4');
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felipe Diaz - Portfolio</title>
+  <meta name="description" content="Portfolio of Felipe Diaz, specializing in high-end UI/UX and motion design.">
+  <link rel="stylesheet" href="src/css/main.css">
+  <link rel="icon" href="assets/images/icon.png">
 </head>
-
 <body>
-    <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand" aria-label="Home">
-        <img src="assets/icon.svg" class="brand-icon" alt="" />
-        <span class="brand-text">Felipe Diaz</span>
-      </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Toggle navigation</span>
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-
-      <nav id="site-nav" class="site-nav">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="resume.html">Portfolio</a></li>
-          <li><a href="blog.html">Research</a></li>
-          <li><a href="about_me.html">About</a></li>
-          <li><a href="contact.html" class="btn btn--small">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- Sticky Coinfusion Header -->
+  <header class="site-header">
+    <nav>
+      <!-- Hick's Law: Exactly 3 items in the primary list -->
+      <ul id="site-nav">
+        <li class="nav-logo">
+          <a href="#" class="nav-logo__link" aria-label="Back to top">
+            <img src="assets/images/favicon.ico" alt="FD" class="nav-logo__img">
+          </a>
+        </li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+    </nav>
   </header>
-    
 
   <main>
-    <!-- Hero -->
-    <section class="hero container">
-      <div class="hero__content">
-        <h1 class="reveal">Felipe Diaz<br><span class="accent">Integrated Engineer & Futurist</span></h1>
-        <p class="lead reveal">
-          I'm a driven engineer with a passion for clean technology, sustainable energy, and innovative problem-solving. 
-          I combine hands-on design experience, unwavering curiosity, and a global perspective to deliver impactful, future-focused engineering and strategy. 
-        </p>
-        <div class="hero__cta reveal">
-          <a href="resume.html" class="btn">Professional Portfolio</a>
-          <a href="blog.html" class="btn btn--ghost">Research & Writing</a>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+      <div class="hero__left reveal">
+        <p class="hero__eyebrow">Felipe Diaz Vargas</p>
+        <h1><span class="typewriter"></span></h1>
+        <p class="lead">Engineer and builder at the intersection of hardware, climate, and intelligent systems.</p>
+        <div class="hero__cta">
+          <a href="#portfolio" class="btn">Browse My Work</a>
+          <a href="#about" class="btn btn--ghost">Get to Know Me</a>
         </div>
-        
       </div>
-
-      <div class="hero__image reveal">
-        <!-- Replace with your photo file later -->
-        <img src="assets/headshot_felipe2.jpg" alt="Portrait of Felipe Diaz" />
+      <div class="hero__image-col">
+        <div class="hero__glow"></div>
+        <img class="hero__photo" src="assets/images/headshot_felipe1.jpg" alt="Felipe Diaz Vargas">
       </div>
     </section>
 
-    <!-- Full-width Section Panels -->
-    <section id="sections" class="panels container">
-      <!-- Portfolio -->
-      <article class="section-panel reveal">
-        <div class="panel-body">
-          <div class="panel-meta"><span class="pill">Portfolio</span></div>
-          <h2>Professional Portfolio</h2>
-          <p>
-            My professional and academic experience, documented. 
-          </p>
-          <a class="card-link" href="resume.html">
-            View portfolio
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </a>
-        </div>
-        <div class="panel-image" aria-hidden="true">
-          <img src="assets/checkmate.jpg" alt="" />
-        </div>
-      </article>
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="alt-section">
+      <div class="section-header reveal">
+        <h2>Significant Experiences</h2>
+        <p class="lead" style="margin-bottom:0;">
+          <span class="hint--desktop">Hover to explore.</span>
+          <span class="hint--mobile">Swipe to explore.</span>
+        </p>
+      </div>
 
-      <!-- Research -->
-      <article class="section-panel reveal">
-        <div class="panel-body">
-          <div class="panel-meta"><span class="pill">Research</span></div>
-          <h2>Research & Writing</h2>
-          <p>
-            Where problem-solving meets curiosity; my reflections and explorations in writing. Covering topics from clean tech to psychology.
-          </p>
-          <a class="card-link" href="blog.html">
-            Read posts
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </a>
-        </div>
-        <div class="panel-image" aria-hidden="true">
-          <img src="assets/ITER-Fusion-Reactor.gif" alt="" />
-        </div>
-      </article>
+      <div class="gallery-strip reveal">
 
-      <!-- About -->
-      <article class="section-panel reveal">
-        <div class="panel-body">
-          <div class="panel-meta"><span class="pill">About</span></div>
-          <h2>About Me</h2>
-          <p>
-            An overview of me: my unique upbringing, passions, and hobbies.
-          </p>
-          <a class="card-link" href="about_me.html">
-            Learn more
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </a>
-        </div>
-        <div class="panel-image" aria-hidden="true">
-          <img src="assets/skydiving.jpg" alt="skydiving" />
-        </div>
-        
-      </article>
+        <!-- 1. UBC -->
+        <a href="resume.html#exp-ubc-modal" class="gallery-panel" aria-label="UBC Integrated Engineering">
+          <img class="gallery-panel__img" src="content/Professional/ubc/Grad_headshot.JPG" alt="UBC Engineering" style="object-position: center 20%">
+          <div class="gallery-panel__overlay"></div>
+        </a>
 
-      <!-- Contact -->
-      <article class="section-panel reveal">
-        <div class="panel-body">
-          <div class="panel-meta"><span class="pill">Contact</span></div>
-          <h2>Get In Touch</h2>
-          <p>
-            Want to collaborate or have a question? Reach me via email or the contact form.
-          </p>
-          <a class="card-link" href="contact.html">
-            Contact me
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <!-- 2. Miru -->
+        <a href="resume.html#exp-miru-modal" class="gallery-panel" aria-label="Miru Smart Technologies">
+          <img class="gallery-panel__img" src="content/Professional/miru/miru_curing.jpg" alt="Plasma curing research at Miru Smart Technologies" style="object-position: 100% center">
+          <div class="gallery-panel__overlay"></div>
+        </a>
+
+        <!-- 3. Ledcor -->
+        <a href="resume.html#exp-ledcor-modal" class="gallery-panel" aria-label="Ledcor — Trans Mountain Expansion">
+          <img class="gallery-panel__img" src="content/Professional/ledcor/Ledcor - Burnaby Terminal.webp" alt="Burnaby Terminal — Trans Mountain Expansion Project">
+          <div class="gallery-panel__overlay"></div>
+        </a>
+
+        <!-- 4. CheckMATE -->
+        <a href="resume.html#exp-checkmate-modal" class="gallery-panel" aria-label="CheckMATE — Autonomous Robotic Chessboard">
+          <img class="gallery-panel__img" src="content/Professional/checkmate/checkmate_me.jpg" alt="Felipe with the CheckMATE autonomous chessboard at DAID" style="object-position: center 80%">
+          <div class="gallery-panel__overlay"></div>
+        </a>
+
+        <!-- 5. Ankle-Box -->
+        <a href="resume.html#exp-ankle-box-modal" class="gallery-panel" aria-label="Ankle Box — Variable Resistance Footrest">
+          <img class="gallery-panel__img" src="content/Professional/ankle-box/AnkleBOX.png" alt="Ankle Box variable resistance desk footrest render">
+          <div class="gallery-panel__overlay"></div>
+        </a>
+
+        <!-- 6. Jetski -->
+        <a href="resume.html#exp-jetski-modal" class="gallery-panel" aria-label="Vancouver Water Adventures — Jetski Guide">
+          <img class="gallery-panel__img" src="content/Professional/jetski/jetski11.jpg" alt="Guided jetski tour at sunset in Howe Sound">
+          <div class="gallery-panel__overlay"></div>
+        </a>
+
+      </div>
+
+      <!-- Detail area — shown below strip on hover (desktop) or scroll (mobile) -->
+      <div class="gallery-detail">
+
+        <!-- 1. UBC -->
+        <div class="gallery-detail__item">
+          <span class="gallery-detail__name">UBC - BASc in Integrated Engineering</span>
+          <span class="gallery-detail__tags">Mechanical &middot; Electrical &middot; Electromagnetic </span>
+          <span class="gallery-detail__cta">See Education &rarr;</span>
+        </div>
+
+        <!-- 2. Miru -->
+        <div class="gallery-detail__item">
+          <span class="gallery-detail__name">Development Engineer - Miru Smart Technologies</span>
+          <span class="gallery-detail__tags">Manufacturing Engineering &middot; Process R&amp;D &middot; Mechanical Design</span>
+          <span class="gallery-detail__cta">See Co-op Experience &rarr;</span>
+        </div>
+
+        <!-- 3. Ledcor -->
+        <div class="gallery-detail__item">
+          <span class="gallery-detail__name">Project Engineer - Ledcor</span>
+          <span class="gallery-detail__tags">Capital Infrastructure &middot; Controls Engineering &middot; Change Management</span>
+          <span class="gallery-detail__cta">See Co-op Experience &rarr;</span>
+        </div>
+
+        <!-- 4. CheckMATE -->
+        <div class="gallery-detail__item">
+          <span class="gallery-detail__name">CheckMATE - Capstone Project</span>
+          <span class="gallery-detail__tags">Best Capstone Award &middot; Robotics &middot; Electromechanical Design</span>
+          <span class="gallery-detail__cta">See Capstone Project &rarr;</span>
+        </div>
+
+        <!-- 5. Ankle-Box -->
+        <div class="gallery-detail__item">
+          <span class="gallery-detail__name">Ankle Box - Personal Project</span>
+          <span class="gallery-detail__tags">Mechanical Design &middot; Additive Manufacturing &middot; Entrepreneurship</span>
+          <span class="gallery-detail__cta">See Project &rarr;</span>
+        </div>
+
+        <!-- 6. Jetski -->
+        <div class="gallery-detail__item">
+          <span class="gallery-detail__name">Jetski Tour Guide - Vancouver Water Adventures</span>
+          <span class="gallery-detail__tags">Leadership &middot; Guest Experience &middot; Mechanical Maintenance & Troubleshooting</span>
+          <span class="gallery-detail__cta">See Experience &rarr;</span>
+        </div>
+
+      </div>
+
+      <!-- CTA for Full Portfolio -->
+      <div class="reveal" style="text-align: center; margin-top: 3rem;">
+        <a href="resume.html" class="btn btn--ghost">View Full Portfolio</a>
+      </div>
+    </section>
+
+    <!-- RESEARCH SECTION -->
+    <section id="research">
+      <div class="section-header reveal">
+        <h2>Ideas I Obsess Over</h2>
+      </div>
+      
+      <div class="research-container reveal">
+        <!-- Featured Article -->
+        <a href="articles/fusion-energy-future.html" class="article-featured">
+          <div class="article-featured__image">
+            <img src="content/research/assets/ITER-Fusion-Reactor.gif" alt="ITER tokamak fusion reactor">
+          </div>
+          <div class="article-featured__content">
+            <span class="article-category">⚡ ENERGY · 🌱 CLEAN TECH</span>
+            <h3 class="article-title">The Energy Source that will Power the Future</h3>
+            <p class="article-excerpt">Fusion energy has the potential to fix climate change and propel humanity into a new energy era, but it must overcome enormous challenges first.</p>
+            <span class="article-meta">Felipe Diaz &bull; Sep 16, 2025 &bull; 12 min read</span>
+            <span class="card-link">Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Article Grid -->
+        <div class="article-grid">
+          <!-- Article 1 — The Second Enlightenment -->
+          <a href="#" class="article-card">
+            <div class="article-card__image">
+              <img src="content/research/assets/second-enlightenment.png" alt="Vintage patent-style illustration of quantum computing, artificial intelligence, and fusion energy">
+            </div>
+            <div class="article-card__content">
+              <span class="article-category">🔬 TECH · 🚀 FUTURE</span>
+              <h4 class="article-title">The Second Enlightenment</h4>
+              <p class="article-excerpt">A technological revolution is coming and it has the potential to take humanity into a new era of progress.</p>
+              <span class="article-status-badge">Writing in Progress</span>
+            </div>
+          </a>
+          
+          <!-- Article 2 -->
+          <a href="#" class="article-card">
+            <div class="article-card__image">
+              <img src="content/research/assets/2levers.png" alt="The Two Levers That Lift Civilizations">
+            </div>
+            <div class="article-card__content">
+              <h4 class="article-title">The Two Levers That Lift Civilizations</h4>
+              <span class="article-status-badge">Queued</span>
+            </div>
           </a>
         </div>
-        <div class="panel-image" aria-hidden="true">
-          <img src="assets/contact.jpg" alt="" />
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="alt-section">
+      <div class="about__grid">
+
+        <!-- Globe first in DOM → sits on top when stacked on mobile -->
+        <div class="about__globe-col">
+          <div class="about__globe-wrapper">
+            <canvas id="about-globe" aria-hidden="true"></canvas>
+          </div>
         </div>
-      </article>
+
+        <div class="about__text-col">
+          <p class="about__eyebrow reveal">GLOBAL UPBRINGING</p>
+          <h2 class="about__headline reveal">Shaped by every timezone I've called home.</h2>
+          <p class="about__stats reveal">
+            <span class="about__stat">8 countries</span>
+            <span class="about__stat-sep" aria-hidden="true">·</span>
+            <span class="about__stat">6 continents</span>
+            <span class="about__stat-sep" aria-hidden="true">·</span>
+            <span class="about__stat">24 years</span>
+          </p>
+          <p class="about__narrative reveal">
+            Every 3 years, a new city, a new school, and new friendships. What I built
+            instead of roots was something more portable — the ability to walk into
+            any room, any culture, and find my footing.
+          </p>
+          <div class="about__chips reveal">
+            <span class="about__chip stagger-item">Adaptable</span>
+            <span class="about__chip stagger-item">Curious</span>
+            <span class="about__chip stagger-item">Resilient</span>
+            <span class="about__chip stagger-item">Multi-cultural</span>
+            <span class="about__chip stagger-item">Growth-driven</span>
+            <span class="about__chip stagger-item">Globally aware</span>
+          </div>
+          <div class="reveal" style="margin-top: 2rem;">
+            <a href="about.html" class="btn btn--ghost">Read my full story &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- End of page CTA (Required by Design System) -->
+    <section class="cta-block" style="text-align: center; padding-bottom: 6rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Ready to build something exceptional?</h2>
+      <a href="https://www.linkedin.com/in/felipe-d/" target="_blank" rel="noopener" class="btn">Let's connect</a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Felipe Diaz. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="resume.html">Portfolio</a>
-        <a href="blog.html">Research</a>
-        <a href="about_me.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/felipe-d/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/feliped-23" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+    <p style="color: var(--text-color-muted); font-size: 0.875rem;">&copy; 2026 Felipe Diaz. All rights reserved.</p>
   </footer>
 
-  <script src="src/js/main.js" type="module" defer></script>
-
+  <script src="src/js/main.js"></script>
+  <script src="src/js/about-globe.js"></script>
 </body>
-</html> 
-
+</html>

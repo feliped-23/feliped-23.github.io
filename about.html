@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Felipe Diaz — A Life Built on Motion</title>
+  <meta name="description" content="Felipe Diaz grew up moving countries every three years. A global childhood that built adaptability, curiosity, and a futurist's optimism.">
+  <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/about-page.css">
+  <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <nav>
+      <ul id="site-nav">
+        <li class="nav-logo">
+          <a href="index.html" class="nav-logo__link" aria-label="Back to home">
+            <img src="assets/images/favicon.ico" alt="FD" class="nav-logo__img">
+          </a>
+        </li>
+        <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="index.html#research" class="nav-link">Research</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         1. HERO
+         ============================================================ -->
+    <section class="ap-hero">
+      <p class="ap-hero__eyebrow reveal">About Felipe Diaz</p>
+      <h1 class="ap-hero__title reveal">A Life Built on Motion</h1>
+      <p class="ap-hero__subtitle reveal">
+        While I'm an engineer, what truly defines me is my
+        upbringing, an innate curiosity, and a relentless drive for growth.
+      </p>
+      <div class="ap-scrollcue" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============================================================
+         2. GLOBE TOUR — A Global Childhood
+         ============================================================ -->
+    <section class="alt-section">
+      <div class="globe-tour">
+
+        <!-- Centered header across the full width -->
+        <div class="globe-tour__header">
+          <p class="ap-eyebrow reveal">A Global Childhood</p>
+          <h2 class="globe-tour__headline reveal">Shaped by every timezone I've called home.</h2>
+          <p class="globe-tour__stats reveal">
+            <span class="globe-tour__stat">8 countries</span>
+            <span class="globe-tour__stat-sep" aria-hidden="true">·</span>
+            <span class="globe-tour__stat">6 continents</span>
+            <span class="globe-tour__stat-sep" aria-hidden="true">·</span>
+            <span class="globe-tour__stat">24 years</span>
+          </p>
+          <p class="globe-tour__copy reveal">
+            Growing up, I moved countries roughly every three years, following my
+            dad's work. It wasn't always easy, but it shaped who I am today.
+          </p>
+          <div class="globe-tour__chips reveal">
+            <span class="globe-tour__chip">Adaptable</span>
+            <span class="globe-tour__chip">Curious</span>
+            <span class="globe-tour__chip">Resilient</span>
+            <span class="globe-tour__chip">Multi-cultural</span>
+            <span class="globe-tour__chip">Growth-driven</span>
+          </div>
+        </div>
+
+        <!-- Globe + touring image, side by side beneath the header -->
+        <div class="globe-tour__display reveal">
+          <div class="globe-tour__stage">
+            <div class="about__globe-wrapper">
+              <canvas id="about-globe" aria-hidden="true"></canvas>
+            </div>
+          </div>
+
+          <!-- Touring image panel (content swaps as the globe visits each city) -->
+          <div class="globe-tour__panel" id="globe-tour-panel">
+            <div class="globe-tour__frame">
+              <img class="globe-tour__img globe-tour__img--a" src="" alt="">
+              <img class="globe-tour__img globe-tour__img--b" src="" alt="">
+            </div>
+            <div class="globe-tour__meta">
+              <span class="globe-tour__city"></span>
+              <span class="globe-tour__years"></span>
+              <span class="globe-tour__caption"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manual navigation — the only way to move the globe in this section -->
+        <div class="globe-tour__controls reveal">
+          <button class="globe-tour__nav" id="globe-prev" type="button" aria-label="Previous place">
+            <span aria-hidden="true">&lsaquo;</span>
+          </button>
+          <button class="globe-tour__nav" id="globe-next" type="button" aria-label="Next place">
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. WHAT I LEARNED
+         ============================================================ -->
+    <section>
+      <div class="ap-learned reveal">
+        <p class="ap-eyebrow">What I Learned Along the Way</p>
+        <h2 class="ap-learned__title">Constantly starting over taught me how to grow.</h2>
+        <p class="ap-lead">
+          New friends, new routines, new schools — again and again. It taught me
+          resilience and a growth mindset: the biggest challenges bring the most
+          growth, and full commitment makes adaptation possible.
+        </p>
+        <p class="ap-lead" style="margin-top: 1.25rem;">
+          Living across so many cultures built global citizenship, empathy, and
+          adaptability. Sports and group activities built leadership and
+          communication; travel broadened perspective and turned diversity into
+          something to celebrate.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. CURIOSITY, TECHNOLOGY & FUTURISM
+         ============================================================ -->
+    <section class="alt-section">
+      <div class="ap-futurism__head reveal">
+        <p class="ap-eyebrow">Curiosity, Technology &amp; Futurism</p>
+        <h2 class="ap-futurism__title">I consider myself a futurist.</h2>
+
+        <!-- Dictionary-style entry makes clear these quotes DEFINE "futurist" -->
+        <div class="ap-definition">
+          <div class="ap-definition__head">
+            <span class="ap-definition__word">fu&middot;tur&middot;ist</span>
+            <span class="ap-definition__pos">noun</span>
+          </div>
+          <ol class="ap-definition__list">
+            <li>
+              <p class="ap-definition__quote">Explorer of the future, trying to imagine the possibilities that lie ahead.</p>
+              <cite class="ap-definition__source">Peter Schwartz</cite>
+            </li>
+            <li>
+              <p class="ap-definition__quote">A person that has unbounded curiosity about what our future may hold.</p>
+              <cite class="ap-definition__source">Nikolas Badminton</cite>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Row 1 — grandfather photo on the RIGHT, text on the left -->
+      <div class="ap-split reveal">
+        <div class="ap-split__text">
+          <p class="ap-lead">
+            My curiosity was first sparked by my grandfather, who ran science
+            experiments every Christmas in Colombia — and remains, alongside my
+            father, one of my biggest role models. That early wonder never left me;
+            it just grew up with me.
+          </p>
+        </div>
+        <div class="ap-split__media">
+          <img src="content/about me/assets/abuelo.jpeg" alt="Felipe with his grandfather">
+        </div>
+      </div>
+
+      <!-- Row 2 — father photo on the LEFT, text on the right -->
+      <div class="ap-split ap-split--reverse reveal">
+        <div class="ap-split__text">
+          <p class="ap-lead">
+            My father worked in oil and gas — the reason for all the moving — yet he
+            was also the one who told me renewable energy was the future, and that oil
+            and gas would eventually disappear. Coming of age as climate change became
+            the defining global issue turned that early interest into a deeper
+            fascination with clean technology and innovation broadly.
+          </p>
+          <p class="ap-lead" style="margin-top: 1.25rem;">
+            Being a futurist isn't just speculating about what's next — it's exploring
+            what's possible so we make better choices today, and believing that
+            technology and human creativity, paired with optimism and focus, can build
+            a brighter future.
+          </p>
+        </div>
+        <div class="ap-split__media">
+          <img src="content/about me/assets/dad_babyme.jpg" alt="Felipe as a baby with his father">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. HOBBIES MOSAIC
+         ============================================================ -->
+    <section>
+      <div class="section-header reveal">
+        <p class="ap-eyebrow" style="margin-bottom: 0.75rem;">Life Outside Work</p>
+        <h2>Always moving, always outside.</h2>
+      </div>
+
+      <div class="ap-mosaic reveal">
+        <div class="ap-mosaic__cell ap-mosaic__cell--tall">
+          <img src="content/about me/assets/Soccer.jpg" alt="Soccer" loading="lazy">
+          <span class="ap-mosaic__label">Soccer</span>
+        </div>
+        <div class="ap-mosaic__cell ap-mosaic__cell--wide">
+          <img src="content/about me/assets/backpacking.jpg" alt="Backpacking" loading="lazy">
+          <span class="ap-mosaic__label">Backpacking</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/skydiving.jpg" alt="Skydiving" loading="lazy">
+          <span class="ap-mosaic__label">Skydiving</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/surfing.jpg" alt="Surfing" loading="lazy">
+          <span class="ap-mosaic__label">Surfing</span>
+        </div>
+        <div class="ap-mosaic__cell ap-mosaic__cell--tall">
+          <img src="content/about me/assets/snowboard.jpg" alt="Snowboarding" loading="lazy">
+          <span class="ap-mosaic__label">Snowboarding</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/Scubadiving.JPG" alt="Scuba diving" loading="lazy">
+          <span class="ap-mosaic__label">Scuba Diving</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/skiing.jpg" alt="Skiing" loading="lazy">
+          <span class="ap-mosaic__label">Skiing</span>
+        </div>
+        <div class="ap-mosaic__cell ap-mosaic__cell--wide">
+          <img src="content/about me/assets/jetskiing.jpg" alt="Jet skiing" loading="lazy">
+          <span class="ap-mosaic__label">Jet Skiing</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/triathlon.jpg" alt="Triathlon" loading="lazy">
+          <span class="ap-mosaic__label">Triathlon</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/wakeboarding.jpg" alt="Wakeboarding" loading="lazy">
+          <span class="ap-mosaic__label">Wakeboarding</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/gym.jpg" alt="Gym" loading="lazy">
+          <span class="ap-mosaic__label">Gym</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/bluemountains.jpg" alt="Hiking the Blue Mountains" loading="lazy">
+          <span class="ap-mosaic__label">Hiking</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/running.jpg" alt="Running" loading="lazy">
+          <span class="ap-mosaic__label">Running</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/volleyball.jpg" alt="Volleyball" loading="lazy">
+          <span class="ap-mosaic__label">Volleyball</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/tennis.jpg" alt="Tennis" loading="lazy">
+          <span class="ap-mosaic__label">Tennis</span>
+        </div>
+        <div class="ap-mosaic__cell">
+          <img src="content/about me/assets/quadbiking.jpg" alt="Quad biking" loading="lazy">
+          <span class="ap-mosaic__label">Quad Biking</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. BOOKS & PODCASTS
+         ============================================================ -->
+    <section class="alt-section">
+      <div class="ap-books__intro reveal">
+        <p class="ap-eyebrow" style="margin-bottom: 0.75rem;">What Shapes My Thinking</p>
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem;">
+          50+ books read. 200+ podcast hours.
+        </h2>
+        <p class="ap-lead" style="margin: 0 auto;">
+          A curated collection that's shaped how I think as an engineer, futurist, and human.
+        </p>
+      </div>
+
+      <div class="ap-books__grid reveal">
+        <article class="ap-book">
+          <img class="ap-book__cover" src="content/about me/assets/laws_of_human_nature.jpg" alt="The Laws of Human Nature by Robert Greene" loading="lazy">
+          <h3 class="ap-book__title">The Laws of Human Nature</h3>
+          <p class="ap-book__author">Robert Greene</p>
+          <span class="ap-book__rating">9 / 10</span>
+          <p class="ap-book__desc">A deep field-guide to understanding people — and yourself.</p>
+        </article>
+
+        <article class="ap-book">
+          <img class="ap-book__cover" src="content/about me/assets/modernwisdom.jpeg" alt="Modern Wisdom podcast with Chris Williamson" loading="lazy">
+          <h3 class="ap-book__title">Modern Wisdom</h3>
+          <p class="ap-book__author">Chris Williamson · Podcast</p>
+          <span class="ap-book__rating">10 / 10</span>
+          <p class="ap-book__desc">Conversations on psychology, performance, and living well.</p>
+        </article>
+
+        <article class="ap-book">
+          <img class="ap-book__cover" src="content/about me/assets/almanac_naval_ravikant.jpg" alt="The Almanac of Naval Ravikant" loading="lazy">
+          <h3 class="ap-book__title">The Almanac of Naval Ravikant</h3>
+          <p class="ap-book__author">Eric Jorgenson</p>
+          <span class="ap-book__rating">10 / 10</span>
+          <p class="ap-book__desc">A guide to wealth and happiness, distilled from first principles.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. CTA
+         ============================================================ -->
+    <section class="ap-cta">
+      <h2 class="reveal">Curious where all this is headed?</h2>
+      <a href="index.html#research" class="btn reveal">Read what I obsess over</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="https://www.linkedin.com/in/felipe-d/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/feliped-23" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+    <p style="color: var(--text-color-muted); font-size: 0.875rem;">&copy; 2026 Felipe Diaz. All rights reserved.</p>
+  </footer>
+
+  <script src="src/js/main.js"></script>
+  <script src="src/js/about-page-globe.js"></script>
+</body>
+</html>

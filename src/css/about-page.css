@@ -1,0 +1,629 @@
+/* ======================================================================
+   ABOUT ME PAGE  (about.html only)
+   Loaded in addition to main.css. Base globe + label styles come from
+   about.css; this file adds the page layout, the touring image panel,
+   and the active-city label enhancement.
+   ====================================================================== */
+
+/* ---- Shared page primitives ---- */
+.ap-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 1rem;
+}
+
+.ap-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.ap-lead {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--text-color-muted);
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+/* ============================================================
+   1. HERO
+   ============================================================ */
+.ap-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.ap-hero__eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 1.5rem;
+}
+
+.ap-hero__title {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.75rem;
+  max-width: 14ch;
+}
+
+.ap-hero__subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  color: var(--text-color-muted);
+  line-height: 1.6;
+  max-width: 46ch;
+}
+
+.ap-scrollcue {
+  margin-top: 4rem;
+  width: 26px;
+  height: 26px;
+  border-right: 2px solid var(--accent-2);
+  border-bottom: 2px solid var(--accent-2);
+  transform: rotate(45deg);
+  animation: ap-bob 1.8s var(--ease-entrance) infinite;
+  opacity: 0.7;
+}
+
+@keyframes ap-bob {
+  0%, 100% { transform: translateY(0) rotate(45deg); }
+  50%      { transform: translateY(8px) rotate(45deg); }
+}
+
+/* ============================================================
+   2. GLOBE TOUR SECTION
+   ============================================================ */
+.globe-tour {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Centered header spanning the full width --- */
+.globe-tour__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.globe-tour__headline {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.globe-tour__stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.globe-tour__stat {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 700;
+}
+
+.globe-tour__stat-sep { color: var(--text-color-muted); }
+
+.globe-tour__copy {
+  font-size: 1.05rem;
+  color: var(--text-color-muted);
+  line-height: 1.7;
+  max-width: 60ch;
+  margin: 0 auto 1.5rem;
+}
+
+.globe-tour__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.globe-tour__chip {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  color: var(--text-color-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 99px;
+}
+
+/* --- Globe + image display row beneath the header --- */
+.globe-tour__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+/* Globe stage reuses .about__globe-wrapper / #about-globe base styles from
+   about.css; here we constrain sizing and disable the drag cursor (no drag). */
+.globe-tour__stage .about__globe-wrapper {
+  width: 42vw;
+  max-width: 440px;
+}
+
+.globe-tour__stage #about-globe { cursor: default; }
+
+/* --- Arrow controls (only way to move the globe here) --- */
+.globe-tour__controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.75rem;
+}
+
+.globe-tour__nav {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 1.6rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-entrance),
+              background-color var(--duration-fast) var(--ease-entrance),
+              border-color var(--duration-fast) var(--ease-entrance),
+              color var(--duration-fast) var(--ease-entrance);
+}
+
+@media (hover: hover) {
+  .globe-tour__nav:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+.globe-tour__nav:active { transform: scale(0.94); }
+
+/* ---- Touring image panel (fixed position, content swaps) ---- */
+.globe-tour__panel {
+  width: 420px;
+  flex-shrink: 0;
+}
+
+.globe-tour__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.globe-tour__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-entrance);
+}
+
+.globe-tour__img.is-visible { opacity: 1; }
+
+.globe-tour__meta {
+  padding: 0.85rem 0.25rem 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s var(--ease-entrance),
+              transform 0.5s var(--ease-entrance);
+}
+
+.globe-tour__panel.is-active .globe-tour__meta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.globe-tour__city {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.globe-tour__years {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 0.2rem;
+}
+
+.globe-tour__caption {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-color-muted);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* ---- Active-city label enhancement (adds to about.css base) ---- */
+.about__city-label.is-active {
+  transform: translate(-50%, calc(-100% - 14px)) scale(1.18);
+  border-color: var(--accent);
+  z-index: 3;
+  box-shadow: 0 6px 18px rgba(139, 101, 65, 0.25);
+}
+
+.about__city-label.is-active .about__city-name {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.about__city-label.is-active .about__city-label-caret {
+  border-top-color: var(--accent);
+}
+
+/* ============================================================
+   3. WHAT I LEARNED (centered text, no media)
+   ============================================================ */
+.ap-learned {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.ap-learned__title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.ap-learned .ap-lead {
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   4. FUTURISM
+   ============================================================ */
+/* Shared two-column split — used by the futurism story rows */
+.ap-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.ap-split + .ap-split { margin-top: 4rem; }
+
+/* Tall portrait box — the source photos are ~3:4, so they don't crop oddly */
+.ap-split__media img {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid var(--surface-border);
+}
+
+.ap-split--reverse .ap-split__media { order: -1; }
+
+/* Centered head + dictionary definition */
+.ap-futurism__head {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.ap-futurism__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.25rem;
+}
+
+/* Dictionary-entry styling makes the quotes read clearly as definitions */
+.ap-definition {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+  background: var(--bg-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.ap-definition__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.ap-definition__word {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.ap-definition__pos {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-color-muted);
+}
+
+.ap-definition__list {
+  list-style: none;
+  counter-reset: def;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.ap-definition__list li {
+  counter-increment: def;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.ap-definition__list li::before {
+  content: counter(def) ".";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ap-definition__quote {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: 0.4rem;
+}
+
+.ap-definition__source {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ============================================================
+   5. HOBBIES MOSAIC
+   ============================================================ */
+.ap-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+  gap: 0.75rem;
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.ap-mosaic__cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--surface-border);
+}
+
+.ap-mosaic__cell--tall { grid-row: span 2; }
+.ap-mosaic__cell--wide { grid-column: span 2; }
+
+.ap-mosaic__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease-entrance);
+}
+
+.ap-mosaic__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.85rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  background: linear-gradient(to top, rgba(22, 24, 17, 0.75) 0%, rgba(22, 24, 17, 0) 55%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-entrance);
+}
+
+@media (hover: hover) {
+  .ap-mosaic__cell:hover img    { transform: scale(1.06); }
+  .ap-mosaic__cell:hover .ap-mosaic__label { opacity: 1; }
+}
+
+/* On touch, labels are always subtly present. */
+@media (hover: none) {
+  .ap-mosaic__label { opacity: 1; }
+}
+
+/* ============================================================
+   6. BOOKS & PODCASTS
+   ============================================================ */
+.ap-books__intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ap-books__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.ap-book {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--duration-fast) var(--ease-entrance);
+  will-change: transform;
+}
+
+@media (hover: hover) {
+  .ap-book:hover { transform: translateY(-8px); }
+}
+
+.ap-book__cover {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--surface-border);
+}
+
+.ap-book__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+.ap-book__author {
+  font-size: 0.85rem;
+  color: var(--text-color-muted);
+  margin-bottom: 0.9rem;
+}
+
+.ap-book__rating {
+  align-self: flex-start;
+  background: rgba(139, 101, 65, 0.12);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  margin-bottom: 0.9rem;
+}
+
+.ap-book__desc {
+  font-size: 0.9rem;
+  color: var(--text-color-muted);
+  line-height: 1.55;
+  margin-top: auto;
+}
+
+/* ============================================================
+   7. CTA (reuses landing pattern)
+   ============================================================ */
+.ap-cta {
+  text-align: center;
+  padding-bottom: 6rem;
+}
+
+.ap-cta h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================================
+   MOBILE (≤768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .ap-hero { min-height: 90vh; }
+  .ap-scrollcue { display: none; }
+
+  /* Globe tour → stack in this order: header, globe, ARROWS, picture.
+     Flatten the display wrapper so the globe & panel become direct flex
+     items of .globe-tour, letting the arrows sit between them via order. */
+  .globe-tour {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .globe-tour__display { display: contents; }
+
+  .globe-tour__header   { margin-bottom: 0; order: 0; }
+  .globe-tour__stage    { order: 1; }
+  .globe-tour__controls { order: 2; margin-top: 0; }
+  .globe-tour__panel    { order: 3; }
+
+  .globe-tour__stage .about__globe-wrapper {
+    width: 78vw;
+    max-width: 320px;
+  }
+
+  .globe-tour__panel {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .globe-tour__frame { aspect-ratio: 16 / 10; }
+  .globe-tour__meta { text-align: center; }
+
+  /* Splits stack; media always on top */
+  .ap-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .ap-split + .ap-split { margin-top: 2.5rem; }
+  .ap-split__media { order: -1; }
+
+  /* Mosaic → 2 cols, uniform rows (no spanning) */
+  .ap-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+  }
+  .ap-mosaic__cell--tall { grid-row: span 1; }
+  .ap-mosaic__cell--wide { grid-column: span 1; }
+
+  /* Books stack */
+  .ap-books__grid { grid-template-columns: 1fr; }
+}
+
+/* Reduced motion — kill the bob + hold panel static */
+@media (prefers-reduced-motion: reduce) {
+  .ap-scrollcue { animation: none; }
+}

@@ -1,38 +1,30 @@
-/* 
-=======================================
-  Footer
-  Felipe Diaz Website
-=======================================
-*/
-
-/* ==================================================
-   Footer
-   ================================================== */
+/* Footer Styles */
 .site-footer {
-  border-top: 1px solid var(--border);
-  background: color-mix(in oklab, var(--bg-elev) 90%, transparent);
-}
-
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem 0;
-  color: var(--muted);
-  flex-wrap: wrap;
-}
-
-.footer-inner a {
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.footer-inner a:hover {
-  color: var(--text);
+  padding: 4rem 1rem;
+  text-align: center;
+  border-top: 1px solid var(--surface-border);
+  background-color: var(--bg-color);
 }
 
 .footer-links {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-links a {
+  color: var(--text-color-muted);
+  font-size: 0.875rem;
+  transition: color var(--duration-fast) var(--ease-entrance);
+}
+
+@media (hover: hover) {
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+}
+
+.sticky-cta {
+  display: none;
 }

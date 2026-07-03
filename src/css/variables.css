@@ -1,40 +1,34 @@
-/* 
-=======================================
-  CSS Custom Properties (Variables)
-  Felipe Diaz Website
-=======================================
-*/
-
-/* ==================================================
-   Theme Variables (Light + Dark modes)
-   ================================================== */
 :root {
-  /* Light (default) */
-  --bg: #faf6f1; /* cream */
-  --bg-elev: #fffaf5; /* lifted cream */
-  --text: #2e2a26; /* dark brown */
-  --muted: #6b5f57; /* taupe */
-  --accent: #b47149; /* terracotta */
-  --accent-2: #8fa27b; /* sage */
-  --card: #f3ede6; /* warm paper */
-  --border: #e3d9cf; /* light tan */
-  --shadow: 0 10px 26px rgba(60, 45, 36, 0.12);
-  --radius: 16px;
-  --radius-lg: 22px;
-  --container: 1120px;
+  /* Color Palette — Earthy, Organic */
+  --bg-color: #FFFFF0;           /* Ivory — primary background */
+  --bg-color-alt: #FDF6ED;       /* Floral White — alternate section bg */
+  --text-color: #161811;          /* Carbon Black — primary text */
+  --text-color-muted: #7B7B65;   /* Dusty Olive — secondary text, metadata */
+
+  --accent: #8B6541;              /* Toffee Brown — CTAs, active states */
+  --accent-2: #7B7B65;            /* Dusty Olive — labels, tags, decorative */
+
+  --surface-color: #ECE1D5;       /* Almond Cream — card backgrounds */
+  --surface-border: #D5BCA5;      /* Pale Oak — borders */
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-base: 16px;
+
+  /* Layout */
+  --section-pad-desktop: 120px;
+  --section-pad-mobile: 80px;
+
+  /* Motion */
+  --ease-entrance: cubic-bezier(0.25, 1, 0.5, 1); /* Out-Quart */
+  --ease-exit: cubic-bezier(0.5, 0, 1, 1);         /* In-Out */
+  --duration-fast: 150ms;
+  --duration-normal: 400ms;
 }
 
-/* Auto dark theme via user preference  */
-@media (prefers-color-scheme: dark) {
+@media (max-width: 768px) {
   :root {
-    --bg: #1f1a17; /* espresso */
-    --bg-elev: #26201c; /* dark roast */
-    --text: #efe9e3; /* latte foam */
-    --muted: #c8bdb3; /* oat */
-    --accent: #d59a77; /* warm clay */
-    --accent-2: #a7b99a; /* dusty sage */
-    --card: #2a241f; /* bark */
-    --border: #3a322c; /* cocoa ridge */
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --bg-color: #FFFFF0;
+    --bg-color-alt: #FDF6ED;
   }
 }

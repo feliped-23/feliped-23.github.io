@@ -1,0 +1,179 @@
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+
+/* --- Grid layout --- */
+.about__grid {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  grid-template-areas: "text globe";
+  align-items: start;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.about__text-col  { grid-area: text; }
+.about__globe-col { grid-area: globe; }
+
+/* --- Globe wrapper & canvas --- */
+.about__globe-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-entrance);
+}
+
+.about__globe-wrapper.globe-ready { opacity: 1; }
+
+#about-globe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#about-globe:active { cursor: grabbing; }
+
+/* --- Per-city floating labels --- */
+.about__city-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.about__city-label {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 10px));
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  color: var(--text-color);
+  padding: 3px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(4px);
+  transition: opacity 0.4s var(--ease-entrance),
+              filter 0.4s var(--ease-entrance);
+}
+
+.about__city-label.is-visible {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.about__city-name {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.about__city-duration {
+  display: block;
+  font-size: 0.6rem;
+  line-height: 1;
+  color: var(--text-color-muted);
+  margin-top: 1px;
+  text-align: center;
+}
+
+.about__city-label-caret {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--surface-border);
+}
+
+/* --- Eyebrow label --- */
+.about__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 1rem;
+}
+
+/* --- Headline --- */
+.about__headline {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+/* --- Stat line --- */
+.about__stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.about__stat {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.about__stat-sep { color: var(--text-color-muted); }
+
+/* --- Narrative copy --- */
+.about__narrative {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--text-color-muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+/* --- Trait chips --- */
+.about__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about__chip {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  color: var(--text-color-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 99px;
+}
+
+/* --- Mobile (≤768px) --- */
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "globe" "text";
+    gap: 2.5rem;
+  }
+
+  .about__globe-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .about__narrative { max-width: 100%; }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .about__city-label { transition: none; }
+}

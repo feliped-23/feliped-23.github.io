@@ -1,0 +1,677 @@
+/* =============================================================================
+   resume.css — Portfolio page ("locked full-screen" horizontal category deck)
+   Page-scoped; linked directly in resume.html (not imported into main.css).
+   Tokens come from variables.css — no hardcoded colors or timings here.
+   ========================================================================== */
+
+/* ── Shell: lock the page to a single viewport ──────────────────────────── */
+body.resume-page {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.resume-app {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ── Horizontal category deck ───────────────────────────────────────────── */
+.deck {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.deck__track {
+  display: flex;
+  height: 100%;
+  width: 500vw;                       /* 5 categories */
+  transform: translateX(calc(var(--active, 0) * -100vw));
+  transition: transform var(--duration-normal) var(--ease-entrance);
+}
+
+.deck__panel {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.5rem 2rem 6.75rem;       /* clear floating header + cat-nav */
+}
+
+/* Prev / next category arrows (desktop) */
+.deck__arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  transition: transform var(--duration-fast) var(--ease-entrance),
+              opacity var(--duration-fast) var(--ease-entrance);
+}
+.deck__arrow--prev { left: 1.5rem; }
+.deck__arrow--next { right: 1.5rem; }
+.deck__arrow:hover { transform: translateY(-50%) scale(1.08); }
+.deck__arrow:active { transform: translateY(-50%) scale(0.94); }
+.deck__arrow.is-hidden { opacity: 0; pointer-events: none; }
+
+/* Row of cards inside a category panel (desktop) */
+.card-row {
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;                    /* if a row is too wide → horizontal only */
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.card-row::-webkit-scrollbar { display: none; }
+
+/* Certificates: 2×2 grid of horizontal cards (defined after .card-row so grid wins) */
+.card-row--cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  overflow: visible;
+}
+.card-row--cert-grid .rcard {
+  flex: initial;
+  width: auto;
+  height: 100%;
+}
+
+/* ── Borderless flip card ───────────────────────────────────────────────── */
+.rcard {
+  position: relative;
+  flex: 0 0 clamp(220px, 22vw, 272px);
+  height: min(62vh, 460px);
+  perspective: 1400px;
+  scroll-snap-align: center;
+  color: inherit;
+  border-radius: 20px;
+  outline: none;
+}
+
+.rcard__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform var(--duration-normal) var(--ease-entrance);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rcard:hover .rcard__inner,
+  .rcard:focus-visible .rcard__inner { transform: rotateY(180deg); }
+  .rcard:hover { z-index: 2; }
+}
+
+.rcard__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(22, 24, 17, 0.14);
+}
+
+/* Front — image + keywords, no outline */
+.rcard__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rcard__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+              rgba(22, 24, 17, 0.82) 0%,
+              rgba(22, 24, 17, 0.32) 42%,
+              rgba(22, 24, 17, 0) 68%);
+}
+
+.rcard__front-body {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.1rem 1.1rem 1.25rem;
+  color: #fff;
+}
+
+.rcard__org {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.55rem;
+}
+
+.rcard__keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.rcard__kw {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 0.22rem 0.55rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+
+.rcard__hint {
+  display: none;                       /* mobile-only affordance */
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+/* Back — full-sentence summary */
+.rcard__back {
+  transform: rotateY(180deg);
+  background: var(--surface-color);
+  color: var(--text-color);
+  padding: 1.4rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rcard__type {
+  display: block;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.rcard__title {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0.5rem 0 0.15rem;
+}
+
+.rcard__period {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-color-muted);
+}
+
+.rcard__summary {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0.75rem 0;
+  overflow: hidden;
+}
+
+.rcard__open {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Certificate card variant — show the full certificate, uncropped */
+.rcard--cert .rcard__front { background: var(--surface-color); }
+.rcard--cert .rcard__img { object-fit: contain; }
+.rcard--cert .rcard__back { padding: 1rem 1.1rem; }
+.rcard--cert .rcard__title { font-size: 0.95rem; }
+
+/* ── Bottom category nav ────────────────────────────────────────────────── */
+.cat-nav {
+  position: fixed;
+  bottom: 1.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: var(--surface-color);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border);
+  border-radius: 99px;
+  padding: 0.35rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 94vw;
+}
+
+.cat-nav__list {
+  position: relative;
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cat-nav__list::-webkit-scrollbar { display: none; }
+
+.cat-nav__indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 99px;
+  background: rgba(139, 101, 65, 0.12);   /* --accent, low opacity (active state) */
+  transition: transform var(--duration-normal) var(--ease-entrance),
+              width var(--duration-normal) var(--ease-entrance);
+  z-index: 0;
+}
+
+.cat-nav__tab {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.7875rem;
+  color: var(--text-color-muted);
+  padding: 0.5rem 1.05rem;
+  border-radius: 99px;
+  white-space: nowrap;
+  transition: color var(--duration-fast) var(--ease-entrance);
+}
+.cat-nav__tab:hover { color: var(--text-color); }
+.cat-nav__tab.is-active { color: var(--accent); }
+.cat-nav__tab:active { transform: scale(0.96); }
+
+.cat-nav__short { display: none; }
+
+/* ── Skill Sets bento ───────────────────────────────────────────────────── */
+.skills {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skills__head {
+  text-align: center;
+}
+.skills__eyebrow {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.7rem, 1.2vw, 1.05rem);
+}
+
+.tile {
+  background: var(--surface-color);
+  border-radius: 18px;
+  padding: clamp(0.85rem, 1.3vw, 1.3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform var(--duration-fast) var(--ease-entrance);
+}
+@media (hover: hover) {
+  .tile:hover { transform: translateY(-4px); }
+}
+
+.tile__title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.tile__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.28rem 0.6rem;
+  border-radius: 99px;
+  background: var(--bg-color);
+  border: 1px solid var(--surface-border);
+  color: var(--text-color);
+}
+.tile--lang .chip { background: transparent; }
+
+/* Staggered reveal when the Skills panel is first shown */
+.skills.is-revealed .tile {
+  animation: tileIn 480ms var(--ease-entrance) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+@keyframes tileIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Experience modal ───────────────────────────────────────────────────── */
+.exp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(1rem, 4vh, 3rem) 1rem;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 280ms var(--ease-exit), visibility 0s linear 280ms;
+}
+.exp-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--duration-normal) var(--ease-entrance), visibility 0s;
+}
+
+.exp-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 24, 17, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.exp-modal__sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  background: var(--bg-color);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  transform: scale(0.96) translateY(14px);
+  opacity: 0;
+  transition: transform 280ms var(--ease-exit), opacity 280ms var(--ease-exit);
+}
+.exp-modal.is-open .exp-modal__sheet {
+  transform: none;
+  opacity: 1;
+  transition: transform var(--duration-normal) var(--ease-entrance),
+              opacity var(--duration-normal) var(--ease-entrance);
+}
+
+.exp-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-entrance);
+}
+.exp-modal__close:hover { transform: scale(1.06); }
+.exp-modal__close:active { transform: scale(0.94); }
+
+/* Modal hero */
+.exp-modal__hero {
+  position: relative;
+  height: clamp(200px, 34vh, 340px);
+}
+.exp-modal__hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.exp-modal__hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+              rgba(22, 24, 17, 0.9) 0%,
+              rgba(22, 24, 17, 0.35) 55%,
+              rgba(22, 24, 17, 0.1) 100%);
+}
+.exp-modal__hero-info {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  color: #fff;
+}
+.exp-modal__badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  padding: 0.28rem 0.7rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  margin-bottom: 0.7rem;
+}
+.exp-modal__title {
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.exp-modal__meta {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.92;
+}
+.exp-modal__meta span + span::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.7;
+}
+
+/* Modal body */
+.exp-modal__body {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+.exp-modal__summary {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+.exp-modal__section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+  color: var(--accent-2);
+  margin-bottom: 0.9rem;
+}
+.exp-modal__section { margin-bottom: 2rem; }
+
+.exp-modal__highlights {
+  display: grid;
+  gap: 0.7rem;
+}
+.exp-modal__highlights li {
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.55;
+  color: var(--text-color);
+}
+.exp-modal__highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.exp-modal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.exp-modal__docs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.exp-modal__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+.exp-modal__gallery a {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+.exp-modal__gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease-entrance);
+}
+@media (hover: hover) {
+  .exp-modal__gallery a:hover img { transform: scale(1.05); }
+}
+
+/* ── Mobile (≤768px) ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .deck__panel {
+    padding: 5.75rem 1rem 6rem;
+    align-items: stretch;
+  }
+
+  /* Cards stack into a vertical scroll-snap column */
+  .card-row {
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    gap: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rcard {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 66dvh;
+    scroll-snap-align: center;
+  }
+  .rcard:active { transform: scale(0.985); }
+  .rcard__hint { display: block; }
+  .rcard__org { font-size: 1.05rem; }
+  .rcard__kw { font-size: 0.72rem; }
+
+  /* Desktop-only arrows hidden — swipe + tab bar handle mobile */
+  .deck__arrow { display: none; }
+
+  /* Certificates: same one-column vertical scroll-snap layout as every other category on mobile */
+  .card-row--cert-grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    max-width: 460px;
+    height: 100%;
+    gap: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .card-row--cert-grid .rcard {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 66dvh;
+  }
+
+  /* Category nav: compact labels, tightened so all five fit without scrolling */
+  .cat-nav__label { display: none; }
+  .cat-nav__short { display: inline; }
+  .cat-nav { padding: 0.3rem; max-width: 97vw; }
+  .cat-nav__list { gap: 0.05rem; overflow: visible; }
+  .cat-nav__tab { padding: 0.45rem 0.5rem; font-size: 0.66rem; }
+
+  /* Bento stacks; panel scrolls if needed */
+  .skills {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 2px;
+  }
+  .skills__grid { grid-template-columns: 1fr 1fr; }
+
+  .exp-modal { padding: 0; }
+  .exp-modal__sheet { border-radius: 0; min-height: 100dvh; max-width: 100%; }
+}
+
+@media (max-width: 460px) {
+  .skills__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .deck__track,
+  .rcard__inner,
+  .cat-nav__indicator,
+  .exp-modal,
+  .exp-modal__sheet { transition-duration: 0.01ms; }
+
+  .skills.is-revealed .tile { animation: none; }
+
+  /* No 3D flip — the summary stays available inside the modal */
+  .rcard:hover .rcard__inner,
+  .rcard:focus-visible .rcard__inner { transform: none; }
+}

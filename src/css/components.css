@@ -1,302 +1,121 @@
-/* 
-=======================================
-  Reusable Components
-  Felipe Diaz Website
-=======================================
-*/
+/* Section hint text — desktop shows "Hover", mobile shows "Swipe" */
+.hint--mobile { display: none; }
 
-/* ==================================================
-   Cards & Panels
-   ================================================== */
-.card {
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--bg) 90%, var(--card)),
-    var(--card)
-  );
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: clamp(1rem, 2vw, 1.4rem);
+@media (max-width: 768px) {
+  .hint--desktop { display: none; }
+  .hint--mobile { display: inline; }
 }
 
-.section-panel {
-  width: 100%;
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--bg) 86%, var(--card)),
-    var(--card)
-  );
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: clamp(1rem, 2vw, 1.5rem);
-  display: grid;
-  grid-template-columns: 0.7fr 0.8fr;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  align-items: center;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.section-panel:hover {
-  transform: translateY(-3px);
-  border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
-}
-
-.section-panel:nth-child(even) {
-  grid-template-columns: 1.8fr 1.1fr;
-}
-
-.section-panel h2 {
-  margin: 0.2rem 0 0.4rem;
-  font-size: 1.35rem;
-}
-
-.section-panel p {
-  margin: 0;
-  color: var(--muted);
-}
-
-/* Panel Meta & Pills */
-.panel-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  padding: 0.28rem 0.6rem;
-  border-radius: 999px;
-  color: var(--text);
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklab, var(--accent) 60%, transparent),
-    color-mix(in oklab, var(--accent-2) 55%, transparent)
-  );
-  border: 1px solid color-mix(in oklab, var(--accent) 50%, var(--border));
-}
-
-.card-link {
-  margin-top: 0.6rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--text);
-  border-bottom: 1px solid color-mix(in oklab, var(--accent) 32%, transparent);
-  padding-bottom: 2px;
-}
-
-.card-link:hover {
-  color: var(--accent);
-}
-
-.panel-image {
-  border-radius: 14px;
-  height: clamp(180px, 26vw, 320px);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-elev);
-}
-
-.panel-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Responsive panels */
-@media (max-width: 900px) {
-  .section-panel {
-    grid-template-columns: 1fr;
-  }
-  .panel-image {
-    order: -1;
-    height: clamp(160px, 40vw, 260px);
-  }
-}
-
-/* ==================================================
-   Homepage Panels Container
-   ================================================== */
-.panels {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1rem, 2.5vw, 1.75rem);
-  padding: 1.2rem 0 3rem;
-}
-
-/* ==================================================
-   Badges & Tags
-   ================================================== */
-.tl-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  padding: 0;
-  margin: 0.4rem 0 0;
-  list-style: none;
-}
-
-.tl-badges li {
-  font-size: 0.82rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.2rem 0.55rem;
-  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
-}
-
-/* ==================================================
-   Full Width Images
-   ================================================== */
-.full-width-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-top: 1.5rem;
-}
-
-/* ==================================================
-   Hobbies Grid
-   ================================================== */
-.hobbies-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-}
-
-.hobby-item {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border);
-}
-
-.hobby-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.hobby-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.hobby-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    transparent 60%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 1rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.hobby-item:hover .hobby-overlay {
-  opacity: 1;
-}
-
-.hobby-item:hover img {
-  transform: scale(1.1);
-}
-
-.hobby-name {
-  color: white;
-  font-weight: 700;
-  font-size: 0.9rem;
+/* Section Headers */
+.section-header {
+  margin-bottom: 4rem;
   text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive Hobbies Grid */
-@media (max-width: 980px) {
-  .hobbies-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.6rem;
-  }
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 640px) {
-  .hobbies-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-  }
-
-  .hobby-name {
-    font-size: 0.8rem;
-  }
-}
-
-/* ==================================================
-   No Results Message
-   ================================================== */
-.no-results-message {
-  text-align: center;
-  padding: 3rem 1rem;
-  margin: 2rem 0;
-}
-
-.no-results-content {
-  max-width: 500px;
+/* Portfolio Grid (Prodmast Style) */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.no-results-content h3 {
-  font-size: 1.4rem;
+/* Portfolio Card */
+.card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  transition: transform var(--duration-fast) var(--ease-entrance),
+              background-color var(--duration-fast) var(--ease-entrance);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  will-change: transform;
+  /* Hardware Accelerated Motion */
+  transform: translateY(0);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-8px);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.card__content {
+  margin-bottom: 2rem;
+}
+
+/* 3-line Structure (design-system.md) */
+.card__role {
+  font-size: 0.875rem;
+  color: var(--accent-2); /* Sage */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   font-weight: 600;
-  color: var(--text);
-  margin: 0 0 1rem 0;
+  margin-bottom: 1rem;
 }
 
-.no-results-content p {
-  color: var(--muted);
+.card__problem {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.card__impact {
   font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
+  color: var(--text-color-muted);
 }
 
-.clear-filters-inline {
-  margin-left: 0.5rem;
-  font-size: inherit;
-  padding: 0;
-  vertical-align: baseline;
-  background: none;
-  border: none;
+.card-link {
   color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in oklab, var(--accent) 50%, transparent);
-  text-underline-offset: 2px;
-  cursor: pointer;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity var(--duration-fast) var(--ease-entrance);
 }
 
-.clear-filters-inline:hover {
-  color: var(--accent-2);
-  text-decoration-color: var(--accent-2);
+@media (hover: hover) {
+  .card-link:hover {
+    opacity: 0.8;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+  
+  .card {
+    padding: 2rem;
+  }
+  
+  .card__problem {
+    font-size: 1.25rem;
+  }
+}
+
+/* Reveal Animation Class */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 800ms var(--ease-entrance),
+              transform 800ms var(--ease-entrance);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }

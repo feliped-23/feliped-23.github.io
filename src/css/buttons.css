@@ -1,126 +1,62 @@
-/* 
-=======================================
-  Buttons
-  Felipe Diaz Website
-=======================================
-*/
-
-/* ==================================================
-   Buttons
-   ================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.1rem;
-  border-radius: 12px;
-  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--border));
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--accent) 18%, var(--bg)),
-    var(--bg-elev)
-  );
-  color: var(--text);
+  background-color: var(--accent);
+  color: #ffffff; /* Contrast text for accent */
+  padding: 0.8rem 1.8rem;
+  border-radius: 99px;
   font-weight: 600;
-  text-decoration: none;
-  box-shadow: var(--shadow);
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-entrance),
+              opacity var(--duration-fast) var(--ease-entrance);
+  will-change: transform;
 }
 
 .btn:hover {
   transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.96);
 }
 
 .btn--ghost {
-  background: transparent;
-  border: 1px solid var(--border);
-  box-shadow: none;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--surface-border);
+}
+
+.btn--ghost:hover {
+  background-color: var(--surface-color);
 }
 
 .btn--small {
   padding: 0.55rem 0.85rem;
-  font-weight: 600;
+  font-size: 0.875rem;
 }
 
-/* Tag buttons for blog filters */
-.tag-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border: 2px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.tag-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 0;
-}
-
-.tag-btn .tag-icon,
-.tag-btn .tag-text {
-  position: relative;
-  z-index: 1;
-  transition: all 0.2s ease;
-}
-
-.tag-btn .tag-icon {
-  font-size: 1.1rem;
-  opacity: 0.8;
-}
-
-.tag-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.tag-btn:hover::before {
-  opacity: 0.1;
-}
-
-.tag-btn:hover .tag-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.tag-btn.is-active,
-.tag-btn[aria-pressed="true"] {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(var(--accent-rgb), 0.2);
-}
-
-.tag-btn.is-active::before,
-.tag-btn[aria-pressed="true"]::before {
-  opacity: 0;
-}
-
-.tag-btn.is-active .tag-icon,
-.tag-btn[aria-pressed="true"] .tag-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.tag-btn:active {
-  transform: translateY(0);
+@media (max-width: 767px) {
+  .btn, .btn--small {
+    /* Rule: 44px tap targets on mobile */
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prohibition: Sticky Hover on Mobile */
+  @media (hover: none) {
+    .btn:hover, .btn--ghost:hover {
+      transform: none;
+      opacity: 1;
+      background-color: var(--accent);
+    }
+    .btn--ghost:hover {
+      background-color: transparent;
+    }
+    .btn:active, .btn--ghost:active {
+      transform: scale(0.96);
+    }
+  }
 }

@@ -1,77 +1,167 @@
-/* 
-=======================================
-  Hero Section (Homepage)
-  Felipe Diaz Website
-=======================================
-*/
-
-/* ==================================================
-   Hero Section (Homepage)
-   ================================================== */
 .hero {
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  align-items: center;
-  padding: clamp(1rem, 3vw, 2rem) 0 2.2rem;
-  min-height: 76svh;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  padding: 0; /* override base section { padding-top: 120px } */
 }
 
-.hero__content h1 {
-  line-height: 1.1;
+/* === Left: Text Column === */
+.hero__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem clamp(2rem, 5vw, 4rem) 8rem clamp(2rem, 8vw, 8rem);
+}
+
+.hero__eyebrow {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.hero__left h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
   letter-spacing: -0.02em;
-  font-size: clamp(2rem, 4.2vw + 0.8rem, 3.2rem);
-  margin: 0.2rem 0 0.9rem;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.hero__left .lead {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 480px;
+  margin-bottom: 3rem;
 }
 
 .hero__cta {
-  margin-top: 1.25rem;
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
-.hero__image {
-  border-radius: var(--radius-lg);
+/* Typing Effect */
+.typewriter {
+  color: var(--accent-2);
+  display: inline-block;
+  min-width: 20px;
+  border-right: 2px solid var(--accent-2);
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent-2); }
+}
+
+/* === Lead (shared) === */
+.lead {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: var(--text-color-muted);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Right: Image Column === */
+.hero__image-col {
+  position: relative;
   overflow: hidden;
-  border: 1px solid var(--border);
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--accent) 8%, var(--card)),
-    var(--card)
-  );
-  box-shadow: var(--shadow);
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* Fade left and bottom edges only — no top fade so image hits the very top */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 20%, black 100%),
+    linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 20%, black 100%),
+    linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-composite: intersect;
 }
 
-.hero__image img {
+/* Green ambient bloom */
+.hero__glow {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(100, 170, 80, 0.26) 0%, transparent 70%);
+  filter: blur(55px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Photo placeholder — swap this div for <img class="hero__photo"> when ready */
+.hero__photo-placeholder {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  opacity: 0.98;
-}
-
-.hero__scroll {
-  display: inline-flex;
+  height: 100%;
+  min-height: 400px;
+  background: linear-gradient(160deg, var(--surface-color) 0%, var(--bg-color-alt) 100%);
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.2rem;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px dashed color-mix(in oklab, var(--muted) 50%, transparent);
-  padding-bottom: 2px;
+  justify-content: center;
 }
 
-.hero__scroll:hover {
-  color: var(--text);
+.hero__photo-placeholder::after {
+  content: 'Photo';
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-color-muted);
+  opacity: 0.35;
 }
 
-@media (max-width: 980px) {
+/* Absolute fill so the photo reliably covers the full column from y=0 */
+.hero__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* === Mobile === */
+@media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
+    grid-template-rows: 60vh auto;
   }
-  .hero__image {
-    order: -1;
+
+  /* Image first — sits at the very top of the page */
+  .hero__image-col {
+    grid-row: 1;
+    min-height: unset;
+    -webkit-mask-image:
+      linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+    -webkit-mask-composite: unset;
+    mask-image:
+      linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+    mask-composite: unset;
+  }
+
+  /* Text second — below the image */
+  .hero__left {
+    grid-row: 2;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .hero__left .lead {
+    max-width: 100%;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    max-width: 300px;
   }
 }
