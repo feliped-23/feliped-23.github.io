@@ -24,7 +24,7 @@ Fusion – the reaction that powers the stars and the sun – has captured the p
 But while interest is at an all-time high and headlines continue to raise expectations, the challenges ahead are monumental. Around the world, efforts range from government-funded labs to venture-backed startups. Each is pursuing its own path to fusion, but all share the same fundamental technical obstacles that must be overcome.
 
 ![Fusion Reactor Tokamak](assets/ITER-Fusion-Reactor.gif)
-*A tokamak fusion reactor represents humanity's most ambitious attempt to achieve controlled fusion energy.*
+*The tokamak is fusion's leading candidate by sheer research volume — favored by most labs pursuing controlled fusion, even though that popularity is no guarantee it will be the design that wins.*
 
 ## Why Fusion Can Change the Path of Humanity
 

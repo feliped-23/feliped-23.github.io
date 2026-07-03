@@ -31,7 +31,7 @@ const EXPERIENCES = [
     typeLabel: 'Engineering Co-op',
     heroImg: P + 'miru/miru_curing.jpg',
     keywords: ['Clean-Tech R&D', 'Plasma Curing', '$150K Grant'],
-    summary: 'Independently ran an 8-month, $150K research grant at an electrochromic smart-window startup — validating a novel plasma curing process that cut a key manufacturing bottleneck by a projected 90% and shaped the company’s path to scale.',
+    summary: 'Independently ran an 8-month, $150K research grant at an electrochromic smart-window startup — validating a novel plasma curing process that cut a key manufacturing bottleneck by a projected 90%.',
     highlights: [
       'Independently managed an 8-month, $150,000 plasma-curing research grant from an uncertain experiment to a validated, repeatable process.',
       'Demonstrated a projected 90% reduction in a manufacturing bottleneck via Design of Experiments and SPC validation.',
@@ -63,7 +63,7 @@ const EXPERIENCES = [
     typeLabel: 'Engineering Co-op',
     heroImg: P + 'ledcor/ledcor_BT.jpg',
     keywords: ['$1.2B+ Megaproject', 'Change Orders', 'Site Reporting'],
-    summary: 'Project controls on TMX’s $1.2B+ Burnaby Terminal — one of Canada’s largest active infrastructure sites — filing and securing approval on engineering change orders up to $200K while owning site-wide daily reporting.',
+    summary: 'Project controls on TMX’s $1.2B+ Burnaby Terminal — filing and securing approval on engineering change orders up to $200K while owning site-wide daily reporting.',
     highlights: [
       'Supported project controls on a $1.2B+ construction site (Burnaby Terminal, TMX pipeline expansion).',
       'Filed and secured stakeholder approval on change orders up to $200,000 from unforeseen construction challenges.',
@@ -313,9 +313,7 @@ const EXPERIENCES = [
       { src: P + 'ubc/igen_logo.png', alt: 'Integrated Engineering program logo' },
       { src: P + 'ubc/ubc_eng_logo_red.jpg', alt: 'UBC Engineering logo' }
     ],
-    docs: [
-      { label: 'Download Résumé', href: P + 'ubc/FelipeDiaz_Resume.pdf', kind: 'pdf' }
-    ]
+    docs: []
   },
   {
     slug: 'australia',
